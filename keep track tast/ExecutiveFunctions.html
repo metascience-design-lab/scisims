@@ -1,15 +1,32 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		This is a simulation 4: Keep track task </br>
 		<title> Executive Functions </title>
-		</style>
-		<link rel="stylesheet" href="position.css">
-		<body onload = "start()">
-			<script src = "sim4.js">
-			</script>
-			<div id="name"></div>
-			<div id="Type"></div>
-		</body>
+		<script src="jquery-3.3.1.min.js"></script>
+		<script src = "sim4jq.js"></script>
 	</head>
+	<link rel="stylesheet" href="position.css">
+	<body>
+		<div id="StartSimulation"> Keep Track Task </br>
+			<div id="instruction"> </div>
+			<h1 class="Trials"></h1>
+			<button class="start">Start</button>
+		</div>
+		<div id="Answering">
+			<h2 id="question"></h2>
+			<h3 id="insert"></h3>
+			<button class="submit">Done</button>
+		</div>
+		
+		<div id="Score">
+			<h4 id="correct"></h4>
+			<button class="Next">Next</button>
+		</div>
+		<div id="done">
+			<h4 id="finish"></h4>
+			<button class="done">Done</button>
+		</div>
+		<div id="name"></div>
+		<div id="Type"></div>
+	</body>
 </html>
