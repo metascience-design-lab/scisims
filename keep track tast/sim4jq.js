@@ -4,21 +4,19 @@ $("document").ready(function(){
 	var userInputs = [];	//User's last 5 words
 	var mode = 3; 			//Indicates the mode. Mode 3 = answering 3 categories. 4 = answering 4 catergories.
 	var trial = 0;
+	var index = 0;
+	var score = 0;
 	
 	$("#Answering").hide();
-	$("#instruction").text("There are five runs in this part. You will see a sequence of words on the center of the screen. All words belong to five chosen categories: animals, colors, clothes, countries, and sports. Exactly three of these categories will be present in each run, but the words' categories vary from run to run. At the end of each run, you will be asked to type the last word in each of those three categories. The category of every word will be hinted at the bottom of the screen. Please do your best.");
+	//$("#instruction").append("<p>There are five runs in this part. You will see a sequence of words on the center of the screen. All words belong to five chosen categories: animals, colors, clothes, countries, and sports. Exactly three of these categories will be present in each run, but the words' categories vary from run to run. At the end of each run, you will be asked to type the last word in each of those <b>three</b> categories. The category of every word will be hinted at the bottom of the screen. Please do your best.</p>");
 	$("#Score").hide();
-	$("#Trials").hide();
 	$("#done").hide();
-	 //soon will make it as a for loop
 	 
 	$(".start").click(function(){
         
 		$("#StartSimulation").hide();
-		$(".Trials").show();
-		$(".Trials").text("Trial 1");
+		$("#Trials").hide();
 		display();
-		//proceedInput();
     });
 	
 	function createList(){
@@ -83,9 +81,15 @@ $("document").ready(function(){
 		
 	function display(){
 		trial++;
+		if (trial == 5){
+			$("#instruction").text("");
+			$("#instruction").append("<p>There are five runs in this part. You will see a sequence of words on the center of the screen. All words belong to five chosen categories: animals, colors, clothes, countries, and sports. Exactly three of these categories will be present in each run, but the words' categories vary from run to run. At the end of each run, you will be asked to type the last word in each of those <b>four</b> categories. The category of every word will be hinted at the bottom of the screen. Please do your best.</p>");
+		}
+		$("#TrialNum").show();
+		$("#TrialNum").text("Trial " + (trial));
 		if(trial === 6) mode = 4;
 		var list = createList();
-		var speed = 100; 			//Change this would change the display speed of each word
+		var speed = 2000; 			//Change this would change the display speed of each word
 		var time = setInterval(startTime, speed);
 		console.log(all.length);
 		function startTime(){
@@ -94,9 +98,10 @@ $("document").ready(function(){
 					clearInterval(time);
 					document.getElementById("name").innerHTML = "";
 					document.getElementById("Type").innerHTML = '';
-					console.log(result);
 					
 					proceedInput(list);
+					
+					return;
 				} else {
 					var rand = Math.floor(Math.random() * all.length);
 					//document.getElementById("name").innerHTML = all[rand].name;
@@ -127,7 +132,7 @@ $("document").ready(function(){
 					all.splice(rand, 1);
 				}
 			} else {
-				if(list[0].count === 3 && list[1].count === 3 && list[2].count === 3 && list[3] === 3){
+				if(list[0].count === 3 && list[1].count === 3 && list[2].count === 3 && list[3].count === 3){
 					clearInterval(time);
 					document.getElementById("name").innerHTML = "";
 					document.getElementById("Type").innerHTML = '';
@@ -142,6 +147,7 @@ $("document").ready(function(){
 					document.getElementById("Type").innerHTML = 'This word is of category: ' + all[rand].category;
 					
 					console.log(all[rand].name);
+					console.log("first count: " + list[0].count + "second count: " + list[1].count + " third count: " + list[2].count + " fourth count: " + list[3].count);
 					switch(all[rand].category){
 						
 						case list[0].label :
@@ -165,6 +171,7 @@ $("document").ready(function(){
 				}
 			}
 		}
+		return list;
 	}
 		
 	function proceedInput(list){
@@ -176,59 +183,64 @@ $("document").ready(function(){
 		}
 		
 		$("#insert").text("Type them in the boxes below.");
+		$("<div class='test' id='Testing'>").appendTo('body');
 		for(i = 0; i < list.length; i++){
-			$(".submit").before(list[i].label + "?\t" + '<input type="text" id="cat' + (i+1) + '"><br>'); //\t not a tab?
+			var string = list[i].label + "?\t" + "<input type='text' id='input";
+			string += i;
+			string += "'><br>";
+			$("#Testing").append(string);
+			$(".submit").before($("#Testing"));
+			
 		}
-		$(".submit").show();
-		
-		$(".submit").click(function(){
-			for(i = 0; i < list.length; i++){
-				var value = $("#cat" + (i+1)).val().trim().toLowerCase();
-				console.log(value);
-				userInputs.push({'label' : list[i].label,
-								 'value' : value});
-				//$(")
-				$("#cat" + (i+1)).remove();
-			}
-			$(".submit").hide();
-			console.log(userInputs);
-			lastPart();
-		});
+		tempList = list;
+		index = tempList.length;
+		//TempList might not needed since taking out as a separate function for button click did not solve the problem of stacking labels.
 	}
-
+	
+	$(".submit").click(function(){
+		for(i = 0; i < tempList.length; i++){
+			var value = $("#input" + i).val().trim().toLowerCase();
+			console.log(value);
+			userInputs.push({'label' : tempList[i].label,
+							 'value' : value});
+			//$(")
+			
+		}
+		$("#Testing").remove();
+		$("#Answering").hide();
+		$("#TrialNum").hide();
+		console.log(userInputs);
+		lastPart();
+		console.log(trial);
+		if(trial < 10){
+			$("#StartSimulation").show();
+		}
+	});
+	
 	//Prints how much of the items he/she got it right
 	//Ask for a retrial/re-start
 	function lastPart(){
-		if(trial != 10){
-			$("#Score").show();
-		} else {
-			$("#Done").show();
+		if(trial == 10){
+			$("#done").show();
+			$("#correct").text("You got " + score + " correct!");
 		}
 		var correct = compareResult(mode); //mode 1 = 3 cats 2 = 4 cats;
-		$("#correct").show();
-		$("#correct").text("You got " + correct + " correct! To go on to the next trial, hit Next");
+		score += correct;
 		
 		//Resetting for the next round
 		result = [];
 		userInputs = [];
 		all = [];
-		$(".Next").show();
-		$(".Next").click(function(){
-			$("#Answering").hide();
-			$("#correct").hide();
-			$(".Next").hide();
-			display();
-		});
-/* 		$(".Done").click(function(){
-			trial = 0;
-			mode = 3;
-			display();
-		}); */
+		
 	}
-
+	
+	$(".done").click(function(){
+		return;
+	});
+	
 	//Helper function comparing the results of user's to correct answer
 	function compareResult(numCats){
-		var score = 0;
+		var score1 = 0;
 		for(i = 0; i < numCats; i++){
 			if(result.includes(userInputs[i].value)){ //Maybe compare the category as well?
 				score++;
@@ -236,6 +248,6 @@ $("document").ready(function(){
 			}
 		}
 		
-		return score;
-	}		
+		return score1;
+	}
 });
