@@ -1,8 +1,13 @@
+//TODO Make more aestetically pleasing
+//     Use canvas/fabric.js
+//     Make consistant
+//TODO Make the downloaded data more useful
+
+const ds = new lab.data.Store();
 const digits = [];
 var dIndex = 0;
-var correct = 0;
+var totalCorrect = 0;
 generateDigits();
-console.log(digits);
 
 const digitRecall = new lab.html.Form({
   content: '<h1 id="text">Trial #${dIndex + 1} of ${digits.length}${sayDigits(parameters.numbers)}</h1>'
@@ -24,9 +29,6 @@ const digitRecall = new lab.html.Form({
   },
   tardy: true
 });
-//digitRecall.on('keypress(Space)', nextDigit());
-
-function doNothing() {}
 
 function isCorrectResponse(correct, response) {
   if (correct.length != response.length)
@@ -34,11 +36,12 @@ function isCorrectResponse(correct, response) {
   for (var i = 0; i < correct.length; i++)
     if (correct[i] != response.charAt(response.length - i - 1))
       return false;
-  correct++;
+  totalCorrect++;
   return true;
 }
 
 const digitLoop = new lab.flow.Loop({
+  datastore: ds,
   template: digitRecall,
   templateParameters: digits,
   responses: {
@@ -54,7 +57,7 @@ function nextDigit() {
 }
 
 function generateDigits() {
-  for (var digitNum = 2; digitNum <= 5; digitNum++)
+  for (var digitNum = 2; digitNum <= 3; digitNum++)
     for (var i = 1; i <= 3; i++) {
       var list = [];
       for (var j = 0; j < digitNum; j++)
@@ -75,10 +78,11 @@ function sayLine(strLine){
 
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "Instruction Placeholder", timeout: 1000}),
+    new lab.html.Screen({content: "Welcome to the Backwards Digit Recall Test!\n\nPlease be sure to turn on audio.\n\nIn this task, you will hear a sequence of digits.\n\nFirst, you will start with a sequence of two digits.\n\nIf you pass each level, the number of digits \nwill increase by one.\n\nPlease press the SPACEBAR to continue.", "responses": {'keypress(Space)': 'Continue'},}),
     digitLoop,
-    new lab.html.Screen({content: "Debrief Placeholder ${correct} of ${digits.length} correct: ${correct / digits.length}%", timeout: 1000}),
+    new lab.html.Screen({content: "Debrief Placeholder ${totalCorrect} of ${digits.length} correct: ${(totalCorrect / digits.length) * 100}%", timeout: 1000, tardy: true}),
   ]
 });
 
+study.on('end', () => ds.download());
 study.run();
