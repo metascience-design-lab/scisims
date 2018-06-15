@@ -1,0 +1,132 @@
+body {
+    font-family: "Arial";
+    text-align: center;
+    margin: 0px;
+}
+
+i {
+    padding: 2px;
+}
+
+#content {
+    margin-top: 40px;
+}
+
+#original {
+    display: inline-block;
+}
+
+#test {
+    display: inline-block;
+}
+
+#instructions {
+    width: 500px;
+    margin: auto;
+}
+
+#footer {
+    background-color: #FFEFC5;
+    text-align: center;
+    padding-top: 15px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+
+.grid-div {
+    width: 310px;
+    height: 310px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.ans-div:hover {
+    border: 1px solid dodgerblue;
+    cursor: pointer;
+}
+
+.block {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.black {
+    background-color: black;
+}
+
+.red {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    box-sizing: border-box;
+    border: 10px solid white;
+    border-radius: 50px;
+}
+
+.rotate90 {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.rotate180 {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.rotate270 {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+}
+
+.fliprotate90 {
+    transform: rotate(90deg) scale(-1, 1);
+    -webkit-transform: rotate(90deg) scale(-1, 1);
+}
+
+.fliprotate180 {
+    transform: rotate(180deg) scale(-1, 1);
+    -webkit-transform: rotate(180deg) scale(-1, 1);
+}
+
+.fliprotate270 {
+    transform: rotate(270deg) scale(-1, 1);
+    -webkit-transform: rotate(270deg) scale(-1, 1);
+}
+
+.flip {
+    transform: scale(-1, 1);
+}
+
+button {
+    width: 100px;
+    height: 60px;
+    background-color: white;
+    font-size: 18px;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: grey;
+    color: black;
+    margin: 30px;
+    outline: 0;
+}
+
+button:hover {
+    background-color: lightgrey;
+    border-color: darkgrey;
+    color: black;
+}
+
+button:active {
+    background-color: lightgrey;
+    border-color: grey;
+    color: black;
+}
