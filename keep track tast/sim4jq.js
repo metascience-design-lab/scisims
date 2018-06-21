@@ -93,7 +93,7 @@ $("document").ready(function(){
 		$("#TrialNum").text("Trial " + (trial));
 		if(trial === 6) mode = 4;
 		var list = createList();
-		var speed = 2000; 			//Change this would change the display speed of each word
+		var speed = 200; 			//Change this would change the display speed of each word
 		var time = setInterval(startTime, speed);
 		console.log(all.length);
 		function startTime(){
@@ -115,7 +115,11 @@ $("document").ready(function(){
 					
 					//$("#name").fadeIn();
 					//document.getElementById("Type").innerHTML = 'This word is of category: ' + all[rand].category;
-					$("#words").text('This word is of category: ' + all[rand].category);
+					var instCats = 'You will be asked to keep track of the last words in each category.\nThis word is of category: ' + all[rand].category;
+					var escaped = $('<div>').text(instCats).text();
+					//$("#words").text('You will be asked to keep track of the last words in each category.');
+					//$("#words").text('This word is of category: ' + all[rand].category);
+					$('#words').html(escaped.replace(/\n/g, '<br />'));
 					console.log(all[rand].name);
 					console.log("first count: " + list[0].count + "second count: " + list[1].count + " third count: " + list[2].count);
 					switch(all[rand].category){
@@ -139,7 +143,8 @@ $("document").ready(function(){
 				if(list[0].count === 3 && list[1].count === 3 && list[2].count === 3 && list[3].count === 3){
 					clearInterval(time);
 					document.getElementById("name").innerHTML = "";
-					document.getElementById("Type").innerHTML = '';
+					//document.getElementById("Type").innerHTML = '';
+					$("#words").text('');
 					console.log(result);
 					proceedInput(list);
 				} else {
@@ -148,7 +153,12 @@ $("document").ready(function(){
 					$("#name").text(all[rand].name).fadeIn(1000);
 					$("#name").text(all[rand].name).fadeOut(1000);
 					
-					document.getElementById("Type").innerHTML = 'This word is of category: ' + all[rand].category;
+					//document.getElementById("Type").innerHTML = 'You will be asked to keep track of the last words in each category.<br>This word is of category: ' + all[rand].category;
+					var instCats = 'You will be asked to keep track of the last words in each category.\nThis word is of category: ' + all[rand].category;
+					var escaped = $('<div>').text(instCats).text();
+					//$("#words").text('You will be asked to keep track of the last words in each category.');
+					//$("#words").text('This word is of category: ' + all[rand].category);
+					$('#words').html(escaped.replace(/\n/g, '<br />'));
 					
 					console.log(all[rand].name);
 					console.log("first count: " + list[0].count + "second count: " + list[1].count + " third count: " + list[2].count + " fourth count: " + list[3].count);
