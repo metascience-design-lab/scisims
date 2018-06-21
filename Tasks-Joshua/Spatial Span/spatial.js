@@ -28,6 +28,7 @@ $("document").ready(function(){
         $("#controls").show();
         $("#instructions").hide();
         $("#footer").show();
+        $(".btn-continue").hide();
         start();
     })
 
@@ -257,7 +258,6 @@ $("document").ready(function(){
         $("#round-end").hide();
         $("#score-div").show();
         $("#footer-text").text("The task is complete!");
-        $("#score").text("Your score is: " + score);
         flag = -1;
     }
 });

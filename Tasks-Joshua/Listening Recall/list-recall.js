@@ -1,8 +1,17 @@
 $("document").ready(function(){
 
+    // const ds = new lab.data.Store();
+    // ds.commit('condition', 'control');
+    // ds.commit('name', 'joshua');
+    // ds.commit('age', '1');
+    // console.log(ds.get('condition'));
+    // ds.show();
+    // ds.download(filetype='csv', filename='data.csv')
+
     $("#controls").hide();
     $("#trial-end").hide();
     $("#score-div").hide();
+    $("#error").hide();
 
     $("#footer-text").text("Click Continue to start the task");
 
@@ -21,6 +30,7 @@ $("document").ready(function(){
         $("#controls").show();
         $("#instructions").hide();
         $("#footer").show();
+        $(".btn-continue").hide();
         $("#footer-text").text("Click Play and decide whether the statement you hear is True or False");
 
     })
@@ -74,6 +84,13 @@ $("document").ready(function(){
       * Checks if answers are correct and updates score accordingly. Also displays the controls for the next trial.
       */
     $(".btn-submit").click(function(){
+        for (var i = 0 ; i < wordCounter; i++) {
+            if ($("#word" + (i+1)).val().trim().toLowerCase() == "") {
+                $("#error").show();
+                return;
+            }
+        }
+        $("#error").hide();
         curSentences = 0;
         $("#controls").show();
         $("#trial-end").hide();
@@ -119,7 +136,6 @@ $("document").ready(function(){
         $("#controls").hide();
         $("#score-div").show();
         $("#footer-text").text("The task is complete!");
-        $("#score").text("Your score is: " + score);
     }
 
 
