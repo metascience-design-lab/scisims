@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spatial Span Test</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="spatial.js"></script>
+    <link rel="stylesheet" href="spatial.css">
+</head>
+<body>
+    <div id="content">
+        <h1>Spatial Span Test</h1>
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <p>You will view random test shapes which will be either a mirror or
+                normal version of the original shape on the left hand side.
+                Each test shape will be shown for 2 seconds. After a few
+                such shapes are shown, you will have to identify the
+                orientation of each of the test shapes that were shown to you.
+            </p>
+            <button class="btn-continue">Continue</button>
+        </div>
+        <div id="original">
+            <h2>Original</h2>
+            <div id="orig-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="test">
+            <h2>Test</h2>
+            <div id="test-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="controls">
+            <button id="btn-normal">Normal</button>
+            <button id="btn-mirror">Mirror</button>
+        </div>
+        <div id="round-end">
+        </div>
+        <div id="score-div">
+            <h2 id="score-text">You have completed the task!</h2>
+            <h3 id="score">Score</h3>
+        </div>
+        <div id="footer">
+            <p id="footer-text">Instructions go here</p>
+        </div>
+    </div>
+</body>
+</html>

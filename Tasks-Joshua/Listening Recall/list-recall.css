@@ -1,0 +1,106 @@
+body {
+    font-family: "Arial";
+    text-align: center;
+    margin: 0px;
+}
+
+i {
+    padding: 2px;
+}
+
+#content {
+    margin-top: 180px;
+}
+
+#instructions {
+    width: 500px;
+    margin: auto;
+}
+
+#footer {
+    background-color: #FFEFC5;
+    text-align: center;
+    padding-top: 15px;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+
+input[type=text] {
+    text-align: center;
+    outline: 0;
+    margin: 10px;
+    padding: 10px;
+    height: 40px;
+    font-size: 18px;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: dodgerblue;
+}
+
+input[type=text]:focus {
+    border-width: 3px;
+}
+
+button {
+    width: 100px;
+    height: 60px;
+    background-color: white;
+    font-size: 18px;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: dodgerblue;
+    color: dodgerblue;
+    margin: 30px;
+    outline: 0;
+}
+
+button:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+button:active {
+    background-color: royalblue;
+    border-color: royalblue;
+    color: white;
+
+}
+
+.btn-submit {
+}
+
+.btn-true {
+    border-color: green;
+    color: green;
+}
+
+.btn-true:hover {
+    background-color: green;
+    color: white;
+}
+
+.btn-true:active {
+    background-color: darkgreen;
+    border-color: darkgreen;
+    color: white;
+
+}
+
+.btn-false {
+    border-color: red;
+    color: red;
+}
+
+.btn-false:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn-false:active {
+    background-color: darkred;
+    border-color: darkred;
+    color: white;
+
+}
