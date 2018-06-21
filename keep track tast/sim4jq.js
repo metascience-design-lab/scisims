@@ -11,6 +11,7 @@ $("document").ready(function(){
 	//$("#instruction").append("<p>There are five runs in this part. You will see a sequence of words on the center of the screen. All words belong to five chosen categories: animals, colors, clothes, countries, and sports. Exactly three of these categories will be present in each run, but the words' categories vary from run to run. At the end of each run, you will be asked to type the last word in each of those <b>three</b> categories. The category of every word will be hinted at the bottom of the screen. Please do your best.</p>");
 	$("#Score").hide();
 	$("#done").hide();
+	$("#dataTable").hide();
 	 
 	$(".start").click(function(){
         
@@ -78,10 +79,13 @@ $("document").ready(function(){
 			list.splice(ran, 1);
 		}
 	}
+	
+	
+
 		
 	function display(){
 		trial++;
-		if (trial == 5){
+		if (trial > 1){
 			$("#instruction").text("");
 			$("#instruction").append("<p>There are five runs in this part. You will see a sequence of words on the center of the screen. All words belong to five chosen categories: animals, colors, clothes, countries, and sports. Exactly three of these categories will be present in each run, but the words' categories vary from run to run. At the end of each run, you will be asked to type the last word in each of those <b>four</b> categories. The category of every word will be hinted at the bottom of the screen. Please do your best.</p>");
 		}
@@ -97,8 +101,8 @@ $("document").ready(function(){
 				if(list[0].count === 3 && list[1].count === 3 && list[2].count === 3){
 					clearInterval(time);
 					document.getElementById("name").innerHTML = "";
-					document.getElementById("Type").innerHTML = '';
-					
+					//document.getElementById("Type").innerHTML = '';
+					$("#words").text('');
 					proceedInput(list);
 					
 					return;
@@ -110,8 +114,8 @@ $("document").ready(function(){
 					$("#name").text(all[rand].name).fadeOut(1000);
 					
 					//$("#name").fadeIn();
-					document.getElementById("Type").innerHTML = 'This word is of category: ' + all[rand].category;
-					
+					//document.getElementById("Type").innerHTML = 'This word is of category: ' + all[rand].category;
+					$("#words").text('This word is of category: ' + all[rand].category);
 					console.log(all[rand].name);
 					console.log("first count: " + list[0].count + "second count: " + list[1].count + " third count: " + list[2].count);
 					switch(all[rand].category){
@@ -203,8 +207,7 @@ $("document").ready(function(){
 			console.log(value);
 			userInputs.push({'label' : tempList[i].label,
 							 'value' : value});
-			//$(")
-			
+			$("#dataTable").append("<tr> <td> " + trial + " </td> <td> " + value + " </td> <td> " + result[i] + " </td> </tr>");
 		}
 		$("#Testing").remove();
 		$("#Answering").hide();
@@ -212,8 +215,11 @@ $("document").ready(function(){
 		console.log(userInputs);
 		lastPart();
 		console.log(trial);
-		if(trial < 10){
+		if (trial == 5){
 			$("#StartSimulation").show();
+		} else if (trial < 10){
+			//$("#StartSimulation").show();
+			display();
 		}
 	});
 	
@@ -222,7 +228,7 @@ $("document").ready(function(){
 	function lastPart(){
 		if(trial == 10){
 			$("#done").show();
-			$("#correct").text("You got " + score + " correct!");
+			$("#correct").text("You have completed the task!");
 		}
 		var correct = compareResult(mode); //mode 1 = 3 cats 2 = 4 cats;
 		score += correct;
@@ -250,4 +256,84 @@ $("document").ready(function(){
 		
 		return score1;
 	}
+	
+	function exportTableToCSV($table, filename) {
+
+		var $rows = $table.find('tr:has(td)'),
+
+		  // Temporary delimiter characters unlikely to be typed by keyboard
+		  // This is to avoid accidentally splitting the actual contents
+		  tmpColDelim = String.fromCharCode(11), // vertical tab character
+		  tmpRowDelim = String.fromCharCode(0), // null character
+
+		  // actual delimiter characters for CSV format
+		  colDelim = '","',
+		  rowDelim = '"\r\n"',
+
+		  // Grab text from table into CSV formatted string
+		  csv = '"' + $rows.map(function(i, row) {
+			var $row = $(row),
+			  $cols = $row.find('td');
+
+			return $cols.map(function(j, col) {
+			  var $col = $(col),
+				text = $col.text();
+
+			  return text.replace(/"/g, '""'); // escape double quotes
+
+			}).get().join(tmpColDelim);
+
+		  }).get().join(tmpRowDelim)
+		  .split(tmpRowDelim).join(rowDelim)
+		  .split(tmpColDelim).join(colDelim) + '"';
+
+		// Deliberate 'false', see comment below
+		if (false && window.navigator.msSaveBlob) {
+
+		  var blob = new Blob([decodeURIComponent(csv)], {
+			type: 'text/csv;charset=utf8'
+		  });
+
+		  // Crashes in IE 10, IE 11 and Microsoft Edge
+		  // See MS Edge Issue #10396033
+		  // Hence, the deliberate 'false'
+		  // This is here just for completeness
+		  // Remove the 'false' at your own risk
+		  window.navigator.msSaveBlob(blob, filename);
+
+		} else if (window.Blob && window.URL) {
+		  // HTML5 Blob        
+		  var blob = new Blob([csv], {
+			type: 'text/csv;charset=utf-8'
+		  });
+		  var csvUrl = URL.createObjectURL(blob);
+
+		  $(this)
+			.attr({
+			  'download': filename,
+			  'href': csvUrl
+			});
+		} else {
+		  // Data URI
+		  var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+		  $(this)
+			.attr({
+			  'download': filename,
+			  'href': csvData,
+			  'target': '_blank'
+			});
+		}
+	  }
+
+	  // This must be a hyperlink
+	 $(".export").on('click', function(event) {
+		// CSV
+		var args = [$('#dvData>table'), 'export.csv'];
+
+		exportTableToCSV.apply(this, args);
+
+		// If CSV, don't do event.preventDefault() or return false
+		// We actually need this to be a typical hyperlink
+	});
 });
