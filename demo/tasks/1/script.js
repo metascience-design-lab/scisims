@@ -11,6 +11,7 @@ for (var digitNum = 2; digitNum <= 10; digitNum++)
 var dIndex = 0;
 var totalCorrect = 0;
 var incorrect = 0;
+var done = false;
 
 const digitRecall = new lab.html.Form({
   content: '<h1 id="text">Trial #${dIndex + 1}: ${parameters.numbers.length} digits${sayDigits(parameters.numbers)}</h1>'
@@ -20,7 +21,7 @@ const digitRecall = new lab.html.Form({
   + "</form>",
   "messageHandlers": {
     "run": function anonymous() {
-      if (incorrect >= 2)
+      if (done)
         this.end();
       const form = document.getElementById('form');
       const response = document.getElementById('response');
@@ -30,8 +31,11 @@ const digitRecall = new lab.html.Form({
         this.correctVar = isCorrectResponse(correct, response.value);
         if (!this.correctVar)
           incorrect++;
-        else
-          incorrect = 0;
+        if (dIndex % 3 == 0)
+          if (incorrect >= 2)
+            done = true;
+          else
+            incorrect = 0;
         alert(this.correctVar ? "Correct" : "Incorrect");
       };
     }
@@ -50,7 +54,7 @@ function isCorrectResponse(correct, response) {
 }
 
 function sayDigits(digits) {
-  if (incorrect < 2)
+  if (!done)
     for (var i = 0; i < digits.length; i++)
       sayLine(digits[i]);
 }
