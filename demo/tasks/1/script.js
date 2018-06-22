@@ -1,31 +1,44 @@
-//TODO Make more aestetically pleasing
-//     Use canvas/fabric.js
-//     Make consistant
-//TODO Make the downloaded data more useful
 
 const ds = new lab.data.Store();
 const digits = [];
+for (var digitNum = 2; digitNum <= 10; digitNum++)
+  for (var i = 1; i <= 3; i++) {
+    var list = [];
+    for (var j = 0; j < digitNum; j++)
+      list.push(Math.floor(Math.random() * 10));
+    digits.push({numbers: list});
+  }
 var dIndex = 0;
 var totalCorrect = 0;
-generateDigits();
+var incorrect = 0;
+var done = false;
 
 const digitRecall = new lab.html.Form({
-  content: '<h1 id="text">Trial #${dIndex + 1} of ${digits.length}${sayDigits(parameters.numbers)}</h1>'
+  content: '<h1 id="text">Trial #${dIndex + 1}: ${parameters.numbers.length} digits${sayDigits(parameters.numbers)}</h1>'
   + "<form id='form'>"
     + "<input type='text' id='response' name='response' autofocus=true/>"
     + "<button type='submit'>Submit</button>"
   + "</form>",
-  "responses": {},
   "messageHandlers": {
     "run": function anonymous() {
-        const form = document.getElementById('form');
-        const response = document.getElementById('response');
-        const text = document.getElementById('text');
-        const correct = digits[dIndex]['numbers'];
-        dIndex++;
-        form.onsubmit = () => {alert(isCorrectResponse(correct, response.value) ? "Correct" : "Incorrect");};
-        //TODO Better alert of correctness
-      }
+      if (done)
+        this.end();
+      const form = document.getElementById('form');
+      const response = document.getElementById('response');
+      const correct = digits[dIndex]['numbers'];
+      dIndex++;
+      form.onsubmit = () => {
+        this.correctVar = isCorrectResponse(correct, response.value);
+        if (!this.correctVar)
+          incorrect++;
+        if (dIndex % 3 == 0)
+          if (incorrect >= 2)
+            done = true;
+          else
+            incorrect = 0;
+        alert(this.correctVar ? "Correct" : "Incorrect");
+      };
+    }
   },
   tardy: true
 });
@@ -40,35 +53,10 @@ function isCorrectResponse(correct, response) {
   return true;
 }
 
-const digitLoop = new lab.flow.Loop({
-  datastore: ds,
-  template: digitRecall,
-  templateParameters: digits,
-  responses: {
-    'keypress(q)': 'end',
-  }
-});
-
-function nextDigit() {
-  var list = [];
-  for (var j = 0; j < 2; j++)
-    list.push(Math.floor(Math.random() * 10));
-  digits.push({numbers: list});
-}
-
-function generateDigits() {
-  for (var digitNum = 2; digitNum <= 3; digitNum++)
-    for (var i = 1; i <= 3; i++) {
-      var list = [];
-      for (var j = 0; j < digitNum; j++)
-        list.push(Math.floor(Math.random() * 10));
-      digits.push({numbers: list});
-    }
-}
-
 function sayDigits(digits) {
-  for (var i = 0; i < digits.length; i++)
-    sayLine(digits[i]);
+  if (!done)
+    for (var i = 0; i < digits.length; i++)
+      sayLine(digits[i]);
 }
 
 function sayLine(strLine){
@@ -76,13 +64,18 @@ function sayLine(strLine){
    window.speechSynthesis.speak(msg);
 }
 
+const digitLoop = new lab.flow.Loop({
+  datastore: ds,
+  template: digitRecall,
+  templateParameters: digits,
+});
+
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "Welcome to the Backwards Digit Recall Test!\n\nPlease be sure to turn on audio.\n\nIn this task, you will hear a sequence of digits.\n\nFirst, you will start with a sequence of two digits.\n\nIf you pass each level, the number of digits \nwill increase by one.\n\nPlease press the SPACEBAR to continue.", "responses": {'keypress(Space)': 'Continue'},}),
-    digitLoop,
-    new lab.html.Screen({content: "Debrief Placeholder ${totalCorrect} of ${digits.length} correct: ${(totalCorrect / digits.length) * 100}%", timeout: 1000, tardy: true}),
+    new lab.html.Screen({content: "<h1>Welcome to the Backwards Digit Recall Test!</h1><h2>Please be sure to turn on audio.</h2><p>In this task, you will hear a sequence of digits. You will start with a sequence of two digits. Your job is to type them in reverse order. For every three responses you get right, the number of digits will increase by one.</p><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Frame({context: "<main></main><footer>Listen to the digits spoken, then type them in reverse order</footer>", contextSelector: "main", content: digitLoop}),
+    new lab.html.Screen({content: "<h2>Thank you for your participation<h2><button onclick='ds.download()'>Download</button>"})
   ]
 });
 
-study.on('end', () => ds.download());
 study.run();
