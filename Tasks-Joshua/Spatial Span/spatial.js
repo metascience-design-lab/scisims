@@ -8,10 +8,15 @@ $("document").ready(function(){
     var curAnswer = 0;
     var score = 0;
     var timeoutID;
+    var n;
+    var timeout = true;
+    var transformations = ["normal", "rotate90", "rotate180", "rotate270", "fliprotate90", "fliprotate180", "fliprotate270", "flip"];
+
     flag = 0;
 
-    $("#btn-normal").click(nextGrid);
-    $("#btn-mirror").click(nextGrid);
+    const ds = new lab.data.Store();
+
+
 
     $("#original").hide();
     $("#test").hide();
@@ -21,6 +26,26 @@ $("document").ready(function(){
 
     $("#footer-text").text("Click Continue to start the task");
 
+    $("#btn-normal").click(function(){
+        timeout = false;
+        ds.commit({
+            'section': 'test',
+            'response': 'normal',
+            'duration': Date.now() - n,
+            'ended_on': 'response'
+        });
+        nextGrid();
+    });
+    $("#btn-mirror").click(function(){
+        timeout = false;
+        ds.commit({
+            'section': 'test',
+            'response': 'mirror',
+            'duration': Date.now() - n,
+            'ended_on': 'response'
+        });
+        nextGrid();
+    });
 
     $(".btn-continue").click(function(){
         $("#original").show();
@@ -32,6 +57,10 @@ $("document").ready(function(){
         start();
     })
 
+    $(".btn-download").click(function(){
+        ds.show();
+        ds.download(filetype='csv', filename='data.csv')
+    })
 
     /**
       * @desc Resets all the variables as required and displays the necessary
@@ -46,6 +75,8 @@ $("document").ready(function(){
         curAnswer = 0;
         flag = 0;
         round = 0;
+        n = Date.now()
+        timeout = true;
 
         $("#original").show();
         $("#test").show();
@@ -139,29 +170,7 @@ $("document").ready(function(){
             type = Math.floor((Math.random() * 8) + 1);
         }
         //console.log(type);
-        var transformClass = "";
-        if (type == 1) {
-            transformClass = "rotate90";
-            //console.log(90);
-        } else if (type == 2) {
-            transformClass = "rotate180";
-            //console.log(180);
-        } else if (type == 3) {
-            //console.log(270);
-            transformClass = "rotate270";
-        } else if (type == 4) {
-            //console.log("fliprotate90");
-            transformClass = "fliprotate90";
-        } else if (type == 5) {
-            //console.log("fliprotate180");
-            transformClass = "fliprotate180";
-        } else if (type == 6) {
-            //console.log("fliprotate270");
-            transformClass = "fliprotate270";
-        } else if (type == 7) {
-            //console.log("flip");
-            transformClass = "flip";
-        }
+        var transformClass = transformations[type-1];
         $(gridID).addClass(transformClass);
         answers.push(transformClass);
     }
@@ -171,12 +180,21 @@ $("document").ready(function(){
       * reached.
       */
     function nextGrid() {
+        if (timeout) {
+            ds.commit({
+                'section': 'test',
+                'duration': Date.now() - n,
+                'ended_on': 'timeout'
+            });
+        }
+        timeout = true;
         clearTimeout(timeoutID);
         round++;
         if (round == roundLim) {
             endRound();
             return;
         }
+        n = Date.now()
         $("#test-grid-div").empty().removeClass().addClass("grid-div");
         displayShape("#test-grid-div", origGrid);
         transform("#test-grid-div");
@@ -192,6 +210,7 @@ $("document").ready(function(){
         $("#test").hide();
         $("#controls").hide();
         var type = 1;
+        var n = Date.now();
         curAnswer++;
         $("#round-end").append('<h2>Choose the correct orientation of test shape ' + curAnswer + '</h2>')
         $("#footer-text").text("Choose the correct orientation of test shape " + curAnswer);
@@ -211,9 +230,27 @@ $("document").ready(function(){
       * go to the next trial.
       */
     function checkAnswer() {
+
         var ans = $(this).attr("class").split(" ")[2];
         if (ans != answers[curAnswer-1]) {
             flag = 1;
+            ds.commit({
+                'section': 'check-answer',
+                'shape_answer': answers[curAnswer-1],
+                'shape-response': ans,
+                'duration': Date.now() - n,
+                'ended_on': 'response',
+                'result': 'wrong'
+            });
+        } else {
+            ds.commit({
+                'section': 'check-answer',
+                'shape_answer': answers[curAnswer-1],
+                'shape-response': ans,
+                'duration': Date.now() - n,
+                'ended_on': 'response',
+                'result': 'correct'
+            });
         }
         $("#round-end").empty();
         console.log(curAnswer);

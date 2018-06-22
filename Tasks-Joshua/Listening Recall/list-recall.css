@@ -60,3 +60,7 @@ button:hover {
     float: right;
     margin-top: 0;
 }
+
+.btn-download {
+    width: 200px;
+}

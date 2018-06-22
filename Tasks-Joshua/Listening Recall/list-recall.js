@@ -7,6 +7,7 @@ $("document").ready(function(){
     // console.log(ds.get('condition'));
     // ds.show();
     // ds.download(filetype='csv', filename='data.csv')
+    const ds = new lab.data.Store();
 
     $("#controls").hide();
     $("#trial-end").hide();
@@ -25,6 +26,7 @@ $("document").ready(function(){
     var arrWords = [];  // Contains the last words of each statement in current trial
     var score = 0;      // Counts the number of trials gotten correct
     var prevScore;      // Stores the previous score
+    var n;              // Stores time
 
     $(".btn-continue").click(function(){
         $("#controls").show();
@@ -32,7 +34,13 @@ $("document").ready(function(){
         $("#footer").show();
         $(".btn-continue").hide();
         $("#footer-text").text("Click Play and decide whether the statement you hear is True or False");
+        n = Date.now();
 
+    })
+
+    $(".btn-download").click(function(){
+        ds.show();
+        ds.download(filetype='csv', filename='data.csv')
     })
 
     function playLine(strLine){
@@ -46,8 +54,24 @@ $("document").ready(function(){
         playLine(lines[index]);
     });
 
-    $(".btn-true").click(nextStatement);
-    $(".btn-false").click(nextStatement);
+    $(".btn-true").click(function(){
+        ds.commit({
+            'section': 'statement',
+            'line_index': index+1,
+            'response': 'true',
+            'duration': Date.now() - n
+        });
+        nextStatement();
+    });
+    $(".btn-false").click(function(){
+        ds.commit({
+            'section': 'statement',
+            'line_index': index+1,
+            'response': 'false',
+            'duration': Date.now() - n
+        });
+        nextStatement();
+    });
 
     /**
       *Pushes the last word of current statement to array and increments index.
@@ -63,6 +87,7 @@ $("document").ready(function(){
             return;
         }
         $("#statement").text("Statement " + (curSentences + 1));
+        n = Date.now();;
         //console.log(curSentences);
     }
 
@@ -95,6 +120,25 @@ $("document").ready(function(){
         $("#controls").show();
         $("#trial-end").hide();
         score++;
+        n = Date.now();
+
+        for (var i = 0 ; i < wordCounter; i++) {
+            if ($("#word" + (i+1)).val().trim().toLowerCase() == (arrWords[i])) {
+                ds.commit({
+                    'section': 'word-input',
+                    'word_answer': arrWords[i],
+                    'word_response': $("#word" + (i+1)).val().trim().toLowerCase(),
+                    'result': 'correct'
+                });
+            } else {
+                ds.commit({
+                    'section': 'word-input',
+                    'word_answer': arrWords[i],
+                    'word_response': $("#word" + (i+1)).val().trim().toLowerCase(),
+                    'result': 'wrong'
+                });
+            }
+        }
 
         for (var i = 0 ; i < wordCounter; i++) {
             //console.log($("#word" + (i+1)).val().trim().toLowerCase());
