@@ -111,58 +111,13 @@ const study = lab.util.fromObject({
       "shuffle": true,
       "timeout": "120000",
       "sample": {
-        "replace": false
+        "replace": true,
+        "n": "1000"
       },
       "parameters": {},
       "template": {
-        "type": "lab.canvas.Screen",
-        "content": [
-          {
-            "type": "i-text",
-            "originX": "center",
-            "originY": "center",
-            "left": 0,
-            "top": 0,
-            "width": 562.34,
-            "height": 73.45,
-            "fill": "${ parameters.color }",
-            "stroke": "",
-            "strokeWidth": 1,
-            "strokeDashArray": null,
-            "strokeLineCap": "butt",
-            "strokeLineJoin": "round",
-            "strokeMiterLimit": 10,
-            "scaleX": 1,
-            "scaleY": 1,
-            "angle": 0,
-            "flipX": false,
-            "flipY": false,
-            "opacity": 1,
-            "shadow": null,
-            "visible": true,
-            "clipTo": null,
-            "backgroundColor": "",
-            "fillRule": "nonzero",
-            "globalCompositeOperation": "source-over",
-            "transformMatrix": null,
-            "skewX": 0,
-            "skewY": 0,
-            "text": "${ parameters.word }",
-            "fontSize": "65",
-            "fontWeight": "normal",
-            "fontFamily": "Times New Roman",
-            "fontStyle": "normal",
-            "lineHeight": 1.16,
-            "underline": false,
-            "overline": false,
-            "linethrough": false,
-            "textAlign": "center",
-            "textBackgroundColor": "",
-            "charSpacing": 0,
-            "id": "101",
-            "styles": {}
-          }
-        ],
+        "type": "lab.html.Screen",
+        "parameters": {},
         "responses": {
           "keypress(r)": "red",
           "keypress(g)": "green",
@@ -171,12 +126,10 @@ const study = lab.util.fromObject({
           "keypress(y)": "yellow"
         },
         "messageHandlers": {},
-        "viewport": [
-          800,
-          600
-        ],
-        "title": "Asterisks",
-        "parameters": {}
+        "title": "Astericks",
+        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the word shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
+        "timeout": "120000",
+        "correctResponse": "${ parameters.color }"
       }
     },
     {
@@ -248,11 +201,71 @@ const study = lab.util.fromObject({
           "color": "green"
         },
         {
+          "word": "red",
+          "color": "yellow"
+        },
+        {
+          "word": "red",
+          "color": "orange"
+        },
+        {
+          "word": "red",
+          "color": "red"
+        },
+        {
+          "word": "red",
+          "color": "blue"
+        },
+        {
+          "word": "green",
+          "color": "green"
+        },
+        {
           "word": "green",
           "color": "yellow"
         },
         {
-          "word": "blue",
+          "word": "green",
+          "color": "orange"
+        },
+        {
+          "word": "green",
+          "color": "red"
+        },
+        {
+          "word": "green",
+          "color": "blue"
+        },
+        {
+          "word": "yellow",
+          "color": "green"
+        },
+        {
+          "word": "yellow",
+          "color": "yellow"
+        },
+        {
+          "word": "yellow",
+          "color": "orange"
+        },
+        {
+          "word": "yellow",
+          "color": "red"
+        },
+        {
+          "word": "yellow",
+          "color": "blue"
+        },
+        {
+          "word": "orange",
+          "color": "green"
+        },
+        {
+          "word": "orange",
+          "color": "yellow"
+        },
+        {
+          "word": "orange",
           "color": "orange"
         },
         {
@@ -260,7 +273,27 @@ const study = lab.util.fromObject({
           "color": "red"
         },
         {
-          "word": "yellow",
+          "word": "orange",
+          "color": "blue"
+        },
+        {
+          "word": "blue",
+          "color": "green"
+        },
+        {
+          "word": "blue",
+          "color": "yellow"
+        },
+        {
+          "word": "blue",
+          "color": "orange"
+        },
+        {
+          "word": "blue",
+          "color": "red"
+        },
+        {
+          "word": "blue",
           "color": "blue"
         }
       ],
@@ -270,73 +303,24 @@ const study = lab.util.fromObject({
       "shuffle": true,
       "timeout": "120000",
       "sample": {
-        "replace": false
+        "replace": true,
+        "n": "1000"
       },
       "parameters": {},
       "template": {
-        "type": "lab.canvas.Screen",
-        "content": [
-          {
-            "type": "i-text",
-            "originX": "center",
-            "originY": "center",
-            "left": 0,
-            "top": 0,
-            "width": 562.34,
-            "height": 73.45,
-            "fill": "${ parameters.color }",
-            "stroke": "",
-            "strokeWidth": 1,
-            "strokeDashArray": null,
-            "strokeLineCap": "butt",
-            "strokeLineJoin": "round",
-            "strokeMiterLimit": 10,
-            "scaleX": 1,
-            "scaleY": 1,
-            "angle": 0,
-            "flipX": false,
-            "flipY": false,
-            "opacity": 1,
-            "shadow": null,
-            "visible": true,
-            "clipTo": null,
-            "backgroundColor": "",
-            "fillRule": "nonzero",
-            "globalCompositeOperation": "source-over",
-            "transformMatrix": null,
-            "skewX": 0,
-            "skewY": 0,
-            "text": "${ parameters.word }",
-            "fontSize": "65",
-            "fontWeight": "normal",
-            "fontFamily": "Times New Roman",
-            "fontStyle": "normal",
-            "lineHeight": 1.16,
-            "underline": false,
-            "overline": false,
-            "linethrough": false,
-            "textAlign": "center",
-            "textBackgroundColor": "",
-            "charSpacing": 0,
-            "id": "101",
-            "styles": {}
-          }
-        ],
+        "type": "lab.html.Screen",
+        "parameters": {},
         "responses": {
-          "keypress(g)": "red",
-          "keypress(y)": "green",
-          "keypress(o)": "blue",
-          "keypress(r)": "orange",
-          "keypress(b)": "yellow"
+          "keypress(r)": "red",
+          "keypress(b)": "blue",
+          "keypress(o)": "orange",
+          "keypress(g)": "green",
+          "keypress(y)": "yellow"
         },
         "messageHandlers": {},
-        "viewport": [
-          800,
-          600
-        ],
         "title": "Words",
-        "timeout": "120000",
-        "parameters": {}
+        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the word shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
+        "correctResponse": "${ parameters.color }"
       }
     },
     {
