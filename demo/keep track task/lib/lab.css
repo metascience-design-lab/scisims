@@ -29,7 +29,7 @@
 
 #canvas {
     background-color: #FAFAFA;
-    border-top: 1px solid #EFEFEF;
+    border: 1.5px solid #EFEFEF;
 	border-color: white;
 	border-top-color: #EFEFEF;
 	padding-top: 40px;
@@ -57,7 +57,7 @@ i{
 	padding: 8px;
 	position: absolute;
 	left: 90%;
-	top: 92.5%;
+	top: 90%;
 }
 
 a.export,
@@ -73,7 +73,7 @@ a.export:visited {
 	position: absolute;
 	opacity: 0;
 	left: 90%;
-	top: 92.5%;
+	top: 90%;
 }
 
 #instruction{
