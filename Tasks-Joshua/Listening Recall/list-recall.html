@@ -3,20 +3,22 @@
 <head>
     <title>Listening Recall Test</title>
     <script src="jquery-3.3.1.min.js"></script>
+    <script src="lib/lab.dev.js"></script>
     <script src="list-recall.js"></script>
     <link rel="stylesheet" href="list-recall.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 <body>
     <div id="content">
-        <h1>Listening Recall Test</h1>
+        <h1 id="heading">Listening Recall Test</h1>
         <div id="instructions">
             <h2>Instructions</h2>
             <p>You will hear a statement and have to verify the veracity of that
                 statement. After a few such statements you will be asked to type
                 in the last word of each statement.
+            </br></br>
+            When you're ready, click Continue to start.
             </p>
-            <button class="btn-continue">Continue</button>
         </div>
         <div id="controls">
             <h3 id="statement">Statement 1</h3>
@@ -27,14 +29,16 @@
             </div>
         </div>
         <div id="trial-end">
-            <h2>Enter the last word of each statement</h2>
+            <h3>Enter the last word of each statement</h3>
+            <h3 id="error">Please type in the words</h3>
             <button class="btn-submit"><i class="fas fa-check"></i>Submit</button>
         </div>
         <div id="score-div">
             <h2 id="score-text">You have completed the task!</h2>
-            <h2 id="score">Score</h2>
+            <button class="btn-download">Download Data</button>
         </div>
         <div id="footer">
+            <button class="btn-continue">Continue</button>
             <p id="footer-text">Instructions go here</p>
         </div>
     </div>

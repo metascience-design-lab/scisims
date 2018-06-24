@@ -18,7 +18,8 @@ i {
 }
 
 #footer {
-    background-color: #FFEFC5;
+    border-top: 1px solid #efefef;
+    background-color: #f8f8f8;
     text-align: center;
     padding-top: 15px;
     height: 60px;
@@ -29,78 +30,37 @@ i {
 
 input[type=text] {
     text-align: center;
-    outline: 0;
     margin: 10px;
     padding: 10px;
     height: 40px;
     font-size: 18px;
     border: solid 2px;
-    border-radius: 5px;
-    border-color: dodgerblue;
-}
-
-input[type=text]:focus {
-    border-width: 3px;
+    border-radius: 2px;
+    border-color: #e5e5e5;
 }
 
 button {
     width: 100px;
-    height: 60px;
+    height: 40px;
     background-color: white;
     font-size: 18px;
     border: solid 2px;
-    border-radius: 5px;
-    border-color: dodgerblue;
-    color: dodgerblue;
+    border-radius: 2px;
+    border-color: #e5e5e5;
+    color: black;
     margin: 30px;
-    outline: 0;
 }
 
 button:hover {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #fcfcfc;
+    border-color: #ddd;
+    color: black;
+}
+.btn-continue {
+    float: right;
+    margin-top: 0;
 }
 
-button:active {
-    background-color: royalblue;
-    border-color: royalblue;
-    color: white;
-
-}
-
-.btn-submit {
-}
-
-.btn-true {
-    border-color: green;
-    color: green;
-}
-
-.btn-true:hover {
-    background-color: green;
-    color: white;
-}
-
-.btn-true:active {
-    background-color: darkgreen;
-    border-color: darkgreen;
-    color: white;
-
-}
-
-.btn-false {
-    border-color: red;
-    color: red;
-}
-
-.btn-false:hover {
-    background-color: red;
-    color: white;
-}
-
-.btn-false:active {
-    background-color: darkred;
-    border-color: darkred;
-    color: white;
-
+.btn-download {
+    width: 200px;
 }
