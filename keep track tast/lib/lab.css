@@ -29,13 +29,13 @@
 
 #canvas {
     background-color: #FAFAFA;
-    border: 1.5px solid #EFEFEF;
+    border-top: 1px solid #EFEFEF;
 	border-color: white;
 	border-top-color: #EFEFEF;
 	padding-top: 40px;
     height: 100px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 
@@ -49,18 +49,31 @@
 	transform: translate(-50%, -50%);
 }
 
+i{
+	z-index: 1;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 15px;
+	padding: 8px;
+	position: absolute;
+	left: 90%;
+	top: 92.5%;
+}
+
 a.export,
 a.export:visited {
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
-  background-color: #ddd;
-  border: 1px solid #ccc;
-  font-size: 15px;
-  padding: 8px;
-  position: absolute;
-  left: 85%;
-  top: 92.5%;
+	z-index: 2;
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	font-size: 13px;
+	padding: 5px;
+	position: absolute;
+	opacity: 0;
+	left: 90%;
+	top: 92.5%;
 }
 
 #instruction{
