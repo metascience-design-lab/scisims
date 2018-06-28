@@ -10,7 +10,10 @@ $("document").ready(function(){
     var timeoutID;
     var n;
     var timeout = true;
-    var transformations = ["normal", "rotate90", "rotate180", "rotate270", "fliprotate90", "fliprotate180", "fliprotate270", "flip"];
+    var transformations = ["normal", "rotate45", "rotate90", "rotate135",
+    "rotate180", "rotate225", "rotate270", "rotate315", "flip", "fliprotate45",
+    "fliprotate90", "fliprotate135", "fliprotate180", "fliprotate225",
+    "fliprotate270", "fliprotate315"];
 
     flag = 0;
 
@@ -58,6 +61,11 @@ $("document").ready(function(){
     })
 
     $(".btn-download").click(function(){
+        ds.show();
+        ds.download(filetype='csv', filename='data.csv')
+    })
+
+    $(".btn-download-footer").click(function(){
         ds.show();
         ds.download(filetype='csv', filename='data.csv')
     })
@@ -117,6 +125,36 @@ $("document").ready(function(){
     }
 
     /**
+      * @desc Displays shape with eight different red circles which represent
+      * eight different orientations of test shape.
+      * @param gridID is the ID of div in which the shape is displayed.
+      */
+    function displayAnswerShape(gridID) {
+        $(gridID).empty();
+        idNo = [7, 0, 1, 6, 2, 5, 4, 3]; //id numbers for each circle; used to check answer
+        k = 0;
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                if (i == 0 || i == 4) {
+                    if (j == 0 || j == 2 || j == 4) {
+                        $(gridID).append('<div id="' + idNo[k++] + '" class="block red ans"></div>');
+                    } else {
+                        $(gridID).append('<div class="block"></div>');
+                    }
+                } else if (i == 2) {
+                    if (j == 0 || j == 4) {
+                        $(gridID).append('<div id="' + idNo[k++] + '" class="block red ans"></div>');
+                    } else {
+                        $(gridID).append('<div class="block"></div>');
+                    }
+                } else {
+                    $(gridID).append('<div class="block"></div>');
+                }
+            }
+        }
+    }
+
+    /**
       * @desc Creates a shape by choosing 5 random blocks out of 9 to fill in.
       */
     function createShape() {
@@ -167,12 +205,12 @@ $("document").ready(function(){
     function transform(gridID, type = -1) {
 
         if (type < 0) {
-            type = Math.floor((Math.random() * 8) + 1);
+            type = Math.floor((Math.random() * 16));
         }
         //console.log(type);
-        var transformClass = transformations[type-1];
+        var transformClass = transformations[type];
         $(gridID).addClass(transformClass);
-        answers.push(transformClass);
+        answers.push(type);
     }
 
     /**
@@ -214,12 +252,17 @@ $("document").ready(function(){
         curAnswer++;
         $("#round-end").append('<h2>Choose the correct orientation of test shape ' + curAnswer + '</h2>')
         $("#footer-text").text("Choose the correct orientation of test shape " + curAnswer);
+        $("#round-end").append('<div id="ans-grid-div" class="grid-div ans-div"></div>');
+        displayAnswerShape("#ans-grid-div");
         for (var i = 0; i < 8; i++) {
-            $("#round-end").append('<div id="ans-grid-div-' + (i+1) + '" class="grid-div ans-div"></div>');
-            displayShape("#ans-grid-div-" + (i+1), origGrid);
-            transform("#ans-grid-div-" + (i+1), type++);
-            $("#ans-grid-div-" + (i+1)).click(checkAnswer);
+            $("#" + i).click(checkAnswer);
         }
+        // for (var i = 0; i < 8; i++) {
+        //     $("#round-end").append('<div id="ans-grid-div-' + (i+1) + '" class="grid-div ans-div"></div>');
+        //     displayShape("#ans-grid-div-" + (i+1), origGrid);
+        //     transform("#ans-grid-div-" + (i+1), type++);
+        //     $("#ans-grid-div-" + (i+1)).click(checkAnswer);
+        // }
 
         $("#round-end").show();
     }
@@ -231,22 +274,26 @@ $("document").ready(function(){
       */
     function checkAnswer() {
 
-        var ans = $(this).attr("class").split(" ")[2];
-        if (ans != answers[curAnswer-1]) {
+        var ans = $(this).attr("id");
+        console.log("ANS: " + ans + " " + answers[curAnswer-1]);
+        if (ans != (answers[curAnswer-1]%8)) { // Mod with 8 as we do not care
+            //if the shape is flipped or not, we only need to know the deg rotation.
+            console.log("wrong");
             flag = 1;
             ds.commit({
                 'section': 'check-answer',
-                'shape_answer': answers[curAnswer-1],
-                'shape-response': ans,
+                'shape_answer': transformations[answers[curAnswer-1]%8],
+                'shape_response': transformations[ans],
                 'duration': Date.now() - n,
                 'ended_on': 'response',
                 'result': 'wrong'
             });
         } else {
+            console.log("correct");
             ds.commit({
                 'section': 'check-answer',
-                'shape_answer': answers[curAnswer-1],
-                'shape-response': ans,
+                'shape_answer': transformations[answers[curAnswer-1]%8],
+                'shape_response': transformations[ans],
                 'duration': Date.now() - n,
                 'ended_on': 'response',
                 'result': 'correct'

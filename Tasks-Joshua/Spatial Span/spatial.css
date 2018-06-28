@@ -16,11 +16,20 @@ i {
     display: inline-block;
 }
 
+#original h2{
+     margin-bottom: 40px;
+ }
+
 #test {
     display: inline-block;
 }
 
+#test h2{
+    margin-bottom: 40px;
+}
+
 #instructions {
+    text-align: justify;
     width: 500px;
     margin: auto;
 }
@@ -41,15 +50,9 @@ i {
     height: 310px;
     margin: 10px 10px 10px 10px;
     padding: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
     display: inline-block;
 }
 
-.ans-div:hover {
-    border: 1px solid dodgerblue;
-    cursor: pointer;
-}
 
 .block {
     margin: 0;
@@ -73,9 +76,26 @@ i {
     border-radius: 50px;
 }
 
+ .ans:hover {
+     border-color: dodgerblue;
+     border-width: 0px;
+     cursor: pointer;
+
+ }
+
+.rotate45 {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 .rotate90 {
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
+}
+
+.rotate135 {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
 }
 
 .rotate180 {
@@ -83,9 +103,28 @@ i {
     -webkit-transform: rotate(180deg);
 }
 
+.rotate225 {
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+}
+
 .rotate270 {
     transform: rotate(270deg);
     -webkit-transform: rotate(270deg);
+}
+
+.rotate315 {
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+}
+
+.flip {
+    transform: scale(-1, 1);
+}
+
+.fliprotate45 {
+    transform: rotate(45deg) scale(-1, 1);
+    -webkit-transform: rotate(45deg) scale(-1, 1);
 }
 
 .fliprotate90 {
@@ -93,9 +132,19 @@ i {
     -webkit-transform: rotate(90deg) scale(-1, 1);
 }
 
+.fliprotate135 {
+    transform: rotate(135deg) scale(-1, 1);
+    -webkit-transform: rotate(135deg) scale(-1, 1);
+}
+
 .fliprotate180 {
     transform: rotate(180deg) scale(-1, 1);
     -webkit-transform: rotate(180deg) scale(-1, 1);
+}
+
+.fliprotate225 {
+    transform: rotate(225deg) scale(-1, 1);
+    -webkit-transform: rotate(225deg) scale(-1, 1);
 }
 
 .fliprotate270 {
@@ -103,9 +152,12 @@ i {
     -webkit-transform: rotate(270deg) scale(-1, 1);
 }
 
-.flip {
-    transform: scale(-1, 1);
+.fliprotate315 {
+    transform: rotate(315deg) scale(-1, 1);
+    -webkit-transform: rotate(315deg) scale(-1, 1);
 }
+
+
 
 button {
     width: 100px;
@@ -132,4 +184,9 @@ button:hover {
 
 .btn-download {
     width: 200px;
+}
+
+.btn-download-footer {
+    float: left;
+    margin-top: 0;
 }
