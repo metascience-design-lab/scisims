@@ -120,7 +120,7 @@ $("document").ready(function(){
                 if (grid[i][j] == 1) {
                     //console.log("i: " + i + " j: " + j + " index: " + shape.indexOf(3*(i-1) + (j-1)));
                     $(gridID).append('<div class="block black"></div>');
-                } else if (grid[i][j] == 2) {
+                } else if (grid[i][j] == 2 && gridID != "#orig-grid-div") {
                     $(gridID).append('<div class="block red"></div>');
                 }
                 else {
