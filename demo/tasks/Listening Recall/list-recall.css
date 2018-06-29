@@ -9,7 +9,8 @@ i {
 }
 
 #content {
-    margin-top: 180px;
+    margin-top: 80px;
+    height: 90%;
 }
 
 #instructions {
@@ -23,7 +24,7 @@ i {
     background-color: #f8f8f8;
     text-align: center;
     padding-top: 15px;
-    height: 60px;
+    height: 10%;
     width: 100%;
     position: fixed;
     bottom: 0px;
@@ -67,6 +68,11 @@ button:hover {
 }
 
 .btn-download-footer {
-    float: left;
+    float: right;
+    width: 50px;
     margin-top: 0;
+}
+
+.btn-submit {
+    margin-bottom: 150px;
 }

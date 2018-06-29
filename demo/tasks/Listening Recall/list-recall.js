@@ -1,12 +1,6 @@
 $("document").ready(function(){
 
-    // const ds = new lab.data.Store();
-    // ds.commit('condition', 'control');
-    // ds.commit('name', 'joshua');
-    // ds.commit('age', '1');
-    // console.log(ds.get('condition'));
-    // ds.show();
-    // ds.download(filetype='csv', filename='data.csv')
+
     const ds = new lab.data.Store();
 
     $("#controls").hide();
@@ -16,7 +10,7 @@ $("document").ready(function(){
 
     $("#footer-text").text("Click Continue to start the task");
 
-    var lines = ["the sky is blue", "the earth is flat", "2018 is the current year", "oranges are orange", "Europe is a continent", "pluto is a planet", "spiders are insects", "new delhi is the capital of india", "penguins can fly", "burj khalifa is the tallest building", "there are 50 states in america", "there are 75 countries in the world", "the moon landing was faked", "macbook is an apple product", "clouds are made of cotton", "panda bears are not bears", "grass is green", "humans stay on mars", "copper is a precious metal", "water is wet", "cows are mammals", "anteaters eat ants", "germany is in europe", "ice floats in water", "tom hardy is an actor", "there are aliens in roswell", "bigfoot is real"]
+    var lines = ["the sky is blue", "the earth is flat", "1999 is the current year", "oranges are orange", "Europe is a continent", "pluto is a planet", "spiders are insects", "new delhi is the capital of india", "penguins can fly", "burj khalifa is the tallest building", "there are 50 states in america", "there are 75 countries in the world", "There are 12 months in a year", "macbook is an apple product", "clouds are made of cotton", "panda bears are not bears", "grass is purple", "humans stay on mars", "copper is a precious metal", "PLaystation is owned by Sony", "cows are mammals", "anteaters eat ants", "germany is in europe", "ice floats in water", "tom hardy is an actor", "there are aliens in roswell", "Katy Perry is a singer"]
 
     var index = 0;
     var trialNo = 1;
@@ -84,7 +78,6 @@ $("document").ready(function(){
     function nextStatement() {
         var words = lines[index].split(" ");
         arrWords.push(words[words.length-1]);
-        //console.log(arrWords[arrWords.length-1]);
         index++;
         curSentences++;
         if (curSentences == sentenceNo) {
@@ -93,7 +86,6 @@ $("document").ready(function(){
         }
         $("#statement").text("Statement " + (curSentences + 1));
         n = Date.now();;
-        //console.log(curSentences);
     }
 
     /**
@@ -146,14 +138,11 @@ $("document").ready(function(){
         }
 
         for (var i = 0 ; i < wordCounter; i++) {
-            //console.log($("#word" + (i+1)).val().trim().toLowerCase());
-            //console.log(arrWords[i]);
             if ($("#word" + (i+1)).val().trim().toLowerCase() != (arrWords[i])) {
                 score--;
                 break;
             }
         }
-        //console.log(score);
 
         for (var i = 1 ; i <= wordCounter; i++) {
             $("#word" + i).val("");
