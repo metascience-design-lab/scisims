@@ -77,7 +77,7 @@ const study = lab.util.fromObject({
         },
         "messageHandlers": {},
         "title": "Astericks",
-        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the astericks shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
+        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the asterisks shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
         "timeout": "120000",
         "correctResponse": "${ parameters.color }"
       }
@@ -224,62 +224,13 @@ const study = lab.util.fromObject({
       }
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 420.25,
-          "height": 36.16,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "You completed the Stroop Task !",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "719",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {},
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Task Completed",
-      "parameters": {}
+      "title": "Task Completed HTML",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n  You completed the Stroop Task!\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "timeout": "1000"
     }
   ]
 })
