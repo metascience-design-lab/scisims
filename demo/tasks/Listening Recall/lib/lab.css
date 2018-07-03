@@ -1,0 +1,347 @@
+/* Basic configuration */
+:root {
+  /* Layout */
+  /* Typography */
+  /* Colors */
+}
+
+/* Set box model to border-box globally */
+:root {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Content layout */
+.container {
+  min-width: 400px;
+  min-height: 8vh;
+  /* Use page-style layout by default */
+  margin: 24px auto;
+  width: 900px;
+}
+header, footer, main {
+  padding: 24px;
+}
+/* Individual parts: Height, borders and background */
+header, footer {
+  min-height: 8vh;
+}
+main {
+  min-height: 8vh;
+}
+
+/* Fullscreen layout */
+.container.fullscreen {
+  /* Full screen minus margins */
+  margin: 24px 16px;
+  min-height: calc(100vh - 2*24px);
+  width: calc(100vw - 2*24px);
+  /* Display content using flexboxes */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.container.fullscreen main {
+  /* Flex positioning */
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* Flexbox fix for IE11, per https://github.com/philipwalton/flexbugs */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .container.fullscreen {
+    /* IE11 miscalculates the height, so add some slack */
+    min-height: calc(100vh - 3*24px);
+  }
+}
+
+/* Borders and backgrounds */
+.container {
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+header {
+  border-bottom: 1px solid #efefef;
+}
+footer {
+  border-top: 1px solid #efefef;
+  background-color: #f8f8f8;
+}
+
+/* Typography */
+:root {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+header, footer, main {
+  text-align: center;
+}
+h1, h2, h3 {
+  line-height: 1.4em;
+}
+hr {
+  border: none;
+  border-top: 2px solid #e5e5e5
+}
+
+/* Special elements: Keyboard buttons */
+kbd {
+  /* Positioning */
+  display: inline-block;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  padding: 0 0.3em;
+  padding-top: 0.15em;
+  /* Fonts */
+  font-family: Droid Mono, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  text-align: center;
+  /* Background and border */
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid rgb(180, 180, 180);
+}
+kbd.big {
+  font-size: 1.4em;
+  padding-top: 0.375em;
+  border-radius: 0.125em;
+}
+
+/* Alignment helpers */
+.w-100 {
+  width: 100%;
+}
+/* Block alignment based on flexbox */
+.content-vertical-top,
+.content-vertical-center,
+.content-vertical-bottom,
+.content-horizontal-left,
+.content-horizontal-center,
+.content-horizontal-right,
+.content-horizontal-space-between,
+.content-vertical-space-between,
+.content-horizontal-space-around,
+.content-vertical-space-around {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.content-vertical-top {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.content-vertical-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.content-vertical-bottom {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.content-horizontal-left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.content-horizontal-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.content-horizontal-right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.content-horizontal-space-between,
+.content-vertical-space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.content-horizontal-space-around,
+.content-vertical-space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.content-vertical-space-around,
+.content-vertical-space-between {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.content-vertical-space-between.content-horizontal-right,
+.content-vertical-space-around.content-horizontal-right {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; 
+}
+.content-vertical-space-between.content-horizontal-center,
+.content-vertical-space-around.content-horizontal-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.content-vertical-space-between.content-horizontal-right,
+.content-vertical-space-around.content-horizontal-right {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+/* Text alignment */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-muted {
+  color: #8d8d8d;
+}
+.text-muted a {
+  color: rgb(60, 89, 156);
+}
+small, .small {
+  font-size: 16.2px;
+  font-size: 0.9rem;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.font-italic {
+  font-style: italic;
+}
+code {
+  font-family: Droid Mono, Menlo, Consolas, monospace;
+  background-color: #f8f8f8;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+/* Visibility */
+.invisible {
+  visibility: hidden;
+}
+.hidden {
+  display: none;
+}
+.hide-if-empty:empty {
+  display: none
+}
+
+/* Alerts */
+.alert {
+  background-color: #f8f8f8;
+  border: 2px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 16px 16px 14px;
+  margin: 16px 0;
+}
+.alert.alert-danger {
+  color: #a02c2c;
+  background-color: #e9afaf;
+  border-color: #a02c2c;
+}
+.alert.alert-warning {
+  color: #f6a902;
+  background-color: #ffe6a5;
+  border-color: #ffb400;
+}
+
+/* Form elements */
+input, select, button, textarea {
+  font-family: "Arial", sans-serif;
+  font-size: 16.2px;
+  font-size: 0.9rem;
+  line-height: 1.4em;
+  border: 2px solid #e5e5e5;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 8px;
+}
+input[type="checkbox"] {
+  margin: 0 10px;
+}
+input + label {
+  margin-left: 2px;
+}
+select {
+  padding: 8px 5px; /* selects have a weird vertical alignment */
+}
+button {
+  background-color: white;
+  border-radius: 3px;
+  padding: 8px 8px 6px;
+}
+button:hover {
+  border-color: #ddd;
+  background-color: #fcfcfc;
+}
+textarea {
+  display: block;
+  margin: 18px 0;
+  resize: vertical;
+}
+/* Input groups */
+.input-group {
+  display: inline-table;
+  margin: 8px 0;
+}
+.input-group * {
+  display: table-cell;
+  border-radius: 0px;
+}
+.input-group input {
+  margin: 0;
+}
+.input-group *:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.input-group *:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.input-group .input-group-addon {
+  background-color: #e5e5e5;
+  border: 2px solid #e5e5e5;
+  padding: 0 10px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table td, table th {
+  padding: 10px 8px 8px;
+}
+/* Table borders (except for plain) */
+table:not(.table-plain) > tr > td,
+table:not(.table-plain) > tr > th,
+table:not(.table-plain) > tbody > tr > td,
+table:not(.table-plain) > tbody > tr > th {
+  border-bottom: 2px solid #e5e5e5;
+}
+/* Striped rows */
+table.table-striped tr:nth-child(odd) td {
+  background-color: #efefef
+}

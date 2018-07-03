@@ -21,65 +21,15 @@ const study = lab.util.fromObject({
   "responses": {},
   "content": [
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 785.97,
-          "height": 581.45,
-          "fill": "#000000",
-          "stroke": "#000000",
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Welcome to the Stroop Task!\n\nIn this task, there are two blocks. \n\nIn the first block will be \npresented with strings of asterisks. Each string will be\nprinted in 1 of 5 colors (red, green, blue, orange, yellow).\n\nFor example, you might see *****\n\nYour job is to name the colors of these asterisks. Complete as\nmany in two minutes as possible.\n\nPress the SPACEBAR key to continue.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "36",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
-        "keypress(Space)": "Space"
+        "keypress(Space)": "space"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Instructions - Stroop Block 1",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "Instructions - Stroop Block 1 HTML",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EWelcome to the Stroop Task! \u003C\u002Fp\u003E\n    \u003Cp\u003EIn this task, there are two blocks.\u003C\u002Fp\u003E\n    \u003Cp\u003EIn the first block will be presented with strings of asterisks. \u003C\u002Fp\u003E\n    \u003Cp\u003EEach string will be printed in 1 of 5 colors (red, green, blue, orange, yellow).\u003C\u002Fp\u003E\n    \u003Cp\u003EFor example, you might see ***** Your job is to name the colors of these asterisks. \u003C\u002Fp\u003E\n    \u003Cp\u003EComplete as many in two minutes as possible.\u003C\u002Fp\u003E\n    \u003Cp\u003EPress the SPACEBAR key to continue.\u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.flow.Loop",
@@ -127,71 +77,21 @@ const study = lab.util.fromObject({
         },
         "messageHandlers": {},
         "title": "Astericks",
-        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the word shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
+        "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    font-size: 3.5rem;\n    font-weight: bold;\n    color: ${ parameters.color };\n  \"\u003E\n    ${ parameters.word }\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cp\u003E\n    What's the \u003Cem\u003Ecolor\u003C\u002Fem\u003E of \n    the asterisks shown above? \u003Cbr\u003E\n    Please press \u003Ckbd\u003Er\u003C\u002Fkbd\u003E for red,\n    \u003Ckbd\u003Eg\u003C\u002Fkbd\u003E for green,\n    \u003Ckbd\u003Eb\u003C\u002Fkbd\u003E for blue, \u003Ckbd\u003Ey\u003C\u002Fkbd\u003E for yellow,\n    and \u003Ckbd\u003Eo\u003C\u002Fkbd\u003E for orange.\n  \u003C\u002Fp\u003E\n\u003C\u002Ffooter\u003E",
         "timeout": "120000",
         "correctResponse": "${ parameters.color }"
       }
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 753.98,
-          "height": 539.51,
-          "fill": "#000000",
-          "stroke": "#000000",
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "You completed the first block !\n\nIn the second block, you will be \npresented with words. Each word will be\nprinted in 1 of 5 colors (red, green, blue, orange, yellow).\n\nFor example, you might see RED (in green text).\n\nYour job is to name the colors of these words. Complete as\nmany trials in two minutes as possible.\n\nPress the SPACEBAR key to continue.\n",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "36",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
         "keypress(Space)": "Space"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Instructions - Stroop Block 2",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "Instructions - Stroop Block 2 HTML",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EYou completed the first block ! \u003C\u002Fp\u003E\n    \u003Cp\u003EIn the second block, you will be presented with words. Each word will be printed in 1 of 5 colors (red, green, blue, orange, yellow).\u003C\u002Fp\u003E\n    \u003Cp\u003EFor example, you might see RED (in green text). \u003C\u002Fp\u003E\n    \u003Cp\u003EYour job is to name the colors of these words. Complete as many trials in two minutes as possible. \u003C\u002Fp\u003E\n    \u003Cp\u003EPress the SPACEBAR key to continue.\u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.flow.Loop",
@@ -324,62 +224,13 @@ const study = lab.util.fromObject({
       }
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 420.25,
-          "height": 36.16,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "You completed the Stroop Task !",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "719",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {},
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Task Completed",
-      "parameters": {}
+      "title": "Task Completed HTML",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n  You completed the Stroop Task!\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "timeout": "1000"
     }
   ]
 })
