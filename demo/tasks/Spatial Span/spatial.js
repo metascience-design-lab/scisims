@@ -37,10 +37,9 @@ $("document").ready(function(){
             'section': 'test',
             'response': 'normal',
             'duration': Date.now() - n,
-            'ended_on': 'response'
         });
         clearTimeout(timeoutID);
-        displayInterval();
+        nextGrid();
     });
     $("#btn-mirror").click(function(){
         timeout = false;
@@ -48,10 +47,9 @@ $("document").ready(function(){
             'section': 'test',
             'response': 'mirror',
             'duration': Date.now() - n,
-            'ended_on': 'response'
         });
         clearTimeout(timeoutID);
-        displayInterval();
+        nextGrid();
     });
 
     $(".btn-continue").click(function(){
@@ -92,10 +90,10 @@ $("document").ready(function(){
 
         $("#original").show();
         $("#test").show();
-        $("#controls").show();
+        $("#controls").hide();
         $("#round-end").hide();
         $("#score-div").hide();
-        $("#interval").hide();
+        //$("#interval").hide();
 
 
         createShape();
@@ -104,7 +102,7 @@ $("document").ready(function(){
         displayShape("#test-grid-div", origGrid);
         transform("#test-grid-div");
         $("#footer-text").text("Choose whether the shape on the right is a rotated or a mirror image of the shape on the left");
-        timeoutID = setTimeout(displayInterval, 2200);
+        timeoutID = setTimeout(displayInterval, 3000);
     }
 
     /**
@@ -228,34 +226,32 @@ $("document").ready(function(){
             ds.commit({
                 'section': 'test',
                 'duration': Date.now() - n,
-                'ended_on': 'timeout'
             });
         }
         timeout = true;
-
-        $("#original").show();
-        $("#test").show();
-        $("#controls").show();
-        $("#interval").hide();
-
-        n = Date.now()
-        $("#test-grid-div").empty().removeClass().addClass("grid-div");
-        displayShape("#test-grid-div", origGrid);
-        transform("#test-grid-div");
-        timeoutID = setTimeout(displayInterval, 2200);
-    }
-
-    function displayInterval() {
         round++;
         if (round == roundLim) {
             endRound();
             return;
         }
+        $("#original").show();
+        $("#test").show();
+        $("#controls").hide();
+        //$("#interval").hide();
+
+        n = Date.now()
+        $("#test-grid-div").empty().removeClass().addClass("grid-div");
+        displayShape("#test-grid-div", origGrid);
+        transform("#test-grid-div");
+        timeoutID = setTimeout(displayInterval, 3000);
+    }
+
+    function displayInterval() {
         $("#original").hide();
         $("#test").hide();
-        $("#controls").hide();
-        $("#interval").show();
-        setTimeout(nextGrid, 500);
+        $("#controls").show();
+        //$("#interval").show();
+        //setTimeout(nextGrid, 2000);
 
     }
 

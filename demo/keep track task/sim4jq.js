@@ -94,7 +94,7 @@ $("document").ready(function(){
 		//$("#TrialNum").text("Trial " + (trial));
 		if(trial === 6) mode = 4;
 		var list = createList();
-		var speed = 1000; 			//Change this would change the display speed of each word
+		var speed = 1500; 			//Change this would change the display speed of each word
 		var time = setInterval(startTime, speed);
 		console.log(all.length);
 		function startTime(){
@@ -153,8 +153,9 @@ $("document").ready(function(){
 				} else {
 					var rand = Math.floor(Math.random() * all.length);
 					
-					$("#name").text(all[rand].name).fadeIn(1000);
-					$("#name").text(all[rand].name).fadeOut(1000);
+					//$("#name").text(all[rand].name).fadeIn(1000);
+					//$("#name").text(all[rand].name).fadeOut(1000);
+					$("#name").text(all[rand].name);
 					
 					//document.getElementById("Type").innerHTML = 'You will be asked to keep track of the last words in each category.<br>This word is of category: ' + all[rand].category;
 					var instCats = 'You will be asked to keep track of the last words in each category.\nThis word is of category: ' + all[rand].category;
