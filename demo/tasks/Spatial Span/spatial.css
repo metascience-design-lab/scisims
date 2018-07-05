@@ -187,6 +187,7 @@ button:hover {
 }
 
 .btn-download-footer {
-    float: left;
+    float: right;
+    width: 50px;
     margin-top: 0;
 }
