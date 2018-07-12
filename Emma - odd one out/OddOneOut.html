@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odd One Out Task</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="lib/lab.dev.js"></script>
+    <script src="odd.js"></script>
+    <link rel="stylesheet" href="odd.css">
+</head>
+<body>
+    <div id="content">
+        <h1>Odd One Out Task</h1>
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <p> Three circles will be displayed. On the following screen,
+              select if the left, middle, or right image is the odd one out.
+            </br></br>
+                When you're ready, click Continue to start.
+            </p>
+        </div>
+        <div id="original">
+            <h2>Original</h2>
+            <div id="orig-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="controls">
+            <button id="btn-left">Left</button>
+            <button id="btn-middle">Middle</button>
+            <button id="btn-right">Right</button>
+        </div>
+        <div id="round-end">
+        </div>
+        <div id="score-div">
+            <h2 id="score-text">You have completed the task!</h2>
+            <button class="btn-download">Download Data</button>
+        </div>
+        <div id="footer">
+            <button class="btn-download-footer"><i class="fas fa-bars"></i></button>
+            <button class="btn-continue">Continue</button>
+        </div>
+    </div>
+</body>
+</html>
