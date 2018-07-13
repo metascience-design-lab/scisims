@@ -7,7 +7,8 @@ const study = lab.util.fromObject({
       "type": "lab.plugins.Metadata"
     },
     {
-      "type": "lab.plugins.Download"
+      "type": "lab.plugins.Download",
+      "filePrefix": "study"
     }
   ],
   "metadata": {
@@ -20,130 +21,15 @@ const study = lab.util.fromObject({
   "responses": {},
   "content": [
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 779.75,
-          "height": 539.51,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Welcome to the study, today you'll be participating in a \nStop-Signal task. There are two parts:\n1) A word will come up on a slide. On the next slide, \nit will ask you \"animal or non-animal.\" Press the \"a\" key if\nthat word represents an animal, press the \"n\" key if the\nword does NOT represent an animal.\n2) Same as the task above, but if there are three asterisks\n\"***\" on the slide with the word, provide NO response \non the slide next slide that asks you \"animal or non-animal.\" \nThe test will move on to the next word slide after an alotted \namount of time.\n\nPress spacebar when you're ready to move on.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "3",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
-        "keypress(Space)": "spacebar"
+        "keypress(Space)": "space"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Introduction",
-      "correctResponse": "Space",
-      "parameters": {}
-    },
-    {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 765.77,
-          "height": 371.72,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Part 1: Look at the word on the slide. Press \"a\" if the word \nyou see is an animal, press \"n\" if the word you \nsee is NOT an animal on the next slide that asks \"animal or \nnon-animal.\"\n\nFor example, if you see the word \"seal,\" press \"a\" on \nyour keyboard.\n\nPress spacebar when you are ready to start.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "91",
-          "styles": {}
-        }
-      ],
-      "responses": {
-        "keypress(Space)": ""
-      },
-      "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "mini-intro part 1",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "Intro 1",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EWelcome to the Stop Signal Task! \u003C\u002Fp\u003E\n    \u003Cp\u003EIn this task, there are two blocks.\u003C\u002Fp\u003E\n    \u003Cp\u003EIn the first block, look at the word on the slide.\u003C\u002Fp\u003E\n    \u003Cp\u003E Press \"a\" if the word you see is an animal, press \"n\" if the word you \nsee is NOT an animal on the next slide that asks \"animal or \nnon-animal.\"\u003C\u002Fp\u003E   \n    \u003Cp\u003EFor example, if you see the word \"seal,\" press \"a\" on \nyour keyboard.\u003C\u002Fp\u003E\n    \u003Cp\u003EPress the SPACEBAR key to continue.\u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.canvas.Screen",
@@ -3170,67 +3056,15 @@ const study = lab.util.fromObject({
       "parameters": {}
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 791.8,
-          "height": 329.78,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Part 2: Same as part 1, but now if you see three asterisks,\n\"***\" on the slide, provide no response. The test\nwill move on to the next slide after an alotted amount of time.\n\nNote: Attempt to go as fast as the previous block. Do not\nslow down.\n\nPress spacebar when you are ready to start.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "92",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
-        "keypress(Space)": "spacebar"
+        "keypress(Space)": "Space"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "mini-intro part 2",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "Intro 2",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EIn this block, if you see three asterisks, \"***\" on the slide, provide no response. \u003C\u002Fp\u003E\n    \u003Cp\u003E The test will move on to the next slide after an alotted amount of \n      time. \u003C\u002Fp\u003E\n    \u003Cp\u003ENote: Attempt to go as fast as the previous block. Do not\nslow down.\u003C\u002Fp\u003E   \n    \u003Cp\u003EFor example, if you see the word \"seal,\" press \"a\" on your keyboard.\u003C\u002Fp\u003E\n    \u003Cp\u003EPress the SPACEBAR key to continue.\u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.canvas.Screen",
@@ -9329,67 +9163,13 @@ const study = lab.util.fromObject({
       "parameters": {}
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 379.47,
-          "height": 162,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "The study is complete. Thank\nyou for your participation!\n\nPress spacebar to exit.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "950",
-          "styles": {}
-        }
-      ],
-      "responses": {
-        "keypress(Space)": "spacebar"
-      },
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {},
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
       "title": "Conclusion",
-      "correctResponse": "Space",
-      "parameters": {}
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EYou have completed the stop signal task. \u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "timeout": "2000"
     }
   ]
 })
