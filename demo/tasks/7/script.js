@@ -1,5 +1,5 @@
 const ds = new lab.data.Store();
-const trialDuration = 15000;
+const trialDuration = 10000;
 var isLocal = true;
 const localParam = [];
 for(let i = 0; i < 50; i++)
@@ -71,7 +71,7 @@ const lg = new lab.html.Frame({
 
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "<h1>Welcome to the Local Global Test!</h1><p>This is placeholder text that will be replaced with actual instructions later</p><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Screen({content: "<h1>Welcome to the Local Global Test!</h1><p>Use the buttons 1-4 to input your responses</p><p>First global, then local, and then alternating</p><p>◯ = 1, X = 2, Δ = 3, □ = 4</p><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'},}),
     global,
     local,
     lg,
