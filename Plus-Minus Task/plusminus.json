@@ -1,0 +1,780 @@
+{
+  "components": {
+    "2": {
+      "id": "2",
+      "type": "lab.flow.Loop",
+      "children": [
+        "6"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "iterations",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "1"
+          ],
+          [
+            "2"
+          ],
+          [
+            "3"
+          ],
+          [
+            "4"
+          ],
+          [
+            "5"
+          ],
+          [
+            "6"
+          ],
+          [
+            "7"
+          ],
+          [
+            "8"
+          ],
+          [
+            "9"
+          ],
+          [
+            "10"
+          ],
+          [
+            "11"
+          ],
+          [
+            "12"
+          ],
+          [
+            "13"
+          ],
+          [
+            "14"
+          ],
+          [
+            "15"
+          ],
+          [
+            "16"
+          ],
+          [
+            "17"
+          ],
+          [
+            "18"
+          ],
+          [
+            "19"
+          ],
+          [
+            "20"
+          ],
+          [
+            "21"
+          ],
+          [
+            "22"
+          ],
+          [
+            "23"
+          ],
+          [
+            "24"
+          ],
+          [
+            "25"
+          ],
+          [
+            "26"
+          ],
+          [
+            "27"
+          ],
+          [
+            "28"
+          ],
+          [
+            "29"
+          ],
+          [
+            "30"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "shuffle": false,
+      "title": "Plus Trial",
+      "_tab": "Content",
+      "sample": {
+        "n": ""
+      }
+    },
+    "6": {
+      "id": "6",
+      "type": "lab.html.Form",
+      "content": "<main class = \"content-horizontal-center content-vertical-center\">\n  <form>\n    <h1 style = \"display:inline\">${this.parameters.rand} + 3 = </h1>\n    <input type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\">\n    <button type=\"submit\">Submit</button>\n  </form>\n</main>",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "before:prepare",
+              "code": " function getRand(max) {\r\n  return Math.floor(Math.random() * Math.floor(max));\r\n}\r\nthis.parameters.rand = getRand(100)"
+            }
+          ],
+          [
+            {
+              "title": "",
+              "message": "end",
+              "code": "if (this.data.answer == this.parameters.rand + 3)\r\n{\r\n  this.data.correct = true\r\n}\r\nelse\r\n{\r\n  this.data.correct = false\r\n}"
+            }
+          ]
+        ]
+      },
+      "title": "Plus",
+      "_tab": "Content",
+      "correctResponse": ""
+    },
+    "8": {
+      "id": "8",
+      "type": "lab.flow.Loop",
+      "children": [
+        "9"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "iterations",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "1"
+          ],
+          [
+            "2"
+          ],
+          [
+            "3"
+          ],
+          [
+            "4"
+          ],
+          [
+            "5"
+          ],
+          [
+            "6"
+          ],
+          [
+            "7"
+          ],
+          [
+            "8"
+          ],
+          [
+            "9"
+          ],
+          [
+            "10"
+          ],
+          [
+            "11"
+          ],
+          [
+            "12"
+          ],
+          [
+            "13"
+          ],
+          [
+            "14"
+          ],
+          [
+            "15"
+          ],
+          [
+            "16"
+          ],
+          [
+            "17"
+          ],
+          [
+            "18"
+          ],
+          [
+            "19"
+          ],
+          [
+            "20"
+          ],
+          [
+            "21"
+          ],
+          [
+            "22"
+          ],
+          [
+            "23"
+          ],
+          [
+            "24"
+          ],
+          [
+            "25"
+          ],
+          [
+            "26"
+          ],
+          [
+            "27"
+          ],
+          [
+            "28"
+          ],
+          [
+            "29"
+          ],
+          [
+            "30"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "shuffle": false,
+      "title": "Minus Trial",
+      "_tab": "More",
+      "sample": {
+        "n": ""
+      }
+    },
+    "9": {
+      "id": "9",
+      "type": "lab.html.Form",
+      "content": "<main class = \"content-horizontal-center content-vertical-center\">\n  <form>\n    <h1 style = \"display:inline\">${this.parameters.rand} - 3 = </h1>\n    <input type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\">\n    <button type=\"submit\">Submit</button>\n  </form>\n</main>",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "before:prepare",
+              "code": " function getRand(max) {\r\n  return Math.floor(Math.random() * Math.floor(max));\r\n}\r\nthis.parameters.rand = getRand(100)"
+            }
+          ],
+          [
+            {
+              "title": "",
+              "message": "end",
+              "code": "if (this.data.answer == this.parameters.rand - 3)\r\n{\r\n  this.data.correct = true\r\n}\r\nelse\r\n{\r\n  this.data.correct = false\r\n}"
+            }
+          ]
+        ]
+      },
+      "title": "Minus",
+      "_tab": "Scripts",
+      "correctResponse": ""
+    },
+    "10": {
+      "id": "10",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Instructions",
+      "content": "<main class = \"content-horizontal-center content-vertical-center\">\r\n  <center>\r\n    <h1> Plus-Minus Task </h1>\r\n\r\n    <p style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%\"> This task consists of three trials. In each trial you will complete thirty equations. The first will contain only addition, the second subtraction, and the third both. Complete the task as fast as possible and download your results to review your answers.</p>\r\n  </center>\r\n</main>"
+    },
+    "11": {
+      "id": "11",
+      "type": "lab.flow.Loop",
+      "children": [
+        "13"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "iterations",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "1"
+          ],
+          [
+            "2"
+          ],
+          [
+            "3"
+          ],
+          [
+            "4"
+          ],
+          [
+            "5"
+          ],
+          [
+            "6"
+          ],
+          [
+            "7"
+          ],
+          [
+            "8"
+          ],
+          [
+            "9"
+          ],
+          [
+            "10"
+          ],
+          [
+            "11"
+          ],
+          [
+            "12"
+          ],
+          [
+            "13"
+          ],
+          [
+            "14"
+          ],
+          [
+            "15"
+          ],
+          [
+            "16"
+          ],
+          [
+            "17"
+          ],
+          [
+            "18"
+          ],
+          [
+            "19"
+          ],
+          [
+            "20"
+          ],
+          [
+            "21"
+          ],
+          [
+            "22"
+          ],
+          [
+            "23"
+          ],
+          [
+            "24"
+          ],
+          [
+            "25"
+          ],
+          [
+            "26"
+          ],
+          [
+            "27"
+          ],
+          [
+            "28"
+          ],
+          [
+            "29"
+          ],
+          [
+            "30"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "shuffle": false,
+      "title": "Both",
+      "_tab": "More",
+      "sample": {
+        "n": ""
+      }
+    },
+    "12": {
+      "id": "12",
+      "type": "lab.html.Form",
+      "content": "<main class = \"content-horizontal-center content-vertical-center\">\n  <form>\n    <h1 style = \"display:inline\">${this.parameters.rand} + 3 = </h1>\n    <input type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\">\n    <button type=\"submit\">Submit</button>\n  </form>\n</main>",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "before:prepare",
+              "code": " function getRand(max) {\r\n  return Math.floor(Math.random() * Math.floor(max));\r\n}\r\nthis.parameters.rand = getRand(100)"
+            }
+          ],
+          [
+            {
+              "title": "",
+              "message": "end",
+              "code": "if (this.data.answer == this.parameters.rand - 3)\r\n{\r\n  this.data.correct = true\r\n}\r\nelse\r\n{\r\n  this.data.correct = false\r\n}"
+            }
+          ]
+        ]
+      },
+      "title": "Plus",
+      "_tab": "Content",
+      "correctResponse": ""
+    },
+    "13": {
+      "id": "13",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "12",
+        "14"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Sequence",
+      "shuffle": true
+    },
+    "14": {
+      "id": "14",
+      "type": "lab.html.Form",
+      "content": "<main class = \"content-horizontal-center content-vertical-center\">\n  <form>\n    <h1 style = \"display:inline\">${this.parameters.rand} - 3 = </h1>\n    <input type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\">\n    <button type=\"submit\">Submit</button>\n  </form>\n</main>",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "before:prepare",
+              "code": " function getRand(max) {\r\n  return Math.floor(Math.random() * Math.floor(max));\r\n}\r\nthis.parameters.rand = getRand(100)"
+            }
+          ],
+          [
+            {
+              "title": "",
+              "message": "end",
+              "code": "if (this.data.answer == this.parameters.rand - 3)\r\n{\r\n  this.data.correct = true\r\n}\r\nelse\r\n{\r\n  this.data.correct = false\r\n}"
+            }
+          ]
+        ]
+      },
+      "title": "Minus",
+      "_tab": "Scripts",
+      "correctResponse": ""
+    },
+    "root": {
+      "id": "root",
+      "title": "root",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "10",
+        "2",
+        "8",
+        "11"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "plugins": [
+        {
+          "type": "lab.plugins.Metadata"
+        }
+      ],
+      "metadata": {
+        "title": "",
+        "description": "",
+        "repository": "",
+        "contributors": ""
+      }
+    }
+  },
+  "version": [
+    2018,
+    0,
+    3
+  ],
+  "files": {
+    "files": {
+      "index.html": {
+        "content": "data:text/html,%3C!doctype%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Ctitle%3EExperiment%3C%2Ftitle%3E%0A%20%20%3C!--%20lab.js%20library%20and%20default%20styles%20--%3E%0A%20%20%3Cscript%20src%3D%22lib%2Flab.js%22%20data-labjs-script%3D%22library%22%3E%3C%2Fscript%3E%0A%20%20%3Cscript%20src%3D%22lib%2Flab.fallback.js%22%20data-labjs-script%3D%22fallback%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22lib%2Flab.css%22%3E%0A%20%20%3C!--%20study%20code%20and%20styles%20--%3E%0A%20%20%3Cscript%20defer%20src%3D%22script.js%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22style.css%22%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3C!--%20If%20you'd%20rather%20have%20a%20container%20with%20a%20fixed%20width%0A%20%20%20%20%20%20%20and%20variable%20height%2C%20try%20removing%20the%20fullscreen%20class%20below%20--%3E%0A%20%20%3Cdiv%20class%3D%22container%20fullscreen%22%20data-labjs-section%3D%22main%22%3E%0A%20%20%20%20%3Cmain%20class%3D%22content-vertical-center%20content-horizontal-center%22%3E%0A%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Ch2%3ELoading%20Experiment%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EThe%20experiment%20is%20loading%20and%20should%20start%20in%20a%20few%20seconds%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fmain%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A",
+        "permanent": true
+      },
+      "style.css": {
+        "content": "data:text/css,%2F*%20Please%20define%20your%20custom%20styles%20here%20*%2F",
+        "permanent": true
+      }
+    },
+    "bundledFiles": {
+      "lib/lab.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.fallback.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.css": {
+        "type": "text/css"
+      },
+      "lib/loading.svg": {
+        "type": "image/svg+xml"
+      }
+    }
+  }
+}
