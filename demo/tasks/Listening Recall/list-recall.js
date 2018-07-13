@@ -7,7 +7,6 @@ $("document").ready(function(){
     $("#trial-end").hide();
     $("#score-div").hide();
     $("#error").hide();
-
     $("#footer-text").text("Click Continue to start the task");
 
     var lines = ["the sky is blue", "the earth is flat", "1999 is the current year", "oranges are orange", "Europe is a continent", "pluto is a planet", "spiders are insects", "new delhi is the capital of india", "penguins can fly", "burj khalifa is the tallest building", "there are 50 states in america", "there are 75 countries in the world", "There are 12 months in a year", "macbook is an apple product", "clouds are made of cotton", "panda bears are not bears", "grass is purple", "humans stay on mars", "copper is a precious metal", "PLaystation is owned by Sony", "cows are mammals", "anteaters eat ants", "germany is in europe", "ice floats in water", "tom hardy is an actor", "there are aliens in roswell", "Katy Perry is a singer", "hawaii is part of the United States", "the earth revolves around the sun", "the study of plants is known as botany", "mount Kilimanjaro is the tallest mountain in the world", "herbivores eat meat", "spiders have six legs", "The human skeleton is made up of less than 100 bones", "elephants eat with their noses", "chimpanzees are nocturnal", "Bananas grow on trees", "an octopus has three hearts", "russia has a larger surface area than Pluto", "it rains diamonds on Saturn and Jupiter", "there are more fake flamingos in the world than real ones"]
@@ -33,12 +32,17 @@ $("document").ready(function(){
 
     $(".btn-download").click(function(){
         ds.show();
-        ds.download(filetype='csv', filename='data.csv')
+        ds.download(filetype='csv', filename='data.csv');
+    })
+
+    $("#modal-content").click(function(){
+        ds.show();
+        ds.download(filetype='csv', filename='data.csv');
     })
 
     $(".btn-download-footer").click(function(){
         ds.show();
-        ds.download(filetype='csv', filename='data.csv')
+        ds.download(filetype='csv', filename='data.csv');
     })
 
     function playLine(strLine){
@@ -170,6 +174,7 @@ $("document").ready(function(){
     }
 
     function displayScore(score) {
+        $("#modal").css({"display": "block"});
         $("#controls").hide();
         $("#score-div").show();
         $("#footer-text").text("The task is complete!");

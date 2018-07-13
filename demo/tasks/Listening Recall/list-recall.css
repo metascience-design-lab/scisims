@@ -30,6 +30,38 @@ i {
     bottom: 0px;
 }
 
+#modal {
+    display: none;
+    align-content: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 9%;
+    animation-name: animatetop;
+    animation-duration: 1s;
+    margin-top: -10px;
+}
+
+#modal-content {
+    margin: auto;
+    background-color: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    width: 82%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+#modal-content p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+@keyframes animatetop {
+    from {margin-top: -300px; opacity: 1}
+    to {margin-top: -10px; opacity: 1}
+}
+
 input[type=text] {
     text-align: center;
     margin: 10px;
@@ -65,6 +97,7 @@ button:hover {
 
 .btn-download {
     width: 200px;
+    margin-top: 20px;
 }
 
 .btn-download-footer {

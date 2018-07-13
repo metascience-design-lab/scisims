@@ -31,6 +31,11 @@ $("document").ready(function(){
 
     $("#footer-text").text("Click Continue to start the task");
 
+    $("#modal-content").click(function(){
+        ds.show();
+        ds.download(filetype='csv', filename='data.csv');
+    })
+
     $("#btn-normal").click(function(){
         timeout = false;
         ds.commit({
@@ -355,6 +360,7 @@ $("document").ready(function(){
       * run and the task ends.
       */
     function displayScore(score) {
+        $("#modal").css({"display": "block"});
         $("#round-end").hide();
         $("#score-div").show();
         $("#footer-text").text("The task is complete!");
