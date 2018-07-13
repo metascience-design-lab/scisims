@@ -1,14 +1,14 @@
 const ds = new lab.data.Store();
-const trialDuration = 5000;
+const trialDuration = 15000;
 var isLocal = true;
 const localParam = [];
-for(let i = 0; i < 100; i++)
+for(let i = 0; i < 50; i++)
   localParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: 'local'});
 const globalParam = [];
-for(let i = 0; i < 100; i++)
+for(let i = 0; i < 50; i++)
   globalParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: 'global'});
 const lgParam = [];
-for(let i = 0; i < 100; i++) {
+for(let i = 0; i < 50; i++) {
   lgParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: (isLocal ? 'local' : 'global')});
   isLocal = !isLocal;
 }
@@ -29,7 +29,7 @@ const local = new lab.html.Frame({
   contextSelector: 'main',
   content: new lab.flow.Sequence({
     content: [
-      new lab.html.Screen({content: "<h1>Local Task</h1>", timeout: 1000}),
+      new lab.html.Screen({content: "<h1>Local Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
       new lab.flow.Loop({
         template: lgScreen,
         templateParameters: localParam,
@@ -44,7 +44,7 @@ const global = new lab.html.Frame({
   contextSelector: 'main',
   content: new lab.flow.Sequence({
     content: [
-      new lab.html.Screen({content: "<h1>Global Task</h1>", timeout: 1000}),
+      new lab.html.Screen({content: "<h1>Global Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
       new lab.flow.Loop({
         template: lgScreen,
         templateParameters: globalParam,
@@ -59,7 +59,7 @@ const lg = new lab.html.Frame({
   contextSelector: 'main',
   content: new lab.flow.Sequence({
     content: [
-      new lab.html.Screen({content: "<h1>Alternating Task</h1>", timeout: 1000}),
+      new lab.html.Screen({content: "<h1>Alternating Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
       new lab.flow.Loop({
         template: lgScreen,
         templateParameters: lgParam,
@@ -72,8 +72,8 @@ const lg = new lab.html.Frame({
 const study = new lab.flow.Sequence({
   content: [
     new lab.html.Screen({content: "<h1>Welcome to the Local Global Test!</h1><p>This is placeholder text that will be replaced with actual instructions later</p><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'},}),
-    local,
     global,
+    local,
     lg,
     new lab.html.Screen({content: "<h2>Thank you for your participation<h2><button onclick='ds.download()' style='float:right;'>Download</button>"})
   ],
