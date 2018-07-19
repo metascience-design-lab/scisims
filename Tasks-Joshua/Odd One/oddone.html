@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odd One Out</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="lib/lab.dev.js"></script>
+    <script src="oddone.js"></script>
+    <link rel="stylesheet" href="oddone.css">
+</head>
+<body>
+    <div id="content">
+        <h1>Odd One Out</h1>
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <p>You will view three shapes and you must click on the odd shape as
+                quickly as possible. After a few such shapes are shown, you will
+                have to choose the position of each odd shape previously shown.
+            </br></br>
+                When you're ready, click Continue to start.
+            </p>
+        </div>
+        <div id="shape1" class="shape">
+            <div id="shape1-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="shape2" class="shape">
+            <div id="shape2-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="shape3" class="shape">
+            <div id="shape3-grid-div" class="grid-div">
+            </div>
+        </div>
+        <div id="interval">
+            <h2>Next Set</h2>
+        </div>
+        <div id="round-end">
+            <h2 id="round-end-heading"></h2>
+            <button id="1">Left</button>
+            <button id="2">Middle</button>
+            <button id="3">Right</button>
+        </div>
+        <div id="score-div">
+            <h2 id="score-text">You have completed the task!</h2>
+        </div>
+        <div id="modal">
+            <div id="modal-content">
+                <!-- <button class="btn-download">Download Data</button> -->
+                <p><b>Download data</b></p>
+            </div>
+        </div>
+        <div id="footer">
+            <button class="btn-download-footer"><i class="fas fa-bars"></i></button>
+            <button class="btn-continue">Continue</button>
+            <p id="footer-text">Instructions go here</p>
+        </div>
+    </div>
+</body>
+</html>
