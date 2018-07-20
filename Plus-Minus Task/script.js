@@ -22,10 +22,22 @@ const study = lab.util.fromObject({
     {
       "type": "lab.html.Screen",
       "parameters": {},
-      "responses": {},
+      "responses": {
+        "keypress": "continue"
+      },
       "messageHandlers": {},
       "title": "Instructions",
-      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Plus-Minus Task \u003C\u002Fh1\u003E\r\n\r\n    \u003Cp style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%\"\u003E This task consists of three trials. In each trial you will complete thirty equations. The first will contain only addition, the second subtraction, and the third both. Complete the task as fast as possible and download your results to review your answers.\u003C\u002Fp\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Plus-Minus Task \u003C\u002Fh1\u003E\r\n\r\n    \u003Cp\u003E\r\n\r\n      \r\n    \u003C\u002Fp\u003E\r\n    \u003Cp style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%; text-align: left\"\u003E This task consists of three blocks. In each block, you will complete thirty problems. The first block will contain only addition, the second will contain subtraction, and the third will contain both addition and subtraction. Complete the task quickly and accurately.\u003C\u002Fp\u003E\r\n    \u003Cp\u003E\u003C\u002Fp\u003E\r\n\r\n    \u003Cp style = \"font-weight: bold; font-size: 110%\"\u003E Press any key to begin \u003C\u002Fp\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
+    },
+    {
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {
+        "keypress": "continue"
+      },
+      "messageHandlers": {},
+      "title": "Plus Instructions",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Addition Block \u003C\u002Fh1\u003E\r\n    \u003Cp style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%; text-align: left\"\u003E Prepare for the addition block. This block contains thirty addition problems. When ready press any key.\u003C\u002Fp\u003E\r\n\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
     },
     {
       "type": "lab.flow.Loop",
@@ -131,7 +143,7 @@ const study = lab.util.fromObject({
       },
       "template": {
         "type": "lab.html.Form",
-        "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Ch1 style = \"display:inline\"\u003E${this.parameters.rand} + 3 = \u003C\u002Fh1\u003E\n    \u003Cinput type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n    \u003Cbutton type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
+        "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Cdiv style = \"display: flex; height: 100px; align-items: center\"\u003E\n      \u003Clabel style = \" font-size: 300%; display:inline-block; float: left; clear: left; width: 210px\"\u003E${this.parameters.rand} + 3 = \u003C\u002Flabel\u003E\n      \u003Cinput style = \"height: 50px\" type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n      \u003Cbutton style = \"height: 50px\" type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
         "parameters": {},
         "responses": {},
         "messageHandlers": {
@@ -156,6 +168,16 @@ else
         },
         "title": "Plus"
       }
+    },
+    {
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {
+        "keypress": "continue"
+      },
+      "messageHandlers": {},
+      "title": "Minus Instructions",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Subtraction Block \u003C\u002Fh1\u003E\r\n    \u003Cp style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%; text-align: left\"\u003E Prepare for the subtraction block. This block contains thirty subtraction problems. When ready press any key.\u003C\u002Fp\u003E\r\n\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
     },
     {
       "type": "lab.flow.Loop",
@@ -261,7 +283,7 @@ else
       },
       "template": {
         "type": "lab.html.Form",
-        "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Ch1 style = \"display:inline\"\u003E${this.parameters.rand} - 3 = \u003C\u002Fh1\u003E\n    \u003Cinput type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n    \u003Cbutton type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
+        "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Cdiv style = \"display: flex; height: 100px; align-items: center\"\u003E\n      \u003Clabel style = \" font-size: 300%; display:inline-block; float: left; clear: left; width: 210px\"\u003E${this.parameters.rand} - 3 = \u003C\u002Flabel\u003E\n      \u003Cinput style = \"height: 50px\" type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n      \u003Cbutton style = \"height: 50px\" type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
         "parameters": {},
         "responses": {},
         "messageHandlers": {
@@ -286,6 +308,16 @@ else
         },
         "title": "Minus"
       }
+    },
+    {
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {
+        "keypress": "continue"
+      },
+      "messageHandlers": {},
+      "title": "Both Instructions",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n\r\n    \u003Ch1\u003E Addition and Subtraction Block \u003C\u002Fh1\u003E\r\n    \r\n    \u003Cp style = \"font-size: 110%; margin-left:250px; margin-right:250px; line-height:200%; text-align: left\"\u003E Prepare for the block containing both addition and subtraction, when ready press any key.\u003C\u002Fp\u003E\r\n\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
     },
     {
       "type": "lab.flow.Loop",
@@ -335,51 +367,6 @@ else
         },
         {
           "iterations": "15"
-        },
-        {
-          "iterations": "16"
-        },
-        {
-          "iterations": "17"
-        },
-        {
-          "iterations": "18"
-        },
-        {
-          "iterations": "19"
-        },
-        {
-          "iterations": "20"
-        },
-        {
-          "iterations": "21"
-        },
-        {
-          "iterations": "22"
-        },
-        {
-          "iterations": "23"
-        },
-        {
-          "iterations": "24"
-        },
-        {
-          "iterations": "25"
-        },
-        {
-          "iterations": "26"
-        },
-        {
-          "iterations": "27"
-        },
-        {
-          "iterations": "28"
-        },
-        {
-          "iterations": "29"
-        },
-        {
-          "iterations": "30"
         }
       ],
       "responses": {},
@@ -399,7 +386,7 @@ else
         "content": [
           {
             "type": "lab.html.Form",
-            "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Ch1 style = \"display:inline\"\u003E${this.parameters.rand} + 3 = \u003C\u002Fh1\u003E\n    \u003Cinput type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n    \u003Cbutton type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
+            "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Cdiv style = \"display: flex; height: 100px; align-items: center\"\u003E\n      \u003Clabel style = \" font-size: 300%; display:inline-block; float: left; clear: left; width: 210px\"\u003E${this.parameters.rand} + 3 = \u003C\u002Flabel\u003E\n      \u003Cinput style = \"height: 50px\" type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n      \u003Cbutton style = \"height: 50px\" type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
             "parameters": {},
             "responses": {},
             "messageHandlers": {
@@ -412,7 +399,7 @@ this.parameters.rand = getRand(100)
 },
               "end": function anonymous(
 ) {
-if (this.data.answer == this.parameters.rand - 3)
+if (this.data.answer == this.parameters.rand + 3)
 {
   this.data.correct = true
 }
@@ -426,7 +413,7 @@ else
           },
           {
             "type": "lab.html.Form",
-            "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Ch1 style = \"display:inline\"\u003E${this.parameters.rand} - 3 = \u003C\u002Fh1\u003E\n    \u003Cinput type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n    \u003Cbutton type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
+            "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Cform\u003E\n    \u003Cdiv style = \"display: flex; height: 100px; align-items: center\"\u003E\n      \u003Clabel style = \" font-size: 300%; display:inline-block; float: left; clear: left; width: 210px\"\u003E${this.parameters.rand} - 3 = \u003C\u002Flabel\u003E\n      \u003Cinput style = \"height: 50px\" type = \"text\" name=\"answer\" maxlength=\"4\" size=\"4\"\u003E\n      \u003Cbutton style = \"height: 50px\" type=\"submit\"\u003ESubmit\u003C\u002Fbutton\u003E\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fform\u003E\n\u003C\u002Fmain\u003E",
             "parameters": {},
             "responses": {},
             "messageHandlers": {
@@ -453,6 +440,16 @@ else
           }
         ]
       }
+    },
+    {
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {
+        "keypress": "continue"
+      },
+      "messageHandlers": {},
+      "title": "End Screen",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Congratulations! You've completed the plus-minus task, press any key to download results.\u003C\u002Fh1\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
     }
   ]
 })
