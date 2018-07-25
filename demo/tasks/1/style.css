@@ -3,5 +3,8 @@ h1, h2 {
 }
 
 p {
-  text-align: center;
+    text-align: justify;
+    width: 500px;
+    margin: auto;
+    font-size: 18px;
 }
