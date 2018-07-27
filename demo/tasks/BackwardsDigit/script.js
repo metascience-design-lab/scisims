@@ -93,7 +93,7 @@ const digitLoop = new lab.flow.Loop({
 const study = new lab.flow.Sequence({
   datastore: ds,
   content: [
-    new lab.html.Screen({content: "<h1>Backwards Digit Recall Task</h1><h2>Please be sure to turn on audio.</h2><p>In this task, you will hear a sequence of digits. You will start with a sequence of two digits. Your job is to type them in reverse order. For every three responses you get right, the number of digits will increase by one. Please press the SPACEBAR to continue</p>", "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Screen({content: "<h1>Backwards Digit Recall Task</h1><p>Please be sure to turn on audio. In this task, you will hear a sequence of digits. You will start with a sequence of two digits. Your job is to type them in reverse order. For every three responses you get right, the number of digits will increase by one. Please press the SPACEBAR to continue</p>", "responses": {'keypress(Space)': 'Continue'},}),
     digitLoop,
     new lab.html.Screen({content: "<h2>Thank you for your participation<h2>"})
   ]
