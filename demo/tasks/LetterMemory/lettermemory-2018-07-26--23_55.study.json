@@ -1,0 +1,866 @@
+{
+  "version": [
+    2018,
+    0,
+    3
+  ],
+  "components": {
+    "1": {
+      "id": "1",
+      "type": "lab.flow.Loop",
+      "children": [
+        "5"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "span_length",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ],
+          [
+            "11"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Letter Memory Task",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Content"
+    },
+    "2": {
+      "id": "2",
+      "type": "lab.flow.Loop",
+      "children": [
+        "3"
+      ],
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "stimulus",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "a"
+          ],
+          [
+            "b"
+          ],
+          [
+            "c"
+          ],
+          [
+            "d"
+          ],
+          [
+            "e"
+          ],
+          [
+            "f"
+          ],
+          [
+            "g"
+          ],
+          [
+            "h"
+          ],
+          [
+            "i"
+          ],
+          [
+            "j"
+          ],
+          [
+            "k"
+          ],
+          [
+            "l"
+          ],
+          [
+            "m"
+          ],
+          [
+            "n"
+          ],
+          [
+            "o"
+          ],
+          [
+            "p"
+          ],
+          [
+            "q"
+          ],
+          [
+            "r"
+          ],
+          [
+            "s"
+          ],
+          [
+            "t"
+          ],
+          [
+            "u"
+          ],
+          [
+            "v"
+          ],
+          [
+            "w"
+          ],
+          [
+            "x"
+          ],
+          [
+            "y"
+          ],
+          [
+            "z"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "Generate span",
+              "message": "before:prepare",
+              "code": "/*\n  This code generates the stimulus sequence manually\n  from the stimuli specified in the loop content.\n  This wouldn't usually be necessary: The loop\n  can sample and shuffle stimuli itself; however,\n  doing it ourselves gives us a bit more control.\n  Specifically, it's (slightly) easier to capture \n  and store the sequence of digits (see below).\n*/\n\n// Subsample the loop parameters by drawing randomly\n// from the loop contents\nthis.options.templateParameters = this.random.sample(\n  this.options.templateParameters,\n  this.aggregateParameters.span_length\n)\n\n// Extract the presented stimuli and store them seperately,\n// as a feature of the overall trial sequence.\nthis.parent.options.parameters.span = \n  this.options.templateParameters.map(\n    function(repetition) { return repetition.stimulus }\n  )"
+            }
+          ]
+        ]
+      },
+      "title": "Learning phase",
+      "shuffle": false,
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Scripts"
+    },
+    "3": {
+      "id": "3",
+      "type": "lab.html.Screen",
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "Disable data logging",
+              "message": "before:prepare",
+              "code": "// We don't need screen-by-screen data for\n// the stimulus presentation\nthis.options.datacommit = false"
+            }
+          ]
+        ]
+      },
+      "title": "Digit presentation",
+      "content": "<main\n  class=\"content-horizontal-center content-vertical-center\"\n  style=\"font-size: 5rem; font-weight: bold\"\n>\n  ${ parameters.stimulus }\n</main>\n<footer>\n  Remember the last four letters in the sequence.\n</footer>",
+      "timeout": "1500",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Behavior"
+    },
+    "4": {
+      "id": "4",
+      "type": "lab.html.Screen",
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "Handle button responses",
+              "message": "before:prepare",
+              "code": "// Create an empty array that collects responses\nthis.data.responses = []\n\nconst updateButtons = () => {\n  document\n    .querySelectorAll('button')\n    .forEach(\n      button => button.disabled = \n        this.data.responses.includes(button.attributes.name.value)\n    )\n}\n\n// Setup handler for button clicks\nthis.options.events['click button'] = function(event) {\n  // Which button was clicked?\n  const button = event.currentTarget.attributes.name.value\n\n  // Terminate screen if participant is done,\n  // otherwise log response, deactivate button,\n  // and continue.\n  if (button === 'done') {\n    this.end('done')\n  } else if (button === 'undo') {\n    // Remove last response\n    this.data.responses.pop()\n\n    // Update buttons\n    updateButtons()\n  } else {\n    // Add response to data\n    this.data.responses.push(button)\n    \n    // Update buttons\n    updateButtons()\n  }\n}"
+            }
+          ],
+          [
+            {
+              "title": "Code veracity of answer",
+              "message": "after:end",
+              "code": "// check if the last four letters matched\nvar lastFour = this.aggregateParameters.span.slice(this.aggregateParameters.span_length-4);\nlastFour.sort();\nthis.data.responses.sort();\nthis.data.correct = lastFour.every(\n  (letter, index) => letter === this.data.responses[index]\n)"
+            }
+          ]
+        ]
+      },
+      "title": "Recall",
+      "content": "<main class=\"content-horizontal-center content-vertical-center\">\n  <!-- Table styles are specified in the overall study CSS,\n       please see study options. This screen also includes\n       a fair amount of logic, which is visible in the scripts\n       tab. Please be invited to ask the authors if you have\n       any questions!\n  -->\n  <table class=\"table-span-recall\">\n    <tr>\n    </tr>\n    <tr>\n      <td>\n        <button name=\"a\">a</button>\n      </td>\n      <td>\n        <button name=\"b\">b</button>\n      </td>\n      <td>\n        <button name=\"c\">c</button>\n      </td>\n      <td>\n        <button name=\"d\">d</button>\n      </td>\n      <td>\n        <button name=\"e\">e</button>\n      </td>\n      <td>\n        <button name=\"f\">f</button>\n      </td>\n      <td>\n        <button name=\"g\">g</button>\n      </td>\n      <td>\n        <button name=\"h\">h</button>\n      </td>\n      <td>\n        <button name=\"i\">i</button>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <button name=\"j\">j</button>\n      </td>\n      <td>\n        <button name=\"k\">k</button>\n      </td>\n      <td>\n        <button name=\"l\">l</button>\n      </td>\n      <td>\n        <button name=\"m\">m</button>\n      </td>\n      <td>\n        <button name=\"n\">n</button>\n      </td>\n      <td>\n        <button name=\"o\">o</button>\n      </td>\n      <td>\n        <button name=\"p\">p</button>\n      </td>\n      <td>\n        <button name=\"q\">q</button>\n      </td>\n      <td>\n        <button name=\"r\">r</button>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <button name=\"s\">s</button>\n      </td>\n      <td>\n        <button name=\"t\">t</button>\n      </td>\n      <td>\n        <button name=\"u\">u</button>\n      </td>\n      <td>\n        <button name=\"v\">v</button>\n      </td>\n      <td>\n        <button name=\"w\">w</button>\n      </td>\n      <td>\n        <button name=\"x\">x</button>\n      </td>\n      <td>\n        <button name=\"y\">y</button>\n      </td>\n      <td>\n        <button name=\"z\">z</button>\n      </td>\n    </tr>\n    <tr>\n      <td colspan=\"9\">\n        <button name=\"undo\">Undo ⤺</button>\n        <button name=\"done\">Done &rarr;</button>\n      </td>\n    </tr>\n  </table>\n</main>\n<footer>\n  <strong>Please select the last four letters from the sequence that you just saw. </strong><br>\n They can be in any order. Then, press the <kbd>Done</kbd> button.\n</footer>\n",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Scripts"
+    },
+    "5": {
+      "id": "5",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "2",
+        "4"
+      ],
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Trial sequence",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Content"
+    },
+    "6": {
+      "id": "6",
+      "type": "lab.html.Screen",
+      "responses": {
+        "rows": [
+          [
+            "continue",
+            "click",
+            "button#continue",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Get-set-go",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <div class=\"w-s text-justify\">\n    <h2 class=\"text-center\">Ready?</h2>\n    <p>In a moment, you will see a sequence of letters one at a time. Please try to remember them as accurately as possible. You will need to recall the last <strong>last four</strong> after the sequence is shown. You can enter those letter in any order you prefer.\n      \n    <p>When you're ready, please press <kbd>Continue</kbd> button below.\n  </div>\n</main>\n<footer class=\"content-horizontal-right\">\n  <button id=\"continue\">\n    Continue &rarr;\n  </button>\n</footer>",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "_tab": "Content"
+    },
+    "11": {
+      "id": "11",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Task Done",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\r\n  <div class=\"w-s text-justify\">\r\n    <h2 class=\"text-center\">You have completed the task!</h2>\r\n  </div>\r\n</main>",
+      "_tab": "Behavior",
+      "timeout": "0"
+    },
+    "14": {
+      "id": "14",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "21",
+        "19"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Trial Sequence",
+      "_tab": "Content"
+    },
+    "17": {
+      "id": "17",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "continue",
+            "click",
+            "button#continue",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Get-set-go",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\r\n  <center>\r\n    <h1>Letter Memory Task</h1>\r\n    <p style = \"\r\n      text-align: justify;\r\n      width: 500px;\r\n      margin: auto;\r\n      font-size: 18px;\"> You will see a sequence of letters one at a time. Please try to remember them as accurately as possible. You will need to recall the last <strong>last four</strong> after the sequence is shown. You can enter those letter in any order you prefer. When you're ready, click Continue to start. </p>\r\n  </center>\r\n</main>\r\n<footer class=\"content-horizontal-right\">\r\n  <button id=\"continue\">\r\n    Continue &rarr;\r\n  </button>\r\n</footer>",
+      "_tab": "Content"
+    },
+    "18": {
+      "id": "18",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "disable data logging",
+              "message": "before:prepare",
+              "code": "// We don't need screen-by-screen data for\r\n// the stimulus presentation\r\nthis.options.datacommit = false"
+            }
+          ]
+        ]
+      },
+      "title": "Digit Presentation",
+      "content": "<main\r\n  class=\"content-horizontal-center content-vertical-center\"\r\n  style=\"font-size: 5rem; font-weight: bold\"\r\n>\r\n  ${ parameters.stimulus1 }\r\n</main>\r\n<footer>\r\n  Remember the last four letters in the sequence.\r\n</footer>",
+      "_tab": "Behavior",
+      "timeout": "1500"
+    },
+    "19": {
+      "id": "19",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "Handle button responses",
+              "message": "before:prepare",
+              "code": "// Create an empty array that collects responses\r\nthis.data.responses = []\r\n\r\nconst updateButtons = () => {\r\n  document\r\n    .querySelectorAll('button')\r\n    .forEach(\r\n      button => button.disabled = \r\n        this.data.responses.includes(button.attributes.name.value)\r\n    )\r\n}\r\n\r\n// Setup handler for button clicks\r\nthis.options.events['click button'] = function(event) {\r\n  // Which button was clicked?\r\n  const button = event.currentTarget.attributes.name.value\r\n\r\n  // Terminate screen if participant is done,\r\n  // otherwise log response, deactivate button,\r\n  // and continue.\r\n  if (button === 'done') {\r\n    this.end('done')\r\n  } else if (button === 'undo') {\r\n    // Remove last response\r\n    this.data.responses.pop()\r\n\r\n    // Update buttons\r\n    updateButtons()\r\n  } else {\r\n    // Add response to data\r\n    this.data.responses.push(button)\r\n    \r\n    // Update buttons\r\n    updateButtons()\r\n  }\r\n}"
+            }
+          ],
+          [
+            {
+              "title": "Code veracity of answer",
+              "message": "after:end",
+              "code": "// check if the last four letters matched\r\nvar lastFour = this.aggregateParameters.span.slice(this.aggregateParameters.span_length-4);\r\nlastFour.sort();\r\nthis.data.responses.sort();\r\nthis.data.correct = lastFour.every(\r\n  (letter, index) => letter === this.data.responses[index]\r\n)"
+            }
+          ]
+        ]
+      },
+      "title": "Recall",
+      "content": "<main class=\"content-horizontal-center content-vertical-center\">\r\n  <!-- Table styles are specified in the overall study CSS,\r\n       please see study options. This screen also includes\r\n       a fair amount of logic, which is visible in the scripts\r\n       tab. Please be invited to ask the authors if you have\r\n       any questions!\r\n  -->\r\n  <table class=\"table-span-recall\">\r\n    <tr>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <button name=\"a\">a</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"b\">b</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"c\">c</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"d\">d</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"e\">e</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"f\">f</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"g\">g</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"h\">h</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"i\">i</button>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <button name=\"j\">j</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"k\">k</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"l\">l</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"m\">m</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"n\">n</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"o\">o</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"p\">p</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"q\">q</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"r\">r</button>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td>\r\n        <button name=\"s\">s</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"t\">t</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"u\">u</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"v\">v</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"w\">w</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"x\">x</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"y\">y</button>\r\n      </td>\r\n      <td>\r\n        <button name=\"z\">z</button>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td colspan=\"9\">\r\n        <button name=\"undo\">Undo ⤺</button>\r\n        <button name=\"done\">Done &rarr;</button>\r\n      </td>\r\n    </tr>\r\n  </table>\r\n</main>\r\n<footer>\r\n  <strong>Please select the last four letters from the sequence that you just saw. </strong><br>\r\n They can be in any order. Then, press the <kbd>Done</kbd> button.\r\n</footer>\r\n",
+      "_tab": "Content"
+    },
+    "20": {
+      "id": "20",
+      "type": "lab.flow.Loop",
+      "children": [
+        "14"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "Span_length",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "11"
+          ],
+          [
+            "11"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "shuffle": false,
+      "title": "Letter Memory Practice",
+      "_tab": "Content"
+    },
+    "21": {
+      "id": "21",
+      "type": "lab.flow.Loop",
+      "children": [
+        "18"
+      ],
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "templateParameters": {
+        "columns": [
+          {
+            "name": "stimulus1",
+            "type": "string"
+          }
+        ],
+        "rows": [
+          [
+            "a"
+          ],
+          [
+            "b"
+          ],
+          [
+            "c"
+          ],
+          [
+            "d"
+          ],
+          [
+            "e"
+          ],
+          [
+            "f"
+          ],
+          [
+            "g"
+          ],
+          [
+            "h"
+          ],
+          [
+            "i"
+          ],
+          [
+            "j"
+          ],
+          [
+            "k"
+          ],
+          [
+            "l"
+          ],
+          [
+            "m"
+          ],
+          [
+            "n"
+          ],
+          [
+            "o"
+          ],
+          [
+            "p"
+          ],
+          [
+            "q"
+          ],
+          [
+            "r"
+          ],
+          [
+            "s"
+          ],
+          [
+            "t"
+          ],
+          [
+            "u"
+          ],
+          [
+            "v"
+          ],
+          [
+            "w"
+          ],
+          [
+            "x"
+          ],
+          [
+            "y"
+          ],
+          [
+            "z"
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "Generate span",
+              "message": "before:prepare",
+              "code": "/*\r\n  This code generates the stimulus sequence manually\r\n  from the stimuli specified in the loop content.\r\n  This wouldn't usually be necessary: The loop\r\n  can sample and shuffle stimuli itself; however,\r\n  doing it ourselves gives us a bit more control.\r\n  Specifically, it's (slightly) easier to capture \r\n  and store the sequence of digits (see below).\r\n*/\r\n\r\n// Subsample the loop parameters by drawing randomly\r\n// from the loop contents\r\nthis.options.templateParameters = this.random.sample(\r\n  this.options.templateParameters,\r\n  this.aggregateParameters.Span_length\r\n)\r\n\r\n// Extract the presented stimuli and store them seperately,\r\n// as a feature of the overall trial sequence.\r\nthis.parent.options.parameters.span = \r\n  this.options.templateParameters.map(\r\n    function(repetition) { return repetition.stimulus1 }\r\n  )"
+            }
+          ]
+        ]
+      },
+      "shuffle": false,
+      "title": "Learning phase",
+      "_tab": "Scripts"
+    },
+    "root": {
+      "id": "root",
+      "title": "root",
+      "type": "lab.flow.Sequence",
+      "children": [
+        "17",
+        "20",
+        "6",
+        "1",
+        "11"
+      ],
+      "plugins": [
+        {
+          "type": "lab.plugins.Metadata"
+        }
+      ],
+      "metadata": {
+        "title": "Digit span",
+        "description": "This study implements a short-term memory test. Participants are asked to recall a series of digits in sequence.",
+        "repository": "",
+        "contributors": "Felix Henninger <mailbox@felixhenninger.com> (http://felixhenninger.com)"
+      },
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "files": {
+    "files": {
+      "index.html": {
+        "content": "data:text/html,%3C!doctype%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Ctitle%3EExperiment%3C%2Ftitle%3E%0A%20%20%3C!--%20lab.js%20library%20and%20default%20styles%20--%3E%0A%20%20%3Cscript%20src%3D%22lib%2Flab.js%22%20data-labjs-script%3D%22library%22%3E%3C%2Fscript%3E%0A%20%20%3Cscript%20src%3D%22lib%2Flab.fallback.js%22%20data-labjs-script%3D%22fallback%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22lib%2Flab.css%22%3E%0A%20%20%3C!--%20study%20code%20and%20styles%20--%3E%0A%20%20%3Cscript%20defer%20src%3D%22script.js%22%3E%3C%2Fscript%3E%0A%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22style.css%22%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3C!--%20If%20you'd%20rather%20have%20a%20container%20with%20a%20fixed%20width%0A%20%20%20%20%20%20%20and%20variable%20height%2C%20try%20removing%20the%20fullscreen%20class%20below%20--%3E%0A%20%20%3Cdiv%20class%3D%22container%20fullscreen%22%20data-labjs-section%3D%22main%22%3E%0A%20%20%20%20%3Cmain%20class%3D%22content-vertical-center%20content-horizontal-center%22%3E%0A%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Ch2%3ELoading%20Experiment%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EThe%20experiment%20is%20loading%20and%20should%20start%20in%20a%20few%20seconds%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fmain%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A",
+        "permanent": true
+      },
+      "style.css": {
+        "content": "data:text/css,%2F*%20Span%20recall%20screen%20*%2F%0Atable.table-span-recall%20%7B%0A%20%20width%3A%20auto%3B%0A%7D%0A%0Atable.table-span-recall%20tr%3Afirst-child%20button%20%7B%0A%20%20width%3A%20100px%3B%0A%20%20height%3A%20140px%3B%0A%20%20font-size%3A%202.25rem%3B%0A%20%20%2F*%20Animate%20opacity%20*%2F%0A%20%20transition%3A%20opacity%202.25s%20ease-in-out%200%3B%0A%7D%0A%0A%0Atable.table-span-recall%20tr%3Afirst-child%20button%3Adisabled%20%7B%0A%20%20opacity%3A%200.25%3B%0A%7D",
+        "permanent": true
+      }
+    },
+    "bundledFiles": {
+      "lib/lab.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.js.map": {
+        "type": "text/plain"
+      },
+      "lib/lab.css": {
+        "type": "text/css"
+      },
+      "lib/loading.svg": {
+        "type": "image/svg+xml"
+      },
+      "lib/lab.fallback.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js": {
+        "type": "application/javascript"
+      },
+      "lib/lab.legacy.js.map": {
+        "type": "text/plain"
+      }
+    }
+  }
+}

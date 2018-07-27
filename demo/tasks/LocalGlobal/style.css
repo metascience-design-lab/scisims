@@ -1,0 +1,15 @@
+h1{
+  text-align: center;
+  margin-top: 150px;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+  width: 500px;
+  margin: auto;
+  font-size: 18px;
+}
