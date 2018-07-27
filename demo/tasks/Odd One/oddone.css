@@ -146,9 +146,3 @@ button:hover {
 .btn-download {
     width: 200px;
 }
-
-.btn-download-footer {
-    float: right;
-    width: 50px;
-    margin-top: 0;
-}
