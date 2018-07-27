@@ -2,13 +2,13 @@ const ds = new lab.data.Store();
 const trialDuration = 120000;
 var isLocal = true;
 const localParam = [];
-for(let i = 0; i < 150; i++)
+for(let i = 0; i < 500; i++)
   localParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: 'local'});
 const globalParam = [];
-for(let i = 0; i < 150; i++)
+for(let i = 0; i < 500; i++)
   globalParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: 'global'});
 const lgParam = [];
-for(let i = 0; i < 150; i++) {
+for(let i = 0; i < 500; i++) {
   lgParam.push({local: Math.floor(Math.random() * 4) + 1, global: Math.floor(Math.random() * 4) + 1, correctShape: (isLocal ? 'local' : 'global')});
   isLocal = !isLocal;
 }
@@ -194,7 +194,7 @@ const global = new lab.html.Frame({
 });
 
 const lg = new lab.html.Frame({
-  context: "<main></main><footer>Press the button on the keyboard corresponding to the local or global shape.<button onclick='ds.download()' style='float:right;'>Download</button></footer>",
+  context: "<main></main><footer>Press the button on the keyboard corresponding to the local or global shape, according to the prompt.<button onclick='ds.download()' style='float:right;'>Download</button></footer>",
   contextSelector: 'main',
   content: new lab.flow.Sequence({
     content: [
@@ -241,7 +241,7 @@ const tutorial = (ts, canvas, ctx, obj) => {
 
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> Press the button corresponding either the local or global shape, as prompted. Press the SPACEBAR to continue.</p>", "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> The test will consist of a series of images comprised of a local and a global shape <br></br> The LOCAL shapes are the smaller, solidly shaded shapes. There will be several on each slide <br></br> The GLOBAL shape is the shape formed from the collection of local shapes. There is only one per slide <br></br> Press the button corresponding either the local or global shape, as prompted. <br></br> Press the SPACEBAR to continue.</p>", "responses": {'keypress(Space)': 'Continue'},}),
     new lab.canvas.Screen({renderFunction: tutorial, "responses": {'keypress(Space)': 'Continue'},}),
     global,
     local,
