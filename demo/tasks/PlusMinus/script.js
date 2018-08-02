@@ -445,12 +445,11 @@ else
     {
       "type": "lab.html.Screen",
       "parameters": {},
-      "responses": {
-        "keypress": "continue"
-      },
+      "responses": {},
       "messageHandlers": {},
       "title": "End Screen",
-      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\r\n  \u003Ccenter\u003E\r\n    \u003Ch1\u003E Congratulations! You've completed the plus-minus task, press any key to download results.\u003C\u002Fh1\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E"
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\r\n  \u003Ccenter\u003E\r\n  \u003Ch1\u003E Congrats, you have completed the Plus-Minus Task! \u003C\u002Fh1\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E",
+      "timeout": "500"
     }
   ]
 })

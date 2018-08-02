@@ -5,6 +5,46 @@
     3
   ],
   "components": {
+    "1": {
+      "id": "1",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Screen",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <center>\n  <h1> Congrats, you have completed the Stop Signal Task! </h1>\n  </center>\n</main>",
+      "_tab": "Content",
+      "timeout": "500"
+    },
     "2": {
       "id": "2",
       "type": "lab.canvas.Screen",
@@ -14232,98 +14272,6 @@
         ]
       }
     },
-    "148": {
-      "id": "148",
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 379.47,
-          "height": 162,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "The study is complete. Thank\nyou for your participation!\n\nPress spacebar to exit.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "950",
-          "styles": {}
-        }
-      ],
-      "responses": {
-        "rows": [
-          [
-            "spacebar",
-            "keypress",
-            "",
-            "Space"
-          ]
-        ]
-      },
-      "messageHandlers": {
-        "rows": [
-          [
-            {
-              "title": "",
-              "message": "",
-              "code": ""
-            }
-          ]
-        ]
-      },
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Conclusion",
-      "_tab": "Content",
-      "correctResponse": "Space",
-      "parameters": {
-        "rows": [
-          [
-            {
-              "name": "",
-              "value": "",
-              "type": "string"
-            }
-          ]
-        ]
-      }
-    },
     "149": {
       "id": "149",
       "type": "lab.html.Screen",
@@ -14522,7 +14470,7 @@
         "147",
         "144",
         "143",
-        "148"
+        "1"
       ],
       "plugins": [
         {

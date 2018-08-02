@@ -512,7 +512,7 @@ this.data.correct = lastFour.every(
       "responses": {},
       "messageHandlers": {},
       "title": "Task Done",
-      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\r\n  \u003Cdiv class=\"w-s text-justify\"\u003E\r\n    \u003Ch2 class=\"text-center\"\u003EYou have completed the task!\u003C\u002Fh2\u003E\r\n  \u003C\u002Fdiv\u003E\r\n\u003C\u002Fmain\u003E",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\r\n  \u003Ccenter\u003E\r\n  \u003Ch1\u003E Congrats, you have completed the Letter Memory Task! \u003C\u002Fh1\u003E\r\n  \u003C\u002Fcenter\u003E\r\n\u003C\u002Fmain\u003E",
       "timeout": "0"
     }
   ]

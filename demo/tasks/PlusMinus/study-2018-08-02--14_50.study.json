@@ -20,14 +20,7 @@
         ]
       },
       "responses": {
-        "rows": [
-          [
-            "continue",
-            "keypress",
-            "",
-            ""
-          ]
-        ]
+        "rows": []
       },
       "messageHandlers": {
         "rows": [
@@ -41,8 +34,9 @@
         ]
       },
       "title": "End Screen",
-      "content": "<main class = \"content-horizontal-center content-vertical-center\">\r\n  <center>\r\n    <h1> Congratulations! You've completed the plus-minus task, press any key to download results.</h1>\r\n  </center>\r\n</main>",
-      "_tab": "Content"
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\r\n  <center>\r\n  <h1> Congrats, you have completed the Plus-Minus Task! </h1>\r\n  </center>\r\n</main>",
+      "_tab": "Content",
+      "timeout": "500"
     },
     "2": {
       "id": "2",
@@ -543,7 +537,7 @@
       },
       "title": "Instructions",
       "content": "<main class = \"content-horizontal-center content-vertical-center\">\r\n  <center>\r\n    <h1> Plus-Minus Task </h1>\r\n\r\n    <p style = \"\r\n      text-align: justify;\r\n      width: 500px;\r\n      margin: auto;\r\n      font-size: 18px;\">\r\n       This task consists of three blocks. In each block, you will complete thirty problems. The first block will contain only addition, the second will contain subtraction, and the third will contain both addition and subtraction. Complete the task quickly and accurately. When you're ready, click Continue to start. </p>\r\n \r\n  </center>\r\n</main>\r\n\r\n<footer class=\"content-horizontal-right\">\r\n  <button id=\"continue\">\r\n    Continue &rarr;\r\n  </button>\r\n</footer>",
-      "_tab": "Responses"
+      "_tab": "Content"
     },
     "11": {
       "id": "11",

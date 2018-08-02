@@ -9279,67 +9279,13 @@ const study = lab.util.fromObject({
       "parameters": {}
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 379.47,
-          "height": 162,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "The study is complete. Thank\nyou for your participation!\n\nPress spacebar to exit.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "950",
-          "styles": {}
-        }
-      ],
-      "responses": {
-        "keypress(Space)": "spacebar"
-      },
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {},
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "Conclusion",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "Screen",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003E Congrats, you have completed the Stop Signal Task! \u003C\u002Fh1\u003E\n  \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E",
+      "timeout": "500"
     }
   ]
 })
