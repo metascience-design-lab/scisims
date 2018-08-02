@@ -93,10 +93,17 @@ const digitLoop = new lab.flow.Loop({
 const study = new lab.flow.Sequence({
   datastore: ds,
   content: [
+<<<<<<< HEAD
     new lab.html.Screen({content: "<h1>Backwards Digit Recall Task</h1><p>Please be sure to turn on audio. In this task, you will hear a sequence of digits. You will start with a sequence of two digits. Your job is to type them in reverse order. For every three responses you get right, the number of digits will increase by one. Please press the SPACEBAR to continue</p>", "responses": {'keypress(Space)': 'Continue'},}),
     digitLoop,
     new lab.html.Screen({content: "<h1>Congrats, you have completed the Backwards Digit Recall Task!<h1>"})
+=======
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.html.Screen({content: "<h1>Backwards Digit Recall Task</h1><p>Please be sure to turn on audio. In this task, you will hear a sequence of digits. You will start with a sequence of two digits. Your job is to type them in reverse order. For every three responses you get right, the number of digits will increase by one. Please press the button below to continue</p>"})}),
+    new lab.html.Frame({context: "<main></main><footer>Listen to the digits spoken, then type them in reverse order</footer>", contextSelector: "main", content: digitLoop}),
+    new lab.html.Screen({content: "<h2>Thank you for your participation<h2>"})
+>>>>>>> 7841be5969c02de92964126d03c3c3981cac4cc0
   ]
 });
 
-(new lab.html.Frame({context: "<main></main><footer>Listen to the digits spoken, then type them in reverse order<button onclick='ds.download()' style='float:right;'>Download</button></footer>", contextSelector: "main", content: study})).run();
+study.run();

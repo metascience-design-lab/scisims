@@ -163,49 +163,34 @@ const lgCanvas = new lab.canvas.Screen({
   correctResponse: "${parameters.correctShape == 'local' ? parameters.local : parameters.global}"
 });
 
-const local = new lab.html.Frame({
-  context: "<main></main><footer>Press the button on the keyboard corresponding to the local shape.<button onclick='ds.download()' style='float:right;'>Download</button></footer>",
-  contextSelector: 'main',
-  content: new lab.flow.Sequence({
-    content: [
-      new lab.html.Screen({content: "<h1>Local Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
-      new lab.flow.Loop({
-        template: lgCanvas,
-        templateParameters: localParam,
-        timeout: trialDuration
-      })
-    ]
-  })
+const local  = new lab.flow.Sequence({
+  content: [
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.html.Screen({content: "<h1>Local Task</h1><h2>Please press the button below to continue</h2>"})}),
+    new lab.html.Frame({context: "<main></main><footer>Press the button on the keyboard corresponding to the local shape.</footer>", contextSelector: 'main', content:
+      new lab.flow.Loop({template: lgCanvas, templateParameters: localParam, timeout: trialDuration})
+    })
+  ]
 });
 
-const global = new lab.html.Frame({
-  context: "<main></main><footer>Press the button on the keyboard corresponding to the global shape.<button onclick='ds.download()' style='float:right;'>Download</button></footer>",
-  contextSelector: 'main',
-  content: new lab.flow.Sequence({
-    content: [
-      new lab.html.Screen({content: "<h1>Global Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
-      new lab.flow.Loop({
-        template: lgCanvas,
-        templateParameters: globalParam,
-        timeout: trialDuration
-      })
-    ]
-  })
+const global  = new lab.flow.Sequence({
+  content: [
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.html.Screen({content: "<h1>Global Task</h1><h2>Please press the button below to continue</h2>"})}),
+    new lab.html.Frame({context: "<main></main><footer>Press the button on the keyboard corresponding to the global shape.</footer>", contextSelector: 'main', content:
+      new lab.flow.Loop({template: lgCanvas, templateParameters: globalParam, timeout: trialDuration})
+    })
+  ]
 });
 
-const lg = new lab.html.Frame({
-  context: "<main></main><footer>Press the button on the keyboard corresponding to the local or global shape, according to the prompt.<button onclick='ds.download()' style='float:right;'>Download</button></footer>",
-  contextSelector: 'main',
-  content: new lab.flow.Sequence({
-    content: [
-      new lab.html.Screen({content: "<h1>Alternating Task</h1><h2>Please press the SPACEBAR to continue</h2>", "responses": {'keypress(Space)': 'Continue'}}),
-      new lab.flow.Loop({
-        template: lgCanvas,
-        templateParameters: lgParam,
-        timeout: trialDuration
-      })
-    ]
-  })
+const lg  = new lab.flow.Sequence({
+  content: [
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.html.Screen({content: "<h1>Alternating Task</h1><h2>Please press the button below to continue</h2>"})}),
+    new lab.html.Frame({context: "<main></main><footer>Press the button on the keyboard corresponding to the local or global shape, according to the prompt.</footer>", contextSelector: 'main', content:
+      new lab.flow.Loop({template: lgCanvas, templateParameters: lgParam, timeout: trialDuration})
+    })
+  ]
 });
 
 const tutorial = (ts, canvas, ctx, obj) => {
@@ -236,17 +221,19 @@ const tutorial = (ts, canvas, ctx, obj) => {
   drawCross(ctx, 140, -45);
   ctx.fillText("Local: 2   Global: 4", 210, 133);
   ctx.font = "40px Arial";
-  ctx.fillText("Press Spacebar to begin", 0, 200);
+  ctx.fillText("Press the button below to continue", 0, 200);
 }
 
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> The test will consist of a series of images comprised of a local and a global shape. The LOCAL shapes are the smaller, solidly shaded shapes. There will be several on each slide. The GLOBAL shape is the shape formed from the collection of local shapes. There is only one per slide. Press the button corresponding either the local or global shape, as prompted. Press the SPACEBAR to continue.</p>", "responses": {'keypress(Space)': 'Continue'},}),
-    new lab.canvas.Screen({renderFunction: tutorial, "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> The test will consist of a series of images comprised of a local and a global shape. The LOCAL shapes are the smaller, solidly shaded shapes. There will be several on each slide. The GLOBAL shape is the shape formed from the collection of local shapes. There is only one per slide. Press the button corresponding either the local or global shape, as prompted. Press the button below to continue.</p>",})}),
+    new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
+      new lab.canvas.Screen({renderFunction: tutorial})}),
     global,
     local,
     lg,
-    new lab.html.Screen({content: "<h1>Congrats, you have completed the Local Global Task!</h1><button onclick='ds.download()' style='float:right;'>Download</button>"})
+    new lab.html.Screen({content: "<h1>Congrats, you have completed the Local Global Task!</h1>"})
   ],
   datastore: ds
 });
