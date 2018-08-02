@@ -1,3 +1,8 @@
+h1 {
+  text-align: center;
+}
+
+
 #Type {
 	position: absolute;
 	top: 90%;
@@ -27,8 +32,10 @@
 
 
 #instruction{
-	font-size: 20px;
-	font-family: "Arial";
+	text-align: justify;
+	width: 500px;
+	margin: auto;
+	font-size: 18px;
 }
 
 #TrialNum{

@@ -241,12 +241,12 @@ const tutorial = (ts, canvas, ctx, obj) => {
 
 const study = new lab.flow.Sequence({
   content: [
-    new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> The test will consist of a series of images comprised of a local and a global shape <br></br> The LOCAL shapes are the smaller, solidly shaded shapes. There will be several on each slide <br></br> The GLOBAL shape is the shape formed from the collection of local shapes. There is only one per slide <br></br> Press the button corresponding either the local or global shape, as prompted. <br></br> Press the SPACEBAR to continue.</p>", "responses": {'keypress(Space)': 'Continue'},}),
+    new lab.html.Screen({content: "<h1>Local Global Task</h1><p>The test will consist of three two-minute blocks. Use the buttons 1-4 to input your responses. <br></br> ◯ = 1, X = 2, Δ = 3, □ = 4 <br></br> The test will consist of a series of images comprised of a local and a global shape. The LOCAL shapes are the smaller, solidly shaded shapes. There will be several on each slide. The GLOBAL shape is the shape formed from the collection of local shapes. There is only one per slide. Press the button corresponding either the local or global shape, as prompted. Press the SPACEBAR to continue.</p>", "responses": {'keypress(Space)': 'Continue'},}),
     new lab.canvas.Screen({renderFunction: tutorial, "responses": {'keypress(Space)': 'Continue'},}),
     global,
     local,
     lg,
-    new lab.html.Screen({content: "<h2>Thank you for your participation<h2><button onclick='ds.download()' style='float:right;'>Download</button>"})
+    new lab.html.Screen({content: "<h1>Congrats, you have completed the Local Global Task!</h1><button onclick='ds.download()' style='float:right;'>Download</button>"})
   ],
   datastore: ds
 });
