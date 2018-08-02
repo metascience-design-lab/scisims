@@ -1,4 +1,9 @@
 {
+  "version": [
+    2018,
+    0,
+    3
+  ],
   "components": {
     "1": {
       "id": "1",
@@ -36,7 +41,7 @@
         ]
       },
       "title": "Instructions - Stroop Block 2 HTML",
-      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <div style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \">\n  <h5>\n    <p>You completed the first block ! </p>\n    <p>In the second block, you will be presented with words. Each word will be printed in 1 of 5 colors (red, green, blue, orange, yellow).</p>\n    <p>For example, you might see RED (in green text). </p>\n    <p>Your job is to name the colors of these words. Complete as many trials in two minutes as possible. </p>\n    <p>Press the SPACEBAR key to continue.</p>\n    </h5>\n</div>\n</main>",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <center>\n    <p style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\">\n      You completed the first block! <br></br>In the second block, you will be presented with words. Each word will be printed in 1 of 5 colors (red, green, blue, orange, yellow). For example, you might see RED (in green text).Your job is to name the colors of these words. Complete as many trials in two minutes as possible. Press the SPACEBAR key to continue.</p>\n  </center>\n</main>",
       "_tab": "Content",
       "correctResponse": "Space"
     },
@@ -85,6 +90,44 @@
       "content": "<main class = \"content-horizontal-center content-vertical-center\">\n  <center>\n  <h1>Stroop Task</h1>\n\n  <p style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\">\n    Welcome to the Stroop Task! In this task, there are two blocks.\n      In the first block will be presented with strings of asterisks. \n      Each string will be printed in 1 of 5 colors (red, green, blue, \n      orange, yellow). For example, you might see ***** Your job is to \n      name the colors of these asterisks. Complete as many in two \n      minutes as possible. When you're ready, click Continue to start.</p>\n      </center>\n</main>\n<footer class=\"content-horizontal-right\">\n  <button id=\"continue\">\n    Continue &rarr;\n  </button>\n</footer>\n\n",
       "_tab": "Content",
       "correctResponse": "Space"
+    },
+    "3": {
+      "id": "3",
+      "type": "lab.html.Screen",
+      "parameters": {
+        "rows": [
+          [
+            {
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        ]
+      },
+      "responses": {
+        "rows": [
+          [
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "messageHandlers": {
+        "rows": [
+          [
+            {
+              "title": "",
+              "message": "",
+              "code": ""
+            }
+          ]
+        ]
+      },
+      "title": "Screen",
+      "content": "<main class=\"content-vertical-center content-horizontal-center\">\n  <center>\n  <h1> Congrats, you have completed the Stroop Task! </h1>\n  </center>\n</main>"
     },
     "4": {
       "id": "4",
@@ -142,7 +185,7 @@
       },
       "title": "Block 1 - Loop",
       "shuffle": true,
-      "_tab": "Content",
+      "_tab": "Responses",
       "timeout": "120000",
       "sample": {
         "replace": true,
@@ -540,7 +583,8 @@
         "4",
         "1",
         "6",
-        "8"
+        "8",
+        "3"
       ],
       "plugins": [
         {
@@ -566,11 +610,6 @@
       }
     }
   },
-  "version": [
-    2018,
-    0,
-    3
-  ],
   "files": {
     "files": {
       "index.html": {

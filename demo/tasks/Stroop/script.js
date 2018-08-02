@@ -91,7 +91,7 @@ const study = lab.util.fromObject({
       },
       "messageHandlers": {},
       "title": "Instructions - Stroop Block 2 HTML",
-      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Cdiv style=\"\n    color: black;\n    text-align: center;\n    font-size: 2.2em;\n    font-family: Serif;\n  \"\u003E\n  \u003Ch5\u003E\n    \u003Cp\u003EYou completed the first block ! \u003C\u002Fp\u003E\n    \u003Cp\u003EIn the second block, you will be presented with words. Each word will be printed in 1 of 5 colors (red, green, blue, orange, yellow).\u003C\u002Fp\u003E\n    \u003Cp\u003EFor example, you might see RED (in green text). \u003C\u002Fp\u003E\n    \u003Cp\u003EYour job is to name the colors of these words. Complete as many trials in two minutes as possible. \u003C\u002Fp\u003E\n    \u003Cp\u003EPress the SPACEBAR key to continue.\u003C\u002Fp\u003E\n    \u003C\u002Fh5\u003E\n\u003C\u002Fdiv\u003E\n\u003C\u002Fmain\u003E",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Ccenter\u003E\n    \u003Cp style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\"\u003E\n      You completed the first block! \u003Cbr\u003E\u003C\u002Fbr\u003EIn the second block, you will be presented with words. Each word will be printed in 1 of 5 colors (red, green, blue, orange, yellow). For example, you might see RED (in green text).Your job is to name the colors of these words. Complete as many trials in two minutes as possible. Press the SPACEBAR key to continue.\u003C\u002Fp\u003E\n  \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E",
       "correctResponse": "Space"
     },
     {
@@ -281,6 +281,14 @@ const study = lab.util.fromObject({
       ],
       "title": "Task Completed",
       "parameters": {}
+    },
+    {
+      "type": "lab.html.Screen",
+      "parameters": {},
+      "responses": {},
+      "messageHandlers": {},
+      "title": "Screen",
+      "content": "\u003Cmain class=\"content-vertical-center content-horizontal-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003E Congrats, you have completed the Stroop Task! \u003C\u002Fh1\u003E\n  \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E"
     }
   ]
 })
