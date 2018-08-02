@@ -249,7 +249,7 @@ $("document").ready(function(){
 	function lastPart(){
 		if(trial == 10){
 			$("#done").show();
-			$("#correct").text("You have completed the task!");
+			$("#correct").text("Congrats, you have completed the Keep Track Task!");
 		}
 		var correct = compareResult(mode); //mode 1 = 3 cats 2 = 4 cats;
 		score += correct;

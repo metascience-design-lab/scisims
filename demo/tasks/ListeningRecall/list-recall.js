@@ -23,6 +23,7 @@ $("document").ready(function(){
     $(".btn-continue").click(function(){
         $("#controls").show();
         $("#instructions").hide();
+        $("#heading").hide();
         $("#footer").show();
         $(".btn-continue").hide();
         $("#footer-text").text("Click Play and decide whether the statement you hear is True or False");
@@ -177,7 +178,7 @@ $("document").ready(function(){
         $("#modal").css({"display": "block"});
         $("#controls").hide();
         $("#score-div").show();
-        $("#footer-text").text("The task is complete!");
+        $("#footer-text").text("");
     }
 
 

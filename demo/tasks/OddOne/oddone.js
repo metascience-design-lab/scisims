@@ -75,6 +75,7 @@ $("document").ready(function(){
         $("#shape3").show();
         $("#controls").show();
         $("#instructions").hide();
+        $("#title").hide();
         $("#footer").show();
         $(".btn-continue").hide();
         start();
@@ -310,7 +311,7 @@ $("document").ready(function(){
         $("#modal").css({"display": "block"});
         $("#round-end").hide();
         $("#score-div").show();
-        $("#footer-text").text("The task is complete!");
+        $("#footer-text").text("");
         flag = -1;
     }
 });
