@@ -1,5 +1,5 @@
 const ds = new lab.data.Store();
-const trialDuration = 120;
+const trialDuration = 120000;
 var isLocal = true;
 const localParam = [];
 for(let i = 0; i < 500; i++)
