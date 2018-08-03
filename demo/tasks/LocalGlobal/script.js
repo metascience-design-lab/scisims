@@ -1,5 +1,5 @@
 const ds = new lab.data.Store();
-const trialDuration = 120000;
+const trialDuration = 120;
 var isLocal = true;
 const localParam = [];
 for(let i = 0; i < 500; i++)
@@ -224,6 +224,11 @@ const tutorial = (ts, canvas, ctx, obj) => {
   ctx.fillText("Press the button below to continue", 0, 200);
 }
 
+const final = new lab.html.Screen({content: "<h1>Congrats, you have completed the Local Global Task!</h1>", timeout: 100, });
+final.on('end', () => {
+  $("#modal").css({"display": "block"});
+});
+
 const study = new lab.flow.Sequence({
   content: [
     new lab.html.Frame({context: "<main></main><footer><button id='continue' style='float:right;'>Continue</button></footer>", contextSelector: "main", responses: {"click button#continue": "Continue"}, content:
@@ -233,9 +238,13 @@ const study = new lab.flow.Sequence({
     global,
     local,
     lg,
-    new lab.html.Screen({content: "<h1>Congrats, you have completed the Local Global Task!</h1>"})
+    final
   ],
   datastore: ds
 });
+
+$("#modal-content").click(function(){
+    ds.download();
+})
 
 study.run();
