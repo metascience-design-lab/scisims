@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>	
+	<head>
+		<h2>Embedding a Study in an iframe</h2>
+		<link rel = "stylesheet" type = "text/css" href = "style.css">
+	</head>
+
+	<body>
+		<div id = "frame">
+			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Study;jsessionid=9D385285BB34A2EC423C20FD9245C07D.dev2?tid=0"></iframe>
+		</div>
+		<button onclick = "requestFullScreen(document.body)">FullScreen</button>
+	</body>
+
+</html>
+
+<script>
+	function requestFullScreen(element) {
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) { // Native full screen.
+        requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+    document.getElementById("iframe").classList.add("fullscreen");   
+}
+
+	document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = (evt.key == "Escape" || evt.key == "Esc");
+    } else {
+        isEscape = (evt.keyCode == 27);
+    }
+    if (isEscape) {
+        document.getElementById("iframe").classList.remove("fullscreen");
+	}
+};
+</script>
