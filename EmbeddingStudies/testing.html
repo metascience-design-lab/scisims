@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
-<html>	
+<html>
 	<head>
 		<h2 style = >Embedding a Study in an iframe</h2>
 		<link rel = "stylesheet" type = "text/css" href = "style.css">
+		<script src='jquery-3.3.1.min.js'></script>
 	</head>
 
 	<body>
 		<div id = "frame">
-			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Study;jsessionid=9D385285BB34A2EC423C20FD9245C07D.dev2?tid=0"></iframe>
+			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
-		<button onclick = "requestFullScreen(document.body)">FullScreen</button>
+		<button onclick = "requestFullScreen(document.body)" id="fullbutton">FullScreen</button>
+		<button onclick = "exitFullScreen()" id="exitbutton">Exit</button>
 	</body>
 
 </html>
@@ -28,8 +30,21 @@
             wscript.SendKeys("{F11}");
         }
     }
-    document.getElementById("iframe").classList.add("fullscreen");   
+    document.getElementById("iframe").classList.add("fullscreen");
 }
+
+	function exitFullScreen() {
+		document.getElementById("iframe").classList.remove("fullscreen");
+		if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+	}
 
 	document.onkeydown = function(evt) {
     evt = evt || window.event;
