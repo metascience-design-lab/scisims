@@ -88,13 +88,15 @@ textarea {
             <p>The second block consisted of the one-digit radicals √0, √1, √2, …,  √10. The values √0 and √10 were not analyzed, meaning all analyzed stimuli had one-digit radicands. </p>
             <p>The third block included the perfect squares √0, √1, √4, …, √100. The values √0 and √100 were not analyzed. </p>
             <p> The fourth block included the two-digit radicals √0 , √10, √20, …, √100. The values √0 and √100  were not analyzed, meaning all analyzed stimuli had two-digit radicands.</p>
-            <hr>
+          <hr>
              <center>
                <div id = "frame">
-           			<iframe id = "iframe" src="http://www.psycholab.org/FreeLab/"></iframe>
-           		</div>
-				 <hr>
-       </center>
+              <iframe id="iframe" src="http://www.psycholab.org/FreeLab/" width="500px" height="250px" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+            </div>
+              <button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
+          		<button onclick = "requestFullScreen(document.body)">FullScreen</button>
+           <hr>
+    </center>
             <p> These stimulus sets include one confound. The values √1, √4, and √9 are shared across two types – one-digit radicals and perfect square radicals. This was unavoidable; it was forced by the distribution of perfect squares. The 11 stimuli of each type were presented in random order within a block. There were 44 trials overall. </p>
 			<p>	Two dependent variables, average absolute error and linearity of estimates, were formed. Average absolute error was the absolute difference between a participant’s selected position and the target position. Linearity of estimates was the correlation between participants’ selected positions and target positions (<i>R</i><sup>2</sup>).</p>
 
@@ -103,7 +105,11 @@ textarea {
 			<p>The third task was the strategy questionnaire for the NLE task (8 items). Participants completed a paper-and-pencil strategy questionnaire composed of two prompts for each of the four blocks – natural numbers, one-digit radicals, perfect square radicals, and two-digit radicals. All prompts were in the form “How did you decide where to place x?”, where x was a value from one of the four blocks. See Table 1 for examples. The independent variable was number type (natural numbers, one-digit radicals, perfect square radicals, and two-digit radicals) and the dependent variable was self-reported estimation strategies.</p>
       <hr>
         <center>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjU-DlbDViMSzQc9SgySnjXWP6_vf0d4EyhxemVq8GdT4EnA/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+          <div id = "frame">
+          <iframe id="iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSdjU-DlbDViMSzQc9SgySnjXWP6_vf0d4EyhxemVq8GdT4EnA/viewform?embedded=true" width="700" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </div>
+          <button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
+      		<button onclick = "requestFullScreen(document.body)">FullScreen</button>
         </center>
       <hr>
 
@@ -115,7 +121,11 @@ textarea {
       <p>In second section, participants had to reason conceptually about the results of arithmetic operations on arbitrary rational and irrational numbers (2 items). These were all multiple-choice items. </p>
       <hr>
         <center>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd5Tr-IdZDeD16poEgGcYeNltdhhinsOPZslI4GCahKR0m4XA/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+          <div id = "frame">
+          <iframe id="iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSd5Tr-IdZDeD16poEgGcYeNltdhhinsOPZslI4GCahKR0m4XA/viewform?embedded=true" width="700" height="920" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </div>
+          <button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
+      		<button onclick = "requestFullScreen(document.body)">FullScreen</button>
         </center>
       <hr>
 
@@ -145,6 +155,36 @@ textarea {
 </dt-appendix>
 
 <script>
+
+function requestFullScreen(element) {
+  // Supports most browsers and their versions.
+  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+  if (requestMethod) { // Native full screen.
+      requestMethod.call(element);
+  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+          wscript.SendKeys("{F11}");
+      }
+  }
+  document.getElementById("iframe").classList.add("fullscreen");
+}
+
+document.onkeydown = function(evt) {
+  evt = evt || window.event;
+  var isEscape = false;
+  if ("key" in evt) {
+      isEscape = (evt.key == "Escape" || evt.key == "Esc");
+  } else {
+      isEscape = (evt.keyCode == 27);
+  }
+  if (isEscape) {
+      document.getElementById("iframe").classList.remove("fullscreen");
+}
+};
+
+
 i1_14 = randomInt();
 i2_14 = randomInt();
 while(i2_14 === i1_14)
