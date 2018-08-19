@@ -64,25 +64,25 @@ textarea {
 
       <p> In total, 102 natural number pairs were used in each of blocks 1 and 2. Participants judged the greater of two numbers in the first block. </p>
 
-		<div id="game11" style='background-color:black;' onkeydown="ll11(event)" tabindex="0"> </div> <br>
-    <br>
-    <br>
-		 <p> Participants judged the lesser number in a pair during the second block.</p>
+  <div id="game11" style='background-color:black;' onkeydown="ll11(event)" tabindex="0"> </div> <br>
+  <br>
+  <br>
+	 <p> Participants judged the lesser number in a pair during the second block.</p>
 
-		<div id="game12" style='background-color:black;' onkeydown="ll12(event)" tabindex="0">
-		</div>
-    <br>
-		<p> Natural number pairs were complemented by 102 pairs of radical expressions formed in the same way from √0, √1, √2, …, √9. These pairs were used in blocks 3 and 4. Block 3 required greater judgments.</p>
+	<div id="game12" style='background-color:black;' onkeydown="ll12(event)" tabindex="0">
+	</div>
+  <br>
+	<p> Natural number pairs were complemented by 102 pairs of radical expressions formed in the same way from √0, √1, √2, …, √9. These pairs were used in blocks 3 and 4. Block 3 required greater judgments.</p>
 
-		<div id="game13" style='background-color:black;' onkeydown="ll13(event)" tabindex="0">
-		</div>
-    <br>
-		<p> Block 4 required lesser judgments.</p>
+	<div id="game13" style='background-color:black;' onkeydown="ll13(event)" tabindex="0">
+	</div>
+  <br>
+	<p> Block 4 required lesser judgments.</p>
 
-		<div id="game14" style='background-color:black;' onkeydown="ll14(event)" tabindex="0">
-		</div>
-    <br>
-    <p>Within each block, number pairs were presented in random order. Overall, there were 408 trials. Two dependent variables, accuracy and response time (RT) in milliseconds, were collected. </p>
+	<div id="game14" style='background-color:black;' onkeydown="ll14(event)" tabindex="0">
+	</div>
+  <br>
+  <p>Within each block, number pairs were presented in random order. Overall, there were 408 trials. Two dependent variables, accuracy and response time (RT) in milliseconds, were collected. </p>
 
 			<h3>Number line estimation task</h3>
             <p>The second task was number line estimation (NLE) and it included one within-subjects variable (type) with four levels – natural numbers, one-digit radicals, perfect square radicals, and two-digit radicals. In each level, participants saw 11 stimuli. The data from the smallest stimulus and the largest stimulus were not analyzed because these mapped to one of the poles of the unmarked number line (0 and 10) in all but one case.  </p>
@@ -132,9 +132,6 @@ textarea {
       <hr>
 
 
-
-
-
       <center> <h3>Procedure</h3> </center>
 
 			<p>After obtaining <a href="https://mfr.osf.io/render?url=https://osf.io/wrcs2/?action=download%26mode=render">informed written consent</a>, participants were seated alone in a quiet laboratory room in front of a Windows PC with an extended keyboard, a mouse, and a monitor measuring 55.6 cm diagonally. Participants completed the tasks in a fixed order.</p>
@@ -168,36 +165,6 @@ textarea {
 </dt-appendix>
 
 <script>
-
-function requestFullScreen(element) {
-  // Supports most browsers and their versions.
-  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
-
-  if (requestMethod) { // Native full screen.
-      requestMethod.call(element);
-  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-      var wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
-          wscript.SendKeys("{F11}");
-      }
-  }
-  document.getElementById("iframe").classList.add("fullscreen");
-}
-
-document.onkeydown = function(evt) {
-  evt = evt || window.event;
-  var isEscape = false;
-  if ("key" in evt) {
-      isEscape = (evt.key == "Escape" || evt.key == "Esc");
-  } else {
-      isEscape = (evt.keyCode == 27);
-  }
-  if (isEscape) {
-      document.getElementById("iframe").classList.remove("fullscreen");
-}
-};
-
-
 i1_14 = randomInt();
 i2_14 = randomInt();
 while(i2_14 === i1_14)
@@ -705,6 +672,806 @@ function ll12(event){
 		sleep(500).then(()=>{end12();});
 }
 
+
+	</script>
+
+
+	<script>
+i1_11 = randomInt();
+i2_11 = randomInt();
+while(i2_11 === i1_11)
+    i2_11 = randomInt();
+block11 = false;
+
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function panel11(name,text){
+    a = document.createElement('div');
+    a.setAttribute('id',name);
+    a.setAttribute('style',"float: left;width:50%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = "<font size='10'>"+text+"</font>";
+    return a;
+
+}
+function correct11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:green; background-color:black");
+    a.innerHTML = "<font size='10'>Correct</font>";
+    return a;
+}
+function wrong11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:red; background-color:black");
+    a.innerHTML = "<font size='10'>Incorrect</font>";
+    return a;
+}
+
+function blank11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = " ";
+    return a;
+}
+function whitedot11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black; ");
+    a.innerHTML = "<font size='10'>.</font>";
+    return a;
+}
+
+function showans11(key){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    if(i1_11 > i2_11 && key == "z" || i1_11 < i2_11 && key == "m")
+    {
+        g.appendChild(correct11())
+    }
+    else
+    {
+        g.appendChild(wrong11())
+    }
+    return;
+}
+
+function test1_11(){
+    console.log('asdsad');
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    i1_11 = randomInt();
+    i2_11 = randomInt();
+    while(i2_11 === i1_11)
+        i2_11 = randomInt();
+    g.appendChild(panel11('leftPanel',i1_11.toString()));
+    g.appendChild(panel11('rightPanel',i2_11.toString()));
+    block11 = false;
+}
+function end11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(endscene11());
+}
+function endscene11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black; ");
+	a.innerHTML = "<center>This was a sample block. <br> <br> You only experienced 5 trials out of 102 actual trials (4.9%).</center>";
+    return a;
+}
+function show_blank1_11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(blank11());
+    sleep(250).then(()=>{show_dot11();});
+}
+function show_dot11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(whitedot11());
+    sleep(1000).then(()=>{show_blank2_11();});
+}
+function show_blank2_11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(blank11());
+    sleep(500).then(()=>{test1_11();});
+}
+
+function instructions11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = "<center> Welcome to the experiment ! <br> Two numbers will be shown on the screen. <br> If the number on the left is greater, press the z key. <br> If the number on the right is greater, press the m key. <br><br><br> Advance by pressing Enter twice.</center>";
+    return a;
+
+}
+state11 = 0;
+document.getElementById('game11').appendChild(instructions11());
+function ll11(event){
+    if(state11 < 2){
+        if(event.key != "Enter")
+            return;
+        state11++;
+        if(state11 == 2){
+            g = document.getElementById('game11');
+            while(g.hasChildNodes())
+            {
+                g.removeChild(g.lastChild);
+            }
+            g.appendChild(panel11('leftPanel',i1_11.toString()));
+            g.appendChild(panel11('rightPanel',i2_11.toString()));
+        }
+    }
+    if(block11)
+        return;
+    if(event.key != "z" && event.key != "m")
+        return;
+    block11 = true;
+    showans11(event.key);
+    state11++;
+    if(state11 < 7)
+		sleep(500).then(()=>{show_blank1_11();});
+	else
+		sleep(500).then(()=>{end11();});
+}
+
+
+	</script>
+
+	<script>
+block21 = false;
+state21 = 0;
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+function aaa21(event){
+    if(state21 == 0){
+        state21 = 1;
+        click_next_to_begin21();
+        return;
+    }
+    if(block21)
+        return;
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    block21 = true;
+    x = event.clientX;
+    maxX = event.target.offsetWidth;
+    state21++;
+    if(state21 < 7)
+		sleep(1500).then(()=>{problem21();});
+	else
+		sleep(1500).then(()=>{end21();});
+    return;
+}
+function end21(){
+    block22 = false;
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(endscene22());
+}
+function endscene21(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<center><br><br><br>This was a sample block. <br> <br> You only experienced 5 out of 11 actual trials (~ 45%).</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b></b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+function line21(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:20%;");
+    tp.setAttribute('id',"tp");
+    tp.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-top-style: solid;border-right-style: solid;");
+    tp.innerHTML = "<br>";
+    bt = document.createElement('div');
+    bt.setAttribute('id',"bt");
+    bt.innerHTML = "<br>";
+    bt.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-right-style: solid;");
+    ll.appendChild(bt);
+    ll.appendChild(tp);
+    return ll;
+}
+function label21(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    bt = document.createElement('div');
+    tp.innerHTML = "0";
+    bt.innerHTML = "10";
+    ll.setAttribute('style',"float: left;width:100%;height:20%;display:flex;");
+    bt.setAttribute('style',"float: left;text-align: right;width:10%;height:50%;display:flex;font-weight:bold;");
+    tp.setAttribute('style',"float: left;width:2000%;height:50%;display:flex;font-weight:bold;");
+    ll.appendChild(tp);
+    ll.appendChild(bt);
+    return ll;
+}
+function instructions21(){
+    ll = document.createElement('div');
+
+    i1 = randomInt();
+    ll.innerHTML = "<br><br><center>Estimate the position of <b>"+i1.toString()+"</b> on the number line shown.</center>";
+    ll.setAttribute('style',"float: left;width:100%;height:25%;font-size: 1.55vw;align-items:center;justify-content:center;");
+    return ll;
+}
+function problem21(){
+    block21 = false;
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(label21());
+    g.appendChild(line21());
+    g.appendChild(instructions21());
+}
+function start21(){
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ss21());
+}
+function click_next_to_begin21(){
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ii21());
+}
+function ss21(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<center><br><br><br><br>Click next to begin the experiment.</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b>next</b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+
+function ff21(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "Finished!";
+    return ll;
+}
+function Finished21(){
+    g  =document.getElementById('game21');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ff21());
+}
+
+function ii21(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<br><br><center>In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br><br>To begin, click <b> here</b>.</center>";
+    return ll;
+}
+
+
+start21();
+
+	</script>
+
+
+<!--
+	<script>
+block22 = false;
+state22 = 0;
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+function aaa22(event){
+    if(state22 == 0){
+        state22 = 1;
+        click_next_to_begin22();
+        return;
+    }
+    if(block22)
+        return;
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    block22 = true;
+    x = event.clientX;
+    maxX = event.target.offsetWidth;
+    state22++;
+    if(state22 < 7)
+		sleep(1500).then(()=>{problem22();});
+	else
+		sleep(1500).then(()=>{end22();});
+    return;
+}
+function end22(){
+    block22 = false;
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(endscene22());
+}
+function endscene22(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<center><br><br><br>This was a sample block. <br> <br> You only experienced 5 out of 11 actual trials (~ 45%).</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b></b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+function line22(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:20%;");
+    tp.setAttribute('id',"tp");
+    tp.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-top-style: solid;border-right-style: solid;");
+    tp.innerHTML = "<br>";
+    bt = document.createElement('div');
+    bt.setAttribute('id',"bt");
+    bt.innerHTML = "<br>";
+    bt.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-right-style: solid;");
+    ll.appendChild(bt);
+    ll.appendChild(tp);
+    return ll;
+}
+function label22(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    bt = document.createElement('div');
+    tp.innerHTML = "0";
+    bt.innerHTML = "10";
+    ll.setAttribute('style',"float: left;width:100%;height:20%;display:flex;");
+    bt.setAttribute('style',"float: left;text-align: right;width:10%;height:50%;display:flex;font-weight:bold;");
+    tp.setAttribute('style',"float: left;width:2000%;height:50%;display:flex;font-weight:bold;");
+    ll.appendChild(tp);
+    ll.appendChild(bt);
+    return ll;
+}
+function instructions22(){
+    ll = document.createElement('div');
+
+    i1 = randomInt();
+    ll.innerHTML = "<br><br><center>Estimate the position of <b> √"+i1.toString()+"</b> on the number line shown.</center>";
+    ll.setAttribute('style',"float: left;width:100%;height:25%;font-size: 1.55vw;align-items:center;justify-content:center;");
+    return ll;
+}
+function problem22(){
+    block22 = false;
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(label22());
+    g.appendChild(line22());
+    g.appendChild(instructions22());
+}
+function start22(){
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ss22());
+}
+function click_next_to_begin22(){
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ii22());
+}
+function ss22(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<center><br><br><br><br>Click next to begin the experiment.</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b>next</b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+
+function ff22(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "Finished!";
+    return ll;
+}
+function Finished22(){
+    g  =document.getElementById('game22');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ff22());
+}
+
+function ii22(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<br><br><center>In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br><br>To begin, click <b> here</b>.</center>";
+    return ll;
+}
+
+
+start22();
+
+	</script>
+	<script>
+block23 = false;
+state23 = 0;
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+function aaa23(event){
+    if(state23 == 0){
+        state23 = 1;
+        click_next_to_begin23();
+        return;
+    }
+    if(block23)
+        return;
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    block23 = true;
+    x = event.clientX;
+    maxX = event.target.offsetWidth;
+	if(state23 < 6)
+		sleep(1500).then(()=>{problem23();});
+	else
+		sleep(1500).then(()=>{end23();});
+    state23++;
+    return;
+}
+function end23(){
+    block23 = false;
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(endscene23());
+}
+function endscene23(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "<center>Click next to begin the experiment.</center>";
+	ll.innerHTML = "<center><br><br><br>This was a sample block. <br> <br> You only experienced 5 out of 11 actual trials (~ 45%).</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b></b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+function line23(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:20%;");
+    tp.setAttribute('id',"tp");
+    tp.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-top-style: solid;border-right-style: solid;");
+    tp.innerHTML = "<br>";
+    bt = document.createElement('div');
+    bt.setAttribute('id',"bt");
+    bt.innerHTML = "<br>";
+    bt.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-right-style: solid;");
+    ll.appendChild(bt);
+    ll.appendChild(tp);
+    return ll;
+}
+function label23(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    bt = document.createElement('div');
+    tp.innerHTML = "0";
+    bt.innerHTML = "10";
+    ll.setAttribute('style',"float: left;width:100%;height:20%;display:flex;");
+    bt.setAttribute('style',"float: left;text-align: right;width:10%;height:50%;display:flex;font-weight:bold;");
+    tp.setAttribute('style',"float: left;width:2000%;height:50%;display:flex;font-weight:bold;");
+    ll.appendChild(tp);
+    ll.appendChild(bt);
+    return ll;
+}
+function instructions23(){
+    ll = document.createElement('div');
+    i1 = randomInt();
+    i1 = i1 * i1;
+ll.innerHTML = "<br><br><center>Estimate the position of <b> √"+i1.toString()+" </b> on the number line shown.</center>";
+    ll.setAttribute('style',"float: left;width:100%;height:25%;font-size: 1.55vw;align-items:center;justify-content:center;");
+    return ll;
+}
+function problem23(){
+    block23 = false;
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(label23());
+    g.appendChild(line23());
+    g.appendChild(instructions23());
+}
+function start23(){
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ss23());
+}
+function click_next_to_begin23(){
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ii23());
+}
+function ss23(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "<center>Click next to begin the experiment.</center>";
+	ll.innerHTML = "<center><br><br><br><br>Click next to begin the experiment.</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b>next</b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+
+function ff23(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "Finished!";
+    return ll;
+}
+function Finished23(){
+    g  =document.getElementById('game23');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ff23());
+}
+
+function ii23(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br>To begin, click once on the words shown.";
+	ll.innerHTML = "<center>In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br><br>To begin, click <b> here</b>.</center>";
+	ll.innerHTML = "<br><br><center>In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br><br>To begin, click <b> here</b>.</center>";
+    return ll;
+}
+
+
+start23();
+
+	</script>
+	<script>
+block24 = false;
+state24 = 0;
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+function aaa24(event){
+    if(state24 == 0){
+        state24 = 1;
+        click_next_to_begin24();
+        return;
+    }
+    if(block24)
+        return;
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    block24 = true;
+    x = event.clientX;
+    maxX = event.target.offsetWidth;
+	if(state24 < 6)
+		sleep(1500).then(()=>{problem24();});
+	else
+		sleep(1500).then(()=>{end24();});
+    state24++;
+    return;
+}
+function end24(){
+    block24 = false;
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(endscene24());
+}
+function endscene24(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "<center>Click next to begin the experiment.</center>";
+	ll.innerHTML = "<center><br><br><br>This was a sample block. <br> <br> You only experienced 5 trials out of 11 actual trials (~ 45%).</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b></b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+function line24(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:20%;");
+    tp.setAttribute('id',"tp");
+    tp.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-top-style: solid;border-right-style: solid;");
+    tp.innerHTML = "<br>";
+    bt = document.createElement('div');
+    bt.setAttribute('id',"bt");
+    bt.innerHTML = "<br>";
+    bt.setAttribute('style',"float: left;width:100%;height:50%;border-width:medium; border-left-style: solid;border-right-style: solid;");
+    ll.appendChild(bt);
+    ll.appendChild(tp);
+    return ll;
+}
+function label24(){
+    ll = document.createElement('div');
+    tp = document.createElement('div');
+    bt = document.createElement('div');
+    tp.innerHTML = "0";
+    bt.innerHTML = "10";
+    ll.setAttribute('style',"float: left;width:100%;height:20%;display:flex;");
+    bt.setAttribute('style',"float: left;text-align: right;width:10%;height:50%;display:flex;font-weight:bold;");
+    tp.setAttribute('style',"float: left;width:2000%;height:50%;display:flex;font-weight:bold;");
+    ll.appendChild(tp);
+    ll.appendChild(bt);
+    return ll;
+}
+function instructions24(){
+    ll = document.createElement('div');
+    i1 = randomInt();
+    i1 = i1 * 10;
+ll.innerHTML = "<br><br><center>Estimate the position of <b> √"+i1.toString()+" </b> on the number line shown.</center>";
+    ll.setAttribute('style',"float: left;width:100%;height:25%;font-size: 1.55vw;align-items:center;justify-content:center;");
+    return ll;
+}
+function problem24(){
+    block24 = false;
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    ll = document.createElement('div');
+    g.appendChild(label24());
+    g.appendChild(line24());
+    g.appendChild(instructions24());
+}
+function start24(){
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ss24());
+}
+function click_next_to_begin24(){
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ii24());
+}
+function ss24(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "<center>Click next to begin the experiment.</center>";
+	ll.innerHTML = "<center><br><br><br><br>Click next to begin the experiment.</center>";
+    aa = document.createElement('div');
+    aa.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    aa.innerHTML = "<center><b>next</b></center>";
+    ll.appendChild(aa);
+    return ll;
+}
+
+function ff24(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+    ll.innerHTML = "Finished!";
+    return ll;
+}
+function Finished24(){
+    g  =document.getElementById('game24');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(ff24());
+}
+
+function ii24(){
+    ll = document.createElement('div');
+    ll.setAttribute('style',"float: left;width:100%;height:50%;font-size: 1.3vw;align-items:center;justify-content:center;");
+	ll.innerHTML = "<br><br><center>In the following tasks, you will be shown different numbers.<br> Please estimate their positions as accurately as possible by left-clicking on the number line. <br><br>To begin, click <b> here</b>.</center>";
+    return ll;
+}
+
+start24();
+-->
 
 	</script>
 
