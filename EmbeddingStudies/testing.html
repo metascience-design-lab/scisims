@@ -3,7 +3,6 @@
 	<head>
 		<h2 style = >Embedding a Study in an iframe</h2>
 		<link rel = "stylesheet" type = "text/css" href = "style.css">
-		<script src='jquery-3.3.1.min.js'></script>
 	</head>
 
 	<body>
@@ -13,8 +12,6 @@
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
 		<button onclick = "requestFullScreen(document.body)" id="fullbutton">FullScreen</button>
 		<button onclick = "exitFullScreen()" id="exitbutton">Exit</button>
-	</body>
-
 </html>
 
 <script>
@@ -30,11 +27,9 @@
             wscript.SendKeys("{F11}");
         }
     }
-    document.getElementById("iframe").classList.add("fullscreen");
-}
+	}
 
 	function exitFullScreen() {
-		document.getElementById("iframe").classList.remove("fullscreen");
 		if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
@@ -46,16 +41,15 @@
     }
 	}
 
-	document.onkeydown = function(evt) {
-    evt = evt || window.event;
-    var isEscape = false;
-    if ("key" in evt) {
-        isEscape = (evt.key == "Escape" || evt.key == "Esc");
-    } else {
-        isEscape = (evt.keyCode == 27);
-    }
-    if (isEscape) {
-        document.getElementById("iframe").classList.remove("fullscreen");
+	document.addEventListener('webkitfullscreenchange', function(evt) {
+		updateFullScreen();
+	});
+
+	function updateFullScreen() {
+		if (document.fullScreenElement != null || document.webkitFullscreenElement != null || document.mozFullscreenElement != null || document.msFullscreenElement != null)
+			document.getElementById("iframe").classList.add("fullscreen")
+		else {
+			document.getElementById("iframe").classList.remove("fullscreen")
+		}
 	}
-};
 </script>
