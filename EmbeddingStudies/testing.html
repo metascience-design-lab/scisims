@@ -11,11 +11,14 @@
 			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
-		<button onclick = "requestFullScreen(document.body)" id="fullbutton">FullScreen</button>
+		<button onclick = "requestFullScreen(document.body, 'iframe')" id="fullbutton">FullScreen</button>
 </html>
 
 <script>
-	function requestFullScreen(element) {
+	var activeID = null;
+
+	function requestFullScreen(element, id) {
+		activeID = id;
     // Supports most browsers and their versions.
     var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
@@ -29,17 +32,6 @@
     }
 	}
 
-	function exitFullScreen() {
-		if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-	}
 	document.addEventListener('fullscreenchange', function() {
 		updateFullScreen();
 	}, false);
@@ -55,9 +47,9 @@
 
 	function updateFullScreen() {
 		if (document.fullscreenElement != null || document.webkitFullscreenElement != null || document.mozFullScreenElement != null || document.msFullscreenElement != null)
-			document.getElementById("iframe").classList.add("fullscreen")
+			document.getElementById(activeID).classList.add("fullscreen")
 		else {
-			document.getElementById("iframe").classList.remove("fullscreen")
+			document.getElementById(activeID).classList.remove("fullscreen")
 		}
 	}
 </script>
