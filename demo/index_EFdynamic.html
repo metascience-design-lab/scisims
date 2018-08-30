@@ -29,7 +29,19 @@ textarea {
     margin-left: auto;
     margin-right: auto;
 }
+.fullscreen{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+iframe{
+  background-color: white;
+}
 </style>
+
+<body onscroll="updateScroll()">
 <dt-article>
 	  <center> <h1>Executive functions and achievements in school :</h1> </center>
 	   <center> <h2>Shifting, updating, inhibition, and working memory</h2> </center>
@@ -116,21 +128,22 @@ In summary, the study had three main goals. The first goal was to investigate th
 
   </p>
 
-  <iframe src="tasks/PlusMinus/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
-
+  <iframe id="plusminusframe" src="tasks/PlusMinus/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+  <button onclick = "requestFullScreen(document.body, 'plusminusframe')">FullScreen</button>
   <p>
       The local–global task consisted of sets of figures in which the lines of a global figure—for example, a triangle—are composed of smaller local figures—for example, squares. On one list, participants were instructed to record the number of lines in the global figure—that is, one for a circle, two for an X, three for a triangle, and four for a square. They were instructed to complete as many as possible within 2 minutes. Within the same time limit, on the second list participants were instructed to record the number of lines in the local figure, and on the third list participants were required to alternate between recording the number of lines in the local figure and recording the number in the global figure. The cost of shifting was then calculated as the difference between the number of correct answers given in the alternating list and the average of those in the local and global lists within the given time periods.
   </p>
 
-    <iframe src="tasks/LocalGlobal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
-
+    <iframe id="localglobalframe" src="tasks/LocalGlobal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+    <button onclick = "requestFullScreen(document.body, 'localglobalframe')">FullScreen</button>
     <p>
 
 
       <p>
       The updating tasks were letter memory and the keep track task. In the letter memory task letters were presented serially, for 2,000 ms each, in the centre of the computer screen. The number of letters presented was varied randomly across trials. The task was to recall the last four letters presented in each list. Following the procedure used by Miyake et al. to ensure that the task required continuous updating, the instructions required the participants to rehearse the last four letters out loud throughout the task. After two practice trials participants performed 15 trials. The score given was the number of letters recalled incorrectly. Split-half reliability for this task was calculated as .47.
       </p>
-      <iframe src="tasks/LetterMemory/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="lettermemoryframe" src="tasks/LetterMemory/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'lettermemoryframe')">FullScreen</button>
       <hr>
 
     <p>
@@ -141,7 +154,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       In the keep track task, participants were shown a number of target categories at the bottom of a computer screen. The target categories used here were animals, colours, clothes, countries, and sports. Fifteen words, including three exemplars from each category, were then presented serially in random order in the centre of the computer screen for 2,000 ms each. Participants were required to remember the last word presented in each of the target categories and then write these down at the end of each trial. Participants were not informed of the number of items in each category in order to minimize the possibility that they would monitor the number of instances rather than continuously updating information. Participants performed five trials with three target categories and five trials with four target categories. The score given was the number of words recalled incorrectly. The split-half reliability estimate for this task was .43.
 
       <hr>
-      <iframe src="tasks/KeepTrack/KeepTrack.html" style="width: 100%; min-height: 650px; border: none;"></iframe>
+      <iframe id="keeptrackframe" src="tasks/KeepTrack/KeepTrack.html" style="width: 100%; min-height: 650px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'keeptrackframe')">FullScreen</button>
       <hr>
 
     </p>
@@ -151,7 +165,8 @@ In summary, the study had three main goals. The first goal was to investigate th
 
       Stop signal and Stroop measures were used as inhibition tasks. The stop signal task consisted of two blocks of trials. The first block was used to build up a prepotent categorization response. Participants were presented with a series of 24 monosyllabic words, matched for length and frequency, one at a time in the centre of the computer screen, for 1,000 ms each. They were instructed to verbally categorize each as an animal or nonanimal. They were given 2,000 ms to do so. In the second block of 48 trials the procedure was the same with the exception that participants were instructed not to respond—that is, to inhibit the categorization response when given a particular signal. The signal consisted of three asterisks presented below the word. Asterisks were presented on 16 of the trials. As recommended by Logan the instructions emphasized that participants should not slow down to wait for possible signals, and if slowing was detected the experimenter reminded them to continue responding as quickly as possible. The score given was the number of categorization responses given to the “stop” trials. Split-half reliability for the stop-signal task was .81.
       <hr>
-      <iframe src="tasks/StopSignal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="stopsignalframe" src="tasks/StopSignal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'stopsignalframe')">FullScreen</button>
       <hr>
 
     </p>
@@ -162,7 +177,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       In the Stroop task participants were presented with strings of asterisks, each printed in one of five colours. Participants were asked to name the colours. They were given 2 minutes to complete as many as possible. Participants were then presented with colour words in incongruent colours—for example, BLUE in yellow ink, or RED in green ink. Again, participants were required to name the colour of the stimuli and to complete as many as possible within 2 minutes. The score given was the difference between the numbers of colours correctly named for the two types of stimulus.
 
       <hr>
-      <iframe src="tasks/Stroop/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="stroopframe" src="tasks/Stroop/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'stroopframe')">FullScreen</button>
       <hr>
 
     </p>
@@ -174,7 +190,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       In the listening recall task participants hear a series of sentences and are asked to judge the veracity of each. At the end of each trial they are asked to recall the final word from each sentence. After two practice trials, each participant is given four trials with two sentences. After each four trials the number of sentences is increased by one. When two trials at any list length are incorrectly recalled, then the test ends. Each participant is given a score of the maximum list length at which they are correct on at least three out of four trials and an additional half a point if correct on two trials at the next list length. Test–retest reliability for listening recall is .38 for 9- to 11-year-old children.
 
       <hr>
-      <iframe src="tasks/ListeningRecall/list-recall.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="listeningrecallframe" src="tasks/ListeningRecall/list-recall.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'listeningrecallframe')">FullScreen</button>
       <hr>
     </p>
 
@@ -184,7 +201,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       <p>
       The backwards digit recall test requires each participant to recall a sequence of spoken digits in reverse order. Testing begins with three trials at a list length of two digits. The number of digits then increases by one every three trials until two lists of a particular length are recalled incorrectly. The score given is the maximum list length at which three sequences are recalled correctly. Test–retest reliability for backwards digit recall is .71 for children aged 9 to 11 years.
       <hr>
-      <iframe src="tasks/BackwardsDigit/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="backwardsdigitframe" src="tasks/BackwardsDigit/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'backwardsdigitframe')">FullScreen</button>
       </p>
       <hr>
 
@@ -194,7 +212,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       The odd-one-out task consisted of sets of three shapes. Two of the shapes were identical, and one was different. The participant's task was to indicate the odd one out. Each set of three shapes was shown for only two seconds and was then immediately followed by another set, to minimize the possibility that participants delayed the judgement of the odd one out to rehearse the spatial locations. Following each trial, the participant was asked to recall the spatial locations of all the odd-one-out shapes, in their original order. The participant was given a score of the longest list length at which they were correct on at least two out of three trials. An extra half a point was awarded if the child made a correct response on one out of the three trials at the next list length. Test–retest reliability for the odd-one-out task is .81.
 
       <hr>
-      <iframe src="tasks/OddOne/oddone.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <iframe id="oddoneframe" src="tasks/OddOne/oddone.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'oddoneframe')">FullScreen</button>
       <hr>
 
     </p>
@@ -206,7 +225,8 @@ In summary, the study had three main goals. The first goal was to investigate th
       The spatial span task was modified for the purposes of the present study in order to eliminate any involvement of long-term memory or verbal working memory. The test stimuli were thus nonsense shapes presented either in a normal view or as a mirror image, in one of eight spatial orientations. Each participant was required to state whether each shape presented was “normal” or a “mirror image” of an original shape that remained present on one side of the computer screen, while keeping track of the orientation of each shape. To ease the processing burden of locating the top of each shape prior to storing the location for later recall, the top of each shape was marked with a red dot. After each trial at list lengths of two to seven shapes, the participant was asked to recall the position of the top of each shape by pointing to one of eight given locations. Each shape was shown for only two seconds to minimize the possibility that participants delay the mental rotation in order to rehearse the orientations. The participant was given a score of the longest list length at which they were correct on at least two out of the three trials. They were given half a point extra if they were correct on one out of three trials at the next list length. Test–retest reliability for a simplified version of spatial span is .82.
 
       <hr>
-      <iframe src="tasks/SpatialSpan/spatial.html" style="width: 100%; min-height: 700px; border: none;"></iframe>
+      <iframe id="spatialspanframe" src="tasks/SpatialSpan/spatial.html" style="width: 100%; min-height: 700px; border: none;"></iframe>
+      <button onclick = "requestFullScreen(document.body, 'spatialspanframe')">FullScreen</button>
       <hr>
 
       </p>
@@ -219,6 +239,55 @@ In summary, the study had three main goals. The first goal was to investigate th
 
       </p>
 
+</script>
+
+</body>
+
+<script>
+	var activeID = null;
+  var curScroll = 0;
+
+  function updateScroll() {
+    if (document.fullscreenElement == null && document.webkitFullscreenElement == null && document.mozFullScreenElement == null && document.msFullscreenElement == null)
+      curScroll = document.documentElement.scrollTop;
+  }
+
+	function requestFullScreen(element, id) {
+		activeID = id;
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) { // Native full screen.
+        requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+	}
+
+	document.addEventListener('fullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('webkitfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('mozfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('msfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+
+	function updateFullScreen() {
+		if (document.fullscreenElement != null || document.webkitFullscreenElement != null || document.mozFullScreenElement != null || document.msFullscreenElement != null)
+			document.getElementById(activeID).classList.add("fullscreen")
+		else {
+			document.getElementById(activeID).classList.remove("fullscreen")
+      document.documentElement.scrollTop = curScroll;
+		}
+	}
 </script>
 
 <script type="text/bibliography">
