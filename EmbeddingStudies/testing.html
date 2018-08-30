@@ -3,6 +3,7 @@
 	<head>
 		<h2 style = >Embedding a Study in an iframe</h2>
 		<link rel = "stylesheet" type = "text/css" href = "style.css">
+		<meta charset="UTF-8"> 
 	</head>
 
 	<body>
@@ -40,13 +41,21 @@
       document.msExitFullscreen();
     }
 	}
-
-	document.addEventListener('webkitfullscreenchange', function(evt) {
+	document.addEventListener('fullscreenchange', function() {
 		updateFullScreen();
-	});
+	}, false);
+	document.addEventListener('webkitfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('mozfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('msfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
 
 	function updateFullScreen() {
-		if (document.fullScreenElement != null || document.webkitFullscreenElement != null || document.mozFullscreenElement != null || document.msFullscreenElement != null)
+		if (document.fullscreenElement != null || document.webkitFullscreenElement != null || document.mozFullScreenElement != null || document.msFullscreenElement != null)
 			document.getElementById("iframe").classList.add("fullscreen")
 		else {
 			document.getElementById("iframe").classList.remove("fullscreen")
