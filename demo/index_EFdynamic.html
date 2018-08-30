@@ -29,12 +29,21 @@ textarea {
     margin-left: auto;
     margin-right: auto;
 }
+p{
+  text-align: left;
+}
+body{
+	text-align: center;
+}
 .fullscreen{
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+button{
+  text-align: center;
 }
 iframe{
   background-color: white;
@@ -134,7 +143,7 @@ In summary, the study had three main goals. The first goal was to investigate th
       The local–global task consisted of sets of figures in which the lines of a global figure—for example, a triangle—are composed of smaller local figures—for example, squares. On one list, participants were instructed to record the number of lines in the global figure—that is, one for a circle, two for an X, three for a triangle, and four for a square. They were instructed to complete as many as possible within 2 minutes. Within the same time limit, on the second list participants were instructed to record the number of lines in the local figure, and on the third list participants were required to alternate between recording the number of lines in the local figure and recording the number in the global figure. The cost of shifting was then calculated as the difference between the number of correct answers given in the alternating list and the average of those in the local and global lists within the given time periods.
   </p>
 
-    <iframe id="localglobalframe" src="tasks/LocalGlobal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+    <iframe id="localglobalframe" src="tasks/LocalGlobal/index.html" style="width: 100%; min-height: 700px; border: none;"></iframe>
     <button onclick = "requestFullScreen(document.body, 'localglobalframe')">FullScreen</button>
     <p>
 
@@ -154,7 +163,7 @@ In summary, the study had three main goals. The first goal was to investigate th
       In the keep track task, participants were shown a number of target categories at the bottom of a computer screen. The target categories used here were animals, colours, clothes, countries, and sports. Fifteen words, including three exemplars from each category, were then presented serially in random order in the centre of the computer screen for 2,000 ms each. Participants were required to remember the last word presented in each of the target categories and then write these down at the end of each trial. Participants were not informed of the number of items in each category in order to minimize the possibility that they would monitor the number of instances rather than continuously updating information. Participants performed five trials with three target categories and five trials with four target categories. The score given was the number of words recalled incorrectly. The split-half reliability estimate for this task was .43.
 
       <hr>
-      <iframe id="keeptrackframe" src="tasks/KeepTrack/KeepTrack.html" style="width: 100%; min-height: 650px; border: none;"></iframe>
+      <iframe id="keeptrackframe" src="tasks/KeepTrack/keeptrack.html" style="width: 100%; min-height: 650px; border: none;"></iframe>
       <button onclick = "requestFullScreen(document.body, 'keeptrackframe')">FullScreen</button>
       <hr>
 
@@ -245,7 +254,7 @@ In summary, the study had three main goals. The first goal was to investigate th
 
 <script>
 	var activeID = null;
-  var curScroll = 0;
+  var curScroll = document.documentElement.scrollTop;
 
   function updateScroll() {
     if (document.fullscreenElement == null && document.webkitFullscreenElement == null && document.mozFullScreenElement == null && document.msFullscreenElement == null)
