@@ -1,4 +1,17 @@
 <!doctype html>
+<!--
+  Documentation:
+    FullScreen
+      css
+        .fullscreen class
+        iframe background-color: white
+      js
+        copy fullscreen <script> tag (marked below)
+        TODO Test code on other platforms
+      html
+        give each iframe a unique id
+        <button onclick = "requestFullScreen(document.body, 'uniqueid')">FullScreen</button>
+-->
 <meta charset="utf-8">
 
 <script src="https://distill.pub/template.v1.js"></script>
@@ -161,6 +174,7 @@
   </dt-article>
 </body>
 
+<!--START FULLSCREEN CODE-->
 <script>
 	var activeID = null;
   var curScroll = document.documentElement.scrollTop;
@@ -207,6 +221,7 @@
 		}
 	}
 </script>
+<!--END FULLSCREEN CODE-->
 
 <script type="text/bibliography">
   @article{gregor2015draw,
