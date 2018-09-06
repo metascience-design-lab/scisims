@@ -29,6 +29,12 @@ MathJax.Hub.Config({
     top: 0;
     left: 0;
   }
+  body{
+    text-align: center;
+  }
+  p{
+    text-align: left;
+  }
   textarea {
     display: block;
     margin-left: auto;
@@ -38,7 +44,7 @@ MathJax.Hub.Config({
     background-color: white;
   }
 </style>
-<body>
+<body onscroll="updateScroll()">
   <dt-article class='centered'>
 	<center> <h1>How the Abstract Becomes Concrete</h1> </center>
 	<center> <h2>Irrational Numbers Are Anchored on Natural Numbers and Perfect Squares</h2> </center>
@@ -81,16 +87,27 @@ MathJax.Hub.Config({
   </p>
 
   <div id="game11" style='background-color:black;' onkeydown="ll11(event)" tabindex="0"></div>
-  <button onclick = "requestFullScreen(document.body, 'game11')">FullScreen</button>
+  <div>
+    <button onclick = "requestFullScreen(document.body, 'game11')">FullScreen</button>
+  </div>
 
 	 <p> Participants judged the lesser number in a pair during the second block.</p>
    <div id="game12" style='background-color:black;' onkeydown="ll12(event)" tabindex="0"></div>
+   <div>
+     <button onclick = "requestFullScreen(document.body, 'game12')">FullScreen</button>
+   </div>
 
 	 <p> Natural number pairs were complemented by 102 pairs of radical expressions formed in the same way from √0, √1, √2, …, √9. These pairs were used in blocks 3 and 4. Block 3 required greater judgments.</p>
 	 <div id="game13" style='background-color:black;' onkeydown="ll13(event)" tabindex="0"></div>
+   <div>
+     <button onclick = "requestFullScreen(document.body, 'game13')">FullScreen</button>
+   </div>
 
    <p> Block 4 required lesser judgments.</p>
    <div id="game14" style='background-color:black;' onkeydown="ll14(event)" tabindex="0"></div>
+   <div>
+     <button onclick = "requestFullScreen(document.body, 'game14')">FullScreen</button>
+   </div>
   <br>
   <p>
     Within each block, number pairs were presented in random order. Overall, there were 408 trials. Two dependent variables, accuracy and response time (RT) in milliseconds, were collected.
@@ -108,7 +125,7 @@ MathJax.Hub.Config({
       <iframe id="labframe" src="http://www.psycholab.org/FreeLab/" width="1000px" height="400px" scrolling = "no" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
     </div>
     <button onclick="window.location.href='http://www.psycholab.org/FreeLab/'">Source</button>
-		<button onclick = "requestFullScreen(document.body, 'iframe')">FullScreen</button>
+		<button onclick = "requestFullScreen(document.body, 'labframe')">FullScreen</button>
   </center>
   <p> These stimulus sets include one confound. The values √1, √4, and √9 are shared across two types – one-digit radicals and perfect square radicals. This was unavoidable; it was forced by the distribution of perfect squares. The 11 stimuli of each type were presented in random order within a block. There were 44 trials overall. </p>
 	<p>	Two dependent variables, average absolute error and linearity of estimates, were formed. Average absolute error was the absolute difference between a participant’s selected position and the target position. Linearity of estimates was the correlation between participants’ selected positions and target positions (<i>R</i><sup>2</sup>).</p>
@@ -144,8 +161,10 @@ MathJax.Hub.Config({
   </p>
 
   <center>
-    <iframe width='750' height='480' src='https://my.matterport.com/show/?m=KGNW8SXcYRG' frameborder='0' allowfullscreen = 'true'></iframe>
+    <iframe id="matterportframe" width='750' height='480' src='https://my.matterport.com/show/?m=KGNW8SXcYRG' frameborder='0' allowfullscreen = 'true'></iframe>
   </center>
+  <button onclick="window.location.href='https://my.matterport.com/show/?m=KGNW8SXcYRG'">Source</button>
+  <button onclick = "requestFullScreen(document.body,'matterportframe')">FullScreen</button>
 
         <!--
         <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
