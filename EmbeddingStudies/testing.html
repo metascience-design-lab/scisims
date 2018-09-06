@@ -9,17 +9,22 @@
 	<body>
 		<div id = "frame">
 			<vbox>
-				<button onclick="document.getElementById('iframe').src='text.html'">Text</button>
-				<button onclick="document.getElementById('iframe').src='video.html'">Video</button>
-				<button onclick="document.getElementById('iframe').src='sim.html'">Simulation</button>
+				<button onclick="document.getElementById('iframe').src = 'text.html'">Text</button>
+				<button onclick="document.getElementById('iframe').src = 'https://www.youtube.com/embed/sDj72zqZakE'">Video</button>
+				<button onclick="document.getElementById('iframe').src = 'LocalGlobal/index.html'">Simulation</button>
 			</vbox>
-			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
+			<div id="contentframe">
+				<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
+			</div>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
 		<button onclick = "requestFullScreen(document.body, 'iframe')">FullScreen</button>
 </html>
 
 <script>
+	const text = '<iframe src="text.html"></iframe>';
+	const vid = '<iframe width="560" height="315" src="https://www.youtube.com/embed/sDj72zqZakE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+	const sim = '<iframe src="/LocalGlobal/index.html"></iframe>';
 	var activeID = null;
 
 	function requestFullScreen(element, id) {
