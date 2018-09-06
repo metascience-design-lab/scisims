@@ -1,0 +1,213 @@
+<!doctype html>
+<!--
+  Documentation:
+    FullScreen
+      css
+        .fullscreen class
+        iframe background-color: white
+      js
+        copy fullscreen <script> tag (marked below)
+        TODO Test code on other platforms
+      html
+        give each element a unique id
+        <button onclick = "requestFullScreen(document.body, 'uniqueid')">FullScreen</button>
+-->
+<meta charset="utf-8">
+
+<script src="https://distill.pub/template.v1.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link href="articlestyle.css" rel="stylesheet">
+<script type="text/front-matter">
+  title: "Executive functions and achievements in school: Shifting, updating, inhibition, and working memory"
+  description: "Usability Testing"
+  authors: ['Helen L. St Clair-Thompson', 'Susan E. Gathercole']
+</script>
+
+<style>
+  textarea{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  p{
+    text-align: left;
+  }
+  body{
+    text-align: center;
+  }
+  .fullscreen{
+    width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+  }
+  button{
+    text-align: center;
+  }
+  iframe{
+    background-color: white;
+  }
+</style>
+
+<body onscroll="updateScroll()">
+  <dt-article class="centered">
+    <center> <h1>Executive functions and achievements in school :</h1> </center>
+  	<center> <h2>Shifting, updating, inhibition, and working memory</h2> </center>
+    <center> <dt-byline></dt-byline> </center>
+    <hr>
+  	<center> <h3> Introduction </h3> </center>
+    <p>
+      There is now substantial evidence that executive functioning plays an important role in learning during childhood. Miyake et al. identified three key executive functions: shifting, updating, and inhibition. Shifting involves moving backwards and forwards between multiple tasks, operations, or mental sets. Updating requires monitoring and coding of incoming information and appropriately revising the items held in working memory by replacing no-longer-relevant information with new, more relevant information. Inhibition in this context refers to the ability to deliberately inhibit dominant, automatic, or prepotent responses. Miyake et al. presented evidence that these three executive functions were separable.
+    </p>
+    <p>
+      The purpose of the present study was to investigate the organization of executive functions including working memory in children. Multiple measures were taken of working memory. In the listening recall task, participants make judgements about the meaning of each of a series of sentences and then attempt to recall the final word of each sentence in sequence. In backwards digit recall participants must recall a sequence of digit names in reverse order. Recalling a sequence in reverse order is also assumed to increase task demands and therefore employ executive resources.
+    </p>
+    <p>
+      In our study, measures of visuo-spatial as well as verbal working memory were included. Verbal and visuo-spatial working memory skills have been found to be dissociated in both children and adults. Conversely, spatial span but not reading span was significantly correlated with spatial ability. In an exploratory factor analysis spatial span and reading span also loaded on to distinct factors. A major goal of the present study was to investigate whether the two domains of complex memory span task share common or distinct links with other executive functions.
+    </p>
+    <p>
+      Our study was also designed to assess the extent to which the executive processes of shifting, working memory, and inhibition relate to learning abilities and achievements in childhood. Several studies have demonstrated a relationship between performance on working memory tasks and reading, comprehension, and arithmetic.
+    </p>
+    <p>
+      In summary, the study had three main goals. The first goal was to investigate the extent to which the three executive functions of shifting, updating, and inhibition are unitary or separable in children. This was examined by exploring the factor structure of the executive tasks. The second goal was to investigate the executive functions underlying performance on working memory span tasks. The final goal of the study was to assess the extent to which executive functions contribute to children's learning achievements.
+    </p>
+
+		<h3>Method</h3>
+    <h3>Participants</h3>
+    <p>
+      The participants were 51 children with a mean age of 11 years and 9 months, attending a local education authority school in the north east of England. The pupils completed the executive tasks and working memory assessments during the first term of secondary school. The national curriculum tests had been completed approximately three months earlier during the final term of primary school.
+    </p>
+
+    <h3>Procedure</h3>
+    <p>
+      All participants completed a set of six executive tasks, composed of two tasks designed to tap each of the three functions of shifting, updating, and inhibition. The tasks were based on those employed by Miyake et al. All participants were also tested on four working memory span tasks, two of each requiring the storage and processing of verbal and visuo-spatial information. The schools supplied the attainment scores of each child on national curriculum tests in English, mathematics, and science.
+    </p>
+    <p>
+      Each child was tested in three sessions. Testing took place in a quiet room in school. The order of test administration was held constant. The shifting, updating, and inhibition tasks were administered first, followed by the two verbal and finally two visuo-spatial working memory span tasks.
+    </p>
+
+    <h3>Executive Tasks</h3>
+
+    <p>
+      The following shifting tasks were administered. The plus–minus task consisted of three lists of 30 two-digit numbers. The numbers were prerandomized without replacement. On the first list participants were instructed to add 3 to each number. They were told to complete as many as possible within 2 minutes. Within the same time limit, on the second list the participants were instructed to subtract 3 from each number, and on the third list the participants were required to alternate between adding and subtracting 3 from the numbers. The cost of shifting was then calculated as the difference between the number of correct answers given in the alternating list and the average of those in the addition and subtraction lists within the given time periods.
+    </p>
+    <iframe id="plusminusframe" src="tasks/PlusMinus/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      The local–global task consisted of sets of figures in which the lines of a global figure—for example, a triangle—are composed of smaller local figures—for example, squares. On one list, participants were instructed to record the number of lines in the global figure—that is, one for a circle, two for an X, three for a triangle, and four for a square. They were instructed to complete as many as possible within 2 minutes. Within the same time limit, on the second list participants were instructed to record the number of lines in the local figure, and on the third list participants were required to alternate between recording the number of lines in the local figure and recording the number in the global figure. The cost of shifting was then calculated as the difference between the number of correct answers given in the alternating list and the average of those in the local and global lists within the given time periods.
+    </p>
+    <iframe id="localglobalframe" src="tasks/LocalGlobal/index.html" style="width: 100%; min-height: 700px; border: none;"></iframe>
+
+    <p>
+      The updating tasks were letter memory and the keep track task. In the letter memory task letters were presented serially, for 2,000 ms each, in the centre of the computer screen. The number of letters presented was varied randomly across trials. The task was to recall the last four letters presented in each list. Following the procedure used by Miyake et al. to ensure that the task required continuous updating, the instructions required the participants to rehearse the last four letters out loud throughout the task. After two practice trials participants performed 15 trials. The score given was the number of letters recalled incorrectly. Split-half reliability for this task was calculated as .47.
+    </p>
+    <iframe id="lettermemoryframe" src="tasks/LetterMemory/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      In the keep track task, participants were shown a number of target categories at the bottom of a computer screen. The target categories used here were animals, colours, clothes, countries, and sports. Fifteen words, including three exemplars from each category, were then presented serially in random order in the centre of the computer screen for 2,000 ms each. Participants were required to remember the last word presented in each of the target categories and then write these down at the end of each trial. Participants were not informed of the number of items in each category in order to minimize the possibility that they would monitor the number of instances rather than continuously updating information. Participants performed five trials with three target categories and five trials with four target categories. The score given was the number of words recalled incorrectly. The split-half reliability estimate for this task was .43.
+    </p>
+    <iframe id="keeptrackframe" src="tasks/KeepTrack/keeptrack.html" style="width: 100%; min-height: 650px; border: none;"></iframe>
+
+    <p>
+      Stop signal and Stroop measures were used as inhibition tasks. The stop signal task consisted of two blocks of trials. The first block was used to build up a prepotent categorization response. Participants were presented with a series of 24 monosyllabic words, matched for length and frequency, one at a time in the centre of the computer screen, for 1,000 ms each. They were instructed to verbally categorize each as an animal or nonanimal. They were given 2,000 ms to do so. In the second block of 48 trials the procedure was the same with the exception that participants were instructed not to respond—that is, to inhibit the categorization response when given a particular signal. The signal consisted of three asterisks presented below the word. Asterisks were presented on 16 of the trials. As recommended by Logan the instructions emphasized that participants should not slow down to wait for possible signals, and if slowing was detected the experimenter reminded them to continue responding as quickly as possible. The score given was the number of categorization responses given to the “stop” trials. Split-half reliability for the stop-signal task was .81.
+    </p>
+    <iframe id="stopsignalframe" src="tasks/StopSignal/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      In the Stroop task participants were presented with strings of asterisks, each printed in one of five colours. Participants were asked to name the colours. They were given 2 minutes to complete as many as possible. Participants were then presented with colour words in incongruent colours—for example, BLUE in yellow ink, or RED in green ink. Again, participants were required to name the colour of the stimuli and to complete as many as possible within 2 minutes. The score given was the difference between the numbers of colours correctly named for the two types of stimulus.
+    </p>
+    <iframe id="stroopframe" src="tasks/Stroop/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <h3>Working Memory Span Tasks</h3>
+
+    <p>
+      In the listening recall task participants hear a series of sentences and are asked to judge the veracity of each. At the end of each trial they are asked to recall the final word from each sentence. After two practice trials, each participant is given four trials with two sentences. After each four trials the number of sentences is increased by one. When two trials at any list length are incorrectly recalled, then the test ends. Each participant is given a score of the maximum list length at which they are correct on at least three out of four trials and an additional half a point if correct on two trials at the next list length. Test–retest reliability for listening recall is .38 for 9- to 11-year-old children.
+    </p>
+    <iframe id="listeningrecallframe" src="tasks/ListeningRecall/list-recall.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      The backwards digit recall test requires each participant to recall a sequence of spoken digits in reverse order. Testing begins with three trials at a list length of two digits. The number of digits then increases by one every three trials until two lists of a particular length are recalled incorrectly. The score given is the maximum list length at which three sequences are recalled correctly. Test–retest reliability for backwards digit recall is .71 for children aged 9 to 11 years.
+    </p>
+    <iframe id="backwardsdigitframe" src="tasks/BackwardsDigit/index.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      The odd-one-out task consisted of sets of three shapes. Two of the shapes were identical, and one was different. The participant's task was to indicate the odd one out. Each set of three shapes was shown for only two seconds and was then immediately followed by another set, to minimize the possibility that participants delayed the judgement of the odd one out to rehearse the spatial locations. Following each trial, the participant was asked to recall the spatial locations of all the odd-one-out shapes, in their original order. The participant was given a score of the longest list length at which they were correct on at least two out of three trials. An extra half a point was awarded if the child made a correct response on one out of the three trials at the next list length. Test–retest reliability for the odd-one-out task is .81.
+    </p>
+    <iframe id="oddoneframe" src="tasks/OddOne/oddone.html" style="width: 100%; min-height: 600px; border: none;"></iframe>
+
+    <p>
+      The spatial span task was modified for the purposes of the present study in order to eliminate any involvement of long-term memory or verbal working memory. The test stimuli were thus nonsense shapes presented either in a normal view or as a mirror image, in one of eight spatial orientations. Each participant was required to state whether each shape presented was “normal” or a “mirror image” of an original shape that remained present on one side of the computer screen, while keeping track of the orientation of each shape. To ease the processing burden of locating the top of each shape prior to storing the location for later recall, the top of each shape was marked with a red dot. After each trial at list lengths of two to seven shapes, the participant was asked to recall the position of the top of each shape by pointing to one of eight given locations. Each shape was shown for only two seconds to minimize the possibility that participants delay the mental rotation in order to rehearse the orientations. The participant was given a score of the longest list length at which they were correct on at least two out of the three trials. They were given half a point extra if they were correct on one out of three trials at the next list length. Test–retest reliability for a simplified version of spatial span is .82.
+    </p>
+    <iframe id="spatialspanframe" src="tasks/SpatialSpan/spatial.html" style="width: 100%; min-height: 700px; border: none;"></iframe>
+
+    <h3>Scholastic Attainment Tests</h3>
+    <p>
+      Attainment scores in English, mathematics, and science for each pupil were based on standardized tests taken in the summer term of the previous school year and were independent of teacher assessments of ability. At 11 years of age, English test scores incorporate measures of reading, writing, spelling, and handwriting. Two mathematics papers and a mental arithmetic test are used to generate a mathematics score, and there are two science papers. Each test has high reliability, with Cronbach's α for each subtest ranging from .86 to .89.
+    </p>
+  </dt-article>
+</body>
+
+<!--START FULLSCREEN CODE-->
+<script>
+	var activeID = null;
+  var curScroll = document.documentElement.scrollTop;
+
+  function updateScroll() {
+    if (document.fullscreenElement == null && document.webkitFullscreenElement == null && document.mozFullScreenElement == null && document.msFullscreenElement == null)
+      curScroll = document.documentElement.scrollTop;
+  }
+
+	function requestFullScreen(element, id) {
+		activeID = id;
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) { // Native full screen.
+        requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+	}
+
+	document.addEventListener('fullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('webkitfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('mozfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+	document.addEventListener('msfullscreenchange', function() {
+		updateFullScreen();
+	}, false);
+
+	function updateFullScreen() {
+		if (document.fullscreenElement != null || document.webkitFullscreenElement != null || document.mozFullScreenElement != null || document.msFullscreenElement != null)
+			document.getElementById(activeID).classList.add("fullscreen")
+		else {
+			document.getElementById(activeID).classList.remove("fullscreen")
+      document.documentElement.scrollTop = curScroll;
+		}
+	}
+</script>
+<!--END FULLSCREEN CODE-->
+
+<script type="text/bibliography">
+  @article{gregor2015draw,
+    title={DRAW: A recurrent neural network for image generation},
+    author={Gregor, Karol and Danihelka, Ivo and Graves, Alex and Rezende, Danilo Jimenez and Wierstra, Daan},
+    journal={arXivreprint arXiv:1502.04623},
+    year={2015},
+    url={https://arxiv.org/pdf/1502.04623.pdf}
+  }
+</script>
