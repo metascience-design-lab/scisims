@@ -8,6 +8,7 @@ iframe{
 	height: 400px;
 	border-style: solid;
 	border-width: thick;
+	background-color: white;
 }
 h2{
 	text-align: center;

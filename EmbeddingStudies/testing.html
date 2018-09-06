@@ -8,6 +8,11 @@
 
 	<body>
 		<div id = "frame">
+			<vbox>
+				<button onclick="document.getElementById('iframe').src='text.html'">Text</button>
+				<button onclick="document.getElementById('iframe').src='video.html'">Video</button>
+				<button onclick="document.getElementById('iframe').src='sim.html'">Simulation</button>
+			</vbox>
 			<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
