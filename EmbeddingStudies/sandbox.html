@@ -10,15 +10,16 @@
 		<div id = "frame">
 			<script>
 				const text = '<img id="content" src="09-posterization-opt.jpg"></img>';
-				const video = '<iframe id="content" src="https://www.youtube.com/embed/sDj72zqZakE?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+				const videoEmbed = '<iframe id="content" src="https://www.youtube.com/embed/sDj72zqZakE?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+				const videoLocal = '<video id="content" controls><source src="waffle.mp4" type="video/mp4">Video Playback Error</video>';
 				const sim = '<iframe id="content" src="LocalGlobal/index.html"></iframe>'
 			</script>
-			<button onclick="document.getElementById('contentframe').innerHTML = text">Text</button>
-			<button onclick="document.getElementById('contentframe').innerHTML = video">Video</button>
-			<button onclick="document.getElementById('contentframe').innerHTML = sim">Simulation</button>
-			<div id="contentframe">
+			<button onclick="document.getElementById('content').outerHTML = text">Text</button>
+			<button onclick="document.getElementById('content').outerHTML = videoLocal">Video</button>
+			<button onclick="document.getElementById('content').outerHTML = sim">Simulation</button>
+			<div>
 				<iframe id = "content" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
-			</div>
+			<div>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
 		<button onclick="requestFullScreen(document.body, 'content')">FullScreen</button>
