@@ -8,17 +8,22 @@
 
 	<body>
 		<div id = "frame">
+			<script>
+				const text = '<img id="content" src="09-posterization-opt.jpg"></img>';
+				const video = '<iframe id="content" width="560" height="315" src="https://www.youtube.com/embed/sDj72zqZakE?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+				const sim = '<iframe id="content" src="LocalGlobal/index.html"></iframe>'
+			</script>
 			<div class="btn-group">
-				<button onclick="document.getElementById('iframe').src = 'text.html'">Text</button>
-				<button onclick="document.getElementById('iframe').src = 'https://www.youtube.com/embed/sDj72zqZakE'">Video</button>
-				<button onclick="document.getElementById('iframe').src = 'LocalGlobal/index.html'">Simulation</button>
+				<button onclick="document.getElementById('contentframe').innerHTML = text">Text</button>
+				<button onclick="document.getElementById('contentframe').innerHTML = video">Video</button>
+				<button onclick="document.getElementById('contentframe').innerHTML = sim">Simulation</button>
 			</div>
 			<div id="contentframe">
-				<iframe id = "iframe" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
+				<iframe id = "content" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 			</div>
 		</div>
 		<button onclick="window.location.href='https://osf.io/9xu5b/'">Source</button>
-		<button onclick = "requestFullScreen(document.body, 'iframe')">FullScreen</button>
+		<button onclick = "requestFullScreen(document.body, 'content')">FullScreen</button>
 	</body>
 </html>
 
