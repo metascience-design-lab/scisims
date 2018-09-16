@@ -13,11 +13,9 @@
 				const video = '<iframe id="content" src="https://www.youtube.com/embed/sDj72zqZakE?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 				const sim = '<iframe id="content" src="LocalGlobal/index.html"></iframe>'
 			</script>
-			<div class="btn-group">
-				<button onclick="document.getElementById('contentframe').innerHTML = text">Text</button>
-				<button onclick="document.getElementById('contentframe').innerHTML = video">Video</button>
-				<button onclick="document.getElementById('contentframe').innerHTML = sim">Simulation</button>
-			</div>
+			<button onclick="document.getElementById('contentframe').innerHTML = text">Text</button>
+			<button onclick="document.getElementById('contentframe').innerHTML = video">Video</button>
+			<button onclick="document.getElementById('contentframe').innerHTML = sim">Simulation</button>
 			<div id="contentframe">
 				<iframe id = "content" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 			</div>
