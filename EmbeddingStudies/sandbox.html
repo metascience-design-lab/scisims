@@ -12,11 +12,14 @@
 				const text = '<img id="content" src="09-posterization-opt.jpg"></img>';
 				const videoEmbed = '<iframe id="content" src="https://www.youtube.com/embed/sDj72zqZakE?rel=0&amp;controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 				const videoLocal = '<video id="content" controls><source src="waffle.mp4" type="video/mp4">Video Playback Error</video>';
-				const sim = '<iframe id="content" src="LocalGlobal/index.html"></iframe>'
+				const iframeSim = '<iframe id="content" src="LocalGlobal/index.html"></iframe>'
+				const divSim = '<div id="content" style="width: 100%"><div id="game11" class="content" style="background-color:black; margin: 0 auto; width: 700px" onkeydown="ll11(event)" tabindex="0"></div></div>';
 			</script>
 			<button onclick="document.getElementById('content').outerHTML = text">Text</button>
-			<button onclick="document.getElementById('content').outerHTML = videoLocal">Video</button>
-			<button onclick="document.getElementById('content').outerHTML = sim">Simulation</button>
+			<button onclick="document.getElementById('content').outerHTML = videoLocal">Local Video</button>
+			<button onclick="document.getElementById('content').outerHTML = videoEmbed">Hosted Video</button>
+			<button onclick="document.getElementById('content').outerHTML = iframeSim">iFrame Simulation</button>
+			<button onclick="document.getElementById('content').outerHTML = divSim; document.getElementById('game11').appendChild(instructions11()); state11 = 0">Div Simulation</button>
 			<div>
 				<iframe id = "content" src="https://implicit.harvard.edu/implicit/Launch?study=/user/kratliff/uflrick/manylabs/manylabs1/manylabs1.expt.xml&pID=0"></iframe>
 			<div>
@@ -74,3 +77,172 @@
 	}
 </script>
 <!--END FULLSCREEN CODE-->
+
+<script>
+i1_11 = randomInt();
+i2_11 = randomInt();
+while(i2_11 === i1_11)
+    i2_11 = randomInt();
+block11 = false;
+
+function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function randomInt(){
+    a = Math.random();
+    return Math.floor(10*a);
+}
+function panel11(name,text){
+    a = document.createElement('div');
+    a.setAttribute('id',name);
+    a.setAttribute('style',"float: left;width:50%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = "<font size='10'>"+text+"</font>";
+    return a;
+
+}
+function correct11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:green; background-color:black");
+    a.innerHTML = "<font size='10'>Correct</font>";
+    return a;
+}
+function wrong11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:red; background-color:black");
+    a.innerHTML = "<font size='10'>Incorrect</font>";
+    return a;
+}
+
+function blank11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = " ";
+    return a;
+}
+function whitedot11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black; ");
+    a.innerHTML = "<font size='10'>.</font>";
+    return a;
+}
+
+function showans11(key){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    if(i1_11 > i2_11 && key == "z" || i1_11 < i2_11 && key == "m")
+    {
+        g.appendChild(correct11())
+    }
+    else
+    {
+        g.appendChild(wrong11())
+    }
+    return;
+}
+
+function test1_11(){
+    console.log('asdsad');
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    i1_11 = randomInt();
+    i2_11 = randomInt();
+    while(i2_11 === i1_11)
+        i2_11 = randomInt();
+    g.appendChild(panel11('leftPanel',i1_11.toString()));
+    g.appendChild(panel11('rightPanel',i2_11.toString()));
+    block11 = false;
+}
+function end11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(endscene11());
+}
+function endscene11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black; ");
+	a.innerHTML = "<center>This was a sample block. <br> <br> You only experienced 5 trials out of 102 actual trials (4.9%).</center>";
+    return a;
+}
+function show_blank1_11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(blank11());
+    sleep(250).then(()=>{show_dot11();});
+}
+function show_dot11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(whitedot11());
+    sleep(1000).then(()=>{show_blank2_11();});
+}
+function show_blank2_11(){
+    g = document.getElementById('game11');
+    while(g.hasChildNodes())
+    {
+        g.removeChild(g.lastChild);
+    }
+    g.appendChild(blank11());
+    sleep(500).then(()=>{test1_11();});
+}
+
+function instructions11(){
+    a = document.createElement('div');
+    a.setAttribute('id',"ans");
+    a.setAttribute('style',"float: left;width:100%;height:400px;background-color:black;display:flex; align-items:center;justify-content:center; color:white; background-color:black");
+    a.innerHTML = "<center> Welcome to the experiment ! <br> Two numbers will be shown on the screen. <br> If the number on the left is greater, press the z key. <br> If the number on the right is greater, press the m key. <br><br><br> Advance by pressing Enter twice.</center>";
+    return a;
+
+}
+state11 = 0;
+document.getElementById('game11').appendChild(instructions11());
+function ll11(event){
+    if(state11 < 2){
+        if(event.key != "Enter")
+            return;
+        state11++;
+        if(state11 == 2){
+            g = document.getElementById('game11');
+            while(g.hasChildNodes())
+            {
+                g.removeChild(g.lastChild);
+            }
+            g.appendChild(panel11('leftPanel',i1_11.toString()));
+            g.appendChild(panel11('rightPanel',i2_11.toString()));
+        }
+    }
+    if(block11)
+        return;
+    if(event.key != "z" && event.key != "m")
+        return;
+    block11 = true;
+    showans11(event.key);
+    state11++;
+    if(state11 < 7)
+		sleep(500).then(()=>{show_blank1_11();});
+	else
+		sleep(500).then(()=>{end11();});
+}
+
+
+	</script>
