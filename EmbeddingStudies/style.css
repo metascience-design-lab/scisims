@@ -8,6 +8,10 @@
 	height: 400px;
 }
 
+iframe {
+	background-color: white;
+}
+
 h2{
 	text-align: center;
 	color: black;
