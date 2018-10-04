@@ -7,8 +7,8 @@ const study = lab.util.fromObject({
       "type": "lab.plugins.Metadata"
     },
     {
-      "type": "lab.plugins.Download",
-      "filePrefix": "study"
+      "type": "lab.plugins.Transmit",
+      "url": "backend.php"
     }
   ],
   "metadata": {
@@ -29,71 +29,20 @@ const study = lab.util.fromObject({
       },
       "messageHandlers": {},
       "title": "Intro",
-      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003EStop Signal Task\u003C\u002Fh1\u003E\n\n  \u003Cp style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\"\u003E\n    This task consists of 2 parts: 1) A word will come up on a \n    slide. On the next slide, it will ask you \"animal or \n    non-animal.\" Press the \"a\" key if that word represents an \n    animal, press the \"n\" key if the word does NOT represent an \n    animal. 2) Same as the task above, but if there are three \n    asterisks \"***\" on the slide with the word, provide NO response \n    on the slide next slide that asks you \"animal or non-animal.\" \n    The test will move on to the next word slide after an alotted \n    amount of time. When you're ready, click Continue to start\u003C\u002Fp\u003E\n      \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-horizontal-right\"\u003E\n  \u003Cbutton id=\"continue\"\u003E\n    Continue &rarr;\n  \u003C\u002Fbutton\u003E\n\u003C\u002Ffooter\u003E",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003EStop Signal Task\u003C\u002Fh1\u003E\n\n  \u003Cp style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\"\u003E\n    This task consists of 2 blocks: \n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    1. A word will come up on a \n    slide. On the next slide, it will ask you \"animal or \n    non-animal.\" Press the \"a\" key if that word is an\n    animal, press the \"n\" key if the word is NOT an animal.\n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    2. If there are three asterisks *** on the slide with the word, \n    do NOT response on the slide next slide. \n    The test will move on to the next slide after a short delay. \n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    Click Continue to start\n    \u003C\u002Fp\u003E\n    \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-horizontal-right\"\u003E\n  \u003Cbutton id=\"continue\"\u003E\n    Continue &rarr;\n  \u003C\u002Fbutton\u003E\n\u003C\u002Ffooter\u003E",
       "correctResponse": "Space"
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 765.77,
-          "height": 371.72,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Part 1: Look at the word on the slide. Press \"a\" if the word \nyou see is an animal, press \"n\" if the word you \nsee is NOT an animal on the next slide that asks \"animal or \nnon-animal.\"\n\nFor example, if you see the word \"seal,\" press \"a\" on \nyour keyboard.\n\nPress spacebar when you are ready to start.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "91",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
-        "keypress(Space)": ""
+        "keypress(Space)": "space",
+        "click button#continue": "continue"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "mini-intro part 1",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "1st Intro",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003EBlock 1\u003C\u002Fh1\u003E\n\n  \u003Cp style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\"\u003E\n    Look at the word on the slide. Decide whether it's an animal.\n     On the next slide, it will ask you \"animal or non-animal\".\n     Press \"a\" if the word you see is an animal, and press \"n\" otherwise.\n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    For example, if you see the word \"seal\", press \"a\" on your keyboard.\n    \u003C\u002Fp\u003E\n    \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-horizontal-right\"\u003E\n  \u003Cbutton id=\"continue\"\u003E\n    Continue &rarr;\n  \u003C\u002Fbutton\u003E\n\u003C\u002Ffooter\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.canvas.Screen",
@@ -3120,67 +3069,16 @@ const study = lab.util.fromObject({
       "parameters": {}
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "version": "2.0.1",
-          "originX": "center",
-          "originY": "center",
-          "left": 0,
-          "top": 0,
-          "width": 791.8,
-          "height": 329.78,
-          "fill": "black",
-          "stroke": null,
-          "strokeWidth": 1,
-          "strokeDashArray": null,
-          "strokeLineCap": "butt",
-          "strokeLineJoin": "round",
-          "strokeMiterLimit": 10,
-          "scaleX": 1,
-          "scaleY": 1,
-          "angle": 0,
-          "flipX": false,
-          "flipY": false,
-          "opacity": 1,
-          "shadow": null,
-          "visible": true,
-          "clipTo": null,
-          "backgroundColor": "",
-          "fillRule": "nonzero",
-          "paintFirst": "fill",
-          "globalCompositeOperation": "source-over",
-          "transformMatrix": null,
-          "skewX": 0,
-          "skewY": 0,
-          "text": "Part 2: Same as part 1, but now if you see three asterisks,\n\"***\" on the slide, provide no response. The test\nwill move on to the next slide after an alotted amount of time.\n\nNote: Attempt to go as fast as the previous block. Do not\nslow down.\n\nPress spacebar when you are ready to start.",
-          "fontSize": 32,
-          "fontWeight": "normal",
-          "fontFamily": "Times New Roman",
-          "fontStyle": "normal",
-          "lineHeight": 1.16,
-          "underline": false,
-          "overline": false,
-          "linethrough": false,
-          "textAlign": "center",
-          "textBackgroundColor": "",
-          "charSpacing": 0,
-          "id": "92",
-          "styles": {}
-        }
-      ],
+      "type": "lab.html.Screen",
+      "parameters": {},
       "responses": {
-        "keypress(Space)": "spacebar"
+        "keypress(Space)": "space",
+        "click button#continue": "continue"
       },
       "messageHandlers": {},
-      "viewport": [
-        800,
-        600
-      ],
-      "title": "mini-intro part 2",
-      "correctResponse": "Space",
-      "parameters": {}
+      "title": "2nd Intro",
+      "content": "\u003Cmain class = \"content-horizontal-center content-vertical-center\"\u003E\n  \u003Ccenter\u003E\n  \u003Ch1\u003EBlock 2\u003C\u002Fh1\u003E\n\n  \u003Cp style = \"\n      text-align: justify;\n      width: 500px;\n      margin: auto;\n      font-size: 18px;\"\u003E\n    This block will be similar to Block 1. However, do NOT respond when you see *** on the slide. The program will automatically advance to the next slide shortly. \n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    Note: Respond as quickly as you did in Block 1.\n    \u003Cbr \u002F\u003E\n    \u003Cbr \u002F\u003E\n    \u003C\u002Fp\u003E\n    \u003C\u002Fcenter\u003E\n\u003C\u002Fmain\u003E\n\n\u003Cfooter class=\"content-horizontal-right\"\u003E\n  \u003Cbutton id=\"continue\"\u003E\n    Continue &rarr;\n  \u003C\u002Fbutton\u003E\n\u003C\u002Ffooter\u003E",
+      "correctResponse": "Space"
     },
     {
       "type": "lab.canvas.Screen",
