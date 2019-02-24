@@ -1,0 +1,698 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- external css styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="style.css" rel="stylesheet">
+    <style>
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin navbar-fixed-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+            </button>
+            <!-- for toc toggle in mobile devices -->
+            <p class="navbar-brand">
+              <form role="form" action="">
+               <div class="search-toggle" style="display:none">
+                 <input type="text" id="query" class="form-control" autocomplete="off" placeholder="Search..."/>
+               </div>
+             </form>
+              <p id="doctitle" contenteditable>Untitled</p>
+            </p>
+        </div>
+        <!-- navbar-header-->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2" data-command=""> <span class="fa fa-bars" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="" id="search"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="bold" id="boldbutton"> <span class="glyphicon glyphicon-bold" aria-hidden="true" id="bold-symbol"></span>
+                    </button>
+                </li>
+                <li id="italic">
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="italic"> <span class="glyphicon glyphicon-italic" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li id="underline">
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="underline"> <span class="fa fa-underline" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="indent"> <i class="fa fa-indent" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="outdent"> <i class="fa fa-outdent" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="" id="hbutton"> <span>H1</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="h2"> <span>H2</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="p"> <span>P</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="undo"> <i class="fa fa-undo" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="redo"> <i class="fa fa-repeat" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="insertimage"> <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="insertUnorderedList"> <i class="fa fa-list-ul" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="navbar-toggle collapse in" data-toggle="collapse" data-command="insertOrderedList"> <i class="fa fa-list-ol" aria-hidden="true"></i>
+                    </button>
+                </li>
+
+                <li class="tw-toggle">
+                  <input type="radio" name="toggle" value="false">
+                  <label class="toggle toggle-yes"><i class="fa fa-book"></i></label>
+                  <input checked type="radio" name="toggle" value="-1">
+                  <label class="toggle toggle-yes"><i class="fa fa-pencil"></i></label>
+                  <input type="radio" name="toggle" value="true">
+                  <label class="toggle toggle-yes"><i class="fa fa-eye"></i></label>
+                  <span></span>
+                </li>
+
+                <li class="tw-toggle1">
+                  <input type="radio" name="toggle1" value="false" id="easy">
+                  <label class="toggle toggle-yes"><i class="fa fa-square"></i></label>
+                  <input checked type="radio" name="toggle1" value="true" id="difficult">
+                  <label class="toggle toggle-yes"><i class="fa fa-star"></i></label>
+                  <span></span>
+                </li>
+
+            </ul>
+        </div>
+        <!-- end navbar-collapse -->
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <!-- the content of the toc sidebar will be populated dynamically -->
+            </ul>
+        </div>  <!-- /end #sidebar-wrapper -->
+        <div id="page-content-wrapper">
+            <!-- the editor and its content are generated dynamically after the user clicks on the dropdown menu -->
+            <div id="dropdownwrapper">
+            <div class="dropdown1 closed" id="dropdown1">
+                <div class="title">Pick Section</div>
+                <div class="dropdown-menu1" id="dropdown-menu1">
+                    <ul>
+                        <li>Title</li>
+                        <li>Author</li>
+                        <li>Abstract</li>
+                        <li>Keywords</li>
+                        <li>Introduction</li>
+                        <li>Background</li>
+                        <li>Methods</li>
+                        <li>Results</li>
+                        <li>Discussion</li>
+                        <li>Conclusion</li>
+                        <li>Reference</li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div><!-- / end #page-content-wrapper -->
+  </div><!-- / end #wrapper -->
+
+    <!-- external JS libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //TODO 1 add option for adding subsections, 2 make sections draggable to change order, 3 automatic ordering suggestions
+            // 4 users can click on hr to remove it  5. if a section is already added and currently on the page prevent it from being selected
+            // 6. fix reference plus button
+
+
+                //global variables
+                var currentMode = 'difficult'; //.tw-toggle1 input[value="true"]:checked
+                var id = 1; // to keep track of the number of unique dropdown menus & text areas
+                var newSectionID = 1; //to keep track of subsections in author (difficult mode) and reference sections
+
+                //FUNCTION: add click event to editor buttons on top for editing the contenteditable sections
+                var InitEditorCommands = (function() {
+                    function init() {
+                        $('.nav li button').click(function(e) {// click event for when button from toolbar is clicked
+                            var command = $(this).data('command');
+                            console.log(command);
+
+                            if (command == 'h1' || command == 'h2' || command == 'p') {
+                                document.execCommand('formatBlock', false, command);
+                            }
+                            document.execCommand($(this).data('command'), false, null);
+                        });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                //FUNCTION: initialize the dropdown menu for different sections
+                var InitDropdownMenu = (function() {
+
+                    function init() {
+                        $container = $('.dropdown-menu1'),
+                        $list = $('.dropdown-menu1 ul'),
+                        listItem = $list.find('li');
+
+                        AddTextArea.init();
+
+                        $(".dropdown1 .title").click(function() {
+                            if ($container.height() > 0) {
+                                closeMenu(this);
+                            } else {
+                                openMenu(this);
+                            }
+                        });
+
+                        $(".dropdown-menu1 li").click(function() {
+                            closeMenu(this);
+                        });
+
+                    }
+
+                    function closeMenu(el) {
+                        $(el).closest('.dropdown1').toggleClass("closed").find(".title").text($(el).text());
+                        $container.css("height", 0);
+                        $list.css("top", 0);
+                    }
+
+                    function openMenu(el) {
+                        $(el).parent().toggleClass("closed");
+
+                        $container.css({
+                                height: 200
+                            })
+                            .mousemove(function(e) {
+                                var heightDiff = $list.height() / $container.height(),
+                                    offset = $container.offset(),
+                                    relativeY = (e.pageY - offset.top),
+                                    top = relativeY * heightDiff > $list.height() - $container.height() ?
+                                    $list.height() - $container.height() : relativeY * heightDiff;
+
+                                $list.css("top", -top);
+                            });
+                    }
+
+                    return {
+                        init: init
+                    }
+                })();
+
+                var InitADT = (function(){
+
+                  function init() {
+                    $("#easy").click( function(){
+                       if( $(this).is(':checked') ) console.log("easy");
+                       currentMode = 'easy';
+                       $(".easy").css("display","inherit");
+                       $(".difficult").css("display","none");
+                    });
+
+                    $("#difficult").click( function(){
+                       if( $(this).is(':checked') ) console.log("difficult");
+                       currentMode = 'difficult';
+                       $(".difficult").css("display","inherit");
+                       $(".easy").css("display","none");
+                    });
+
+                  }
+                  return {
+                      init: init
+                  }
+              })();
+
+                //TODO should add state to keep track of which section (intro, methods...) is selected from the dropdown for a particular text area
+                //TODO should add a delete button or change section button for each text area
+                //TODO: autopopulate title text with tite  #doctitle2 h1 . on change #doctitle.text   if($("#doctitle").text() == 'Untitled')
+                //TODO: autosuggestion of next section
+                //TODO: prevent users from selecting a section twice?
+
+                //FUNCTION: add content of all sections given a section (selected from dropdown) and a mode (selected from ADT button on top right)
+                //called by InitDropdownMenu
+                var AddTextArea = (function() {
+                    function init() {
+                        var element = $('.dropdown-menu1 ul li');
+                        $(element).on('click', function() {
+                        var text = $(this).text();
+                            switch (text) {
+                                case 'Title':
+                                    var hr= 'true';
+                                    var textalign = 'text-center';
+
+                                    if(currentMode=='difficult'){
+                                      var h1content = 'For Teaching Perceptual Fluency, Machines Beat Human Experts';
+                                    }else{
+                                      var h1content = 'Are Machines Better at Designing Practice Problems than Humans ?';
+                                    }
+                                    AddContent.init(currentMode,'Title', h1content, '', '', '', '',hr,textalign);
+                                    break;
+
+                                case 'Author': // author section is different from other sections since individual authors can be added with plus button
+
+                                    if(currentMode=='difficult'){
+
+                                      var row_open = '<div class="row editor text-center '+currentMode+'" id="editor'+id+'"><div class="col-md-2"></div>';
+
+                                      var authorsTitle = '<div class="col-md-2" id="authors"><h4 class="darkgray marginBottom40 bold">Author</h4></div>';
+                                      var affiliationsTitle = '<div class="col-md-2" id="affiliation"><h4 class="darkgray marginBottom40 bold">Affiliation</h4></div>';
+                                      var publishedTitle = '<div class="col-md-2" id="published"><h4 class="darkgray marginBottom40 bold">Published</h4></div>';
+                                      var doiTitle = '<div class="col-md-2"><h4 class="darkgray marginBottom40 bold" id="doi'+id+'">DOI</h4></div>';
+
+                                      var row_close = '<div class="col-md-2"></div></div>';
+
+                                      var authorContent = 'Ayon Sen';
+                                      var affiliationContent = 'UW-Madison';
+                                      var publishedContent = '2018-02-08'
+                                      var DOIContent = '';
+
+                                      $("#page-content-wrapper").append(row_open+authorsTitle+affiliationsTitle+publishedTitle+doiTitle+row_close);
+
+                                      var sidebarHTML = '<li class="active '+currentMode+'" id="side' + id + '"><a href="#"><span class="fa-stack fa-lg pull-left"></span> Authors</a></li>'
+                                      $("#menu").append(sidebarHTML);
+
+                                      var minusButton = '<div class="minus-button" id="button' + id + '"></div>';
+                                      $("#editor"+ id).append(minusButton);
+
+                                      var plusButton = '<div class="plus-button '+currentMode+'" id="plusbutton' + newSectionID + '"></div>';
+                                      $("#doi" + id).append(plusButton);
+
+                                      // add new row for another author
+                                      $("#plusbutton"+newSectionID).on('click',function(){
+                                        AddAuthor.init(authorContent, affiliationContent, publishedContent, DOIContent);
+                                        newSectionID++;
+                                      });
+
+                                      RemoveTextArea.init();
+                                      incrementID();
+
+                                    }else{
+                                      var hr= 'true';
+                                      var textalign = 'text-left';
+                                      var h3content = 'Ayon Sen, Purav Patel, Martina Rau, Blake Mason, Rob Nowak, Xiaojin Zhu';
+                                      AddContent.init(currentMode,'Author','','',h3content,'','',hr,textalign);
+                                    }
+                                    break;
+
+                                case 'Abstract':
+
+                                    var textalign = 'text-left';
+                                    if(currentMode=='difficult'){
+                                      var pcontent = '<b>Abstract. </b> In STEM domains, students are expected to acquire domain knowledge from visual representations that they may not yet be able to interpret.Such learning requires perceptual fluency, or the ability to intuitively and rapidly see the underlying concepts in visuals and to translate between them.Perceptual fluency is acquired via nonverbal, implicit learning processes. Thus far, we have lacked a principled approach for identifying a sequence of perceptual fluency problems that promote robust learning. Here, we describe how a novel machine learning technique can generate an optimal sequence of perceptual fluency problems. In a a human experiment, we show that a machine-generated sequence outperforms both  a random sequence and a sequence generated by a human domain expert. Interestingly, the machine-generated sequence resulted in significantly lower accuracy during training, but higher posttest accuracy. This suggests that the machine-generated sequence induced desirable difficulties. To our knowledge, our study is the first to show that machine learning can yield desirable difficulties for perceptual learning.';
+                                    }else{
+                                      var pcontent ='';
+                                    }
+
+                                    AddContent.init(currentMode,'Abstract', '', '', '', '', pcontent,'',textalign);
+
+                                    break;
+                                case 'Keywords':
+
+                                    var textalign = 'text-left';
+                                    var hr = 'true';
+
+                                    if(currentMode=='difficult'){
+                                      var pcontent = '<b>Keywords.</b> visuals; perceptual fluency; implicit learning; desirable difficulties; machine learning; machine teaching; chemistry; optimal training; sequence effects</p>';
+                                    }else{
+                                      var pcontent = '';
+                                    }
+
+                                    AddContent.init(currentMode,'Keywords', '', '', '', '', pcontent,hr,textalign);
+
+                                    break;
+                                case 'Introduction':
+
+                                  var textalign = 'text-left';
+                                  var h3content = '<b>Introduction</b>';
+
+                                  if(currentMode=='difficult'){
+                                    var pcontent ='<br>Visual representations are ubiquitous instructional tools in science, technology, engineering, and math (STEM) domains (Ainsworth, 2008; NRC, 2006). For example, chemistry instruction on bonding typically includes the visuals shown in Figure 1. While we typically assume that such visuals help students learn because they make abstract concepts more accessible, they can also impede students’ learning if students do not know how the visuals show information (Rau, 2017). To successfully learn new domain knowledge from visuals, students need representational competencies — knowledge about how visual representations show information (Ainsworth, 2006). For example, a chemistry student needs to learn that the dots in the Lewis structure (Figure 1a) show electrons and that the spheres in the space-filling model in (Figure 1b) show regions where electrons likely reside.'
+                                  }else{
+                                    var pcontent = '<br><p>Visuals are used in subjects like science, technology, engineering, and math (STEM). For example, chemistry lessons on bonding typically includes the visuals shown in Figure 1. While we usually assume that these visuals help students learn because they make abstract concepts clearer, they can also harm students’ learning if students do not know how the visuals show information. To learn from visuals, students need representational competencies — knowledge about how visual representations show information. For example, a chemistry student needs to learn that the dots in the Lewis structure (Figure 1a) show electrons and that the spheres in the space-filling model (Figure 1b) show areas where electrons may live.';
+                                  }
+
+                                    AddContent.init(currentMode,'Introduction', '', '', h3content, '', pcontent,'',textalign);
+                                    break;
+
+                                case 'Background':
+
+                                    var h3content = '<b>Prior Research</b>';
+                                    var h4content = '<br>Perceptual Fluency';
+                                    var pcontent ='<br>Representations used in instructional materials are defined as external representations because they are external to the viewer. By contrast, internal representations are mental objects that students can imagine and mentally manipulate. External representations can be symbolic (text) or visual (Lewis structures). Unlike symbolic representations, visual representations have similarity-based mappings to the referent (Schnotz, 2014).'
+                                    var textalign = 'text-left';
+
+                                    AddContent.init(currentMode,'Background', '', '', h3content, h4content, pcontent,'',textalign);
+
+                                    break;
+                                case 'Methods':
+
+                                    var h3content = '<b>Cognitive Model</b>';
+                                    var pcontent ='<br>We now describe how we constructed the cognitive model that was used to optimize the training sequence. To this end, we describe the perceptual-fluency problems, how we formally represented these problems, the learning algorithm used by the cognitive model, and finally how we used the cognitive model to identify the optimal training sequence.'
+                                    var textalign = 'text-left';
+
+                                    AddContent.init(currentMode,'Methods', '', '', h3content, '', pcontent,'',textalign);
+
+                                    break;
+                                case 'Results':
+
+                                    var h3content = '<b>Human Experiment</b>';
+                                    var h4content = '<br>Participants';
+                                    var pcontent ='<br>We recruited 368 participants using Amazon’s Mechanical Turk (MTurk) (Buhrmester, Kwang, & Gosling, 2011). Among them, 216 were male and 131 were female. The rest did not disclose their gender. Most participants were below the age of 45 (86%) and the largest number (192) fell in the age group 24−35.'
+                                    var textalign = 'text-left';
+
+                                    AddContent.init(currentMode,'Results', '', '', h3content, h4content, pcontent,'',textalign);
+
+                                    break;
+                                case 'Discussion':
+
+                                    var h3content = '<b>Discussion</b>';
+                                    var pcontent ='<br>Our goal was to investigate whether machine learning can help identify a sequence of visual representations that enhances students’ learning from perceptual-fluency problems. To this end, we used machine teaching to reverse-engineer an optimal training sequence for a machine learning algorithm. Next, we conducted an experiment with humans that compared the machine teaching sequence to a random sequence and to a sequence generated by a human expert on perceptual learning. The machine teaching sequence resulted in lower training accuracy, but higher posttest accuracy.';
+                                    var textalign = 'text-left';
+
+                                    AddContent.init(currentMode,'Discussion', '', '', h3content, '', pcontent,'',textalign);
+
+                                    break;
+                                case 'Conclusion':
+
+                                    var h3content = '<b>Conclusion</b>';
+                                    var pcontent ='<br>Visual representations are used in many domains, but it can be cognitively demanding to learn from them. Perceptual fluency can help by freeing up cognitive resources for higher-order reasoning. Here, we tested a machine teaching technique for developing perceptual fluency in chemistry. The machine-generated optimal training sequence improved learning compared to a training sequence generated by a human expert who used perceptual-learning principles and compared to a random sequence. These results are promising, as they suggest that machine teaching can help create more effective sequences of perceptual-fluency problems. Given that visual representations are ubiquitous in STEM domains, we anticipate that our findings will be broadly useful.';
+                                    var textalign = 'text-left';
+                                    var hr = 'true';
+
+                                    AddContent.init(currentMode,'Conclusion', '', '', h3content, '', pcontent,hr,textalign);
+
+                                    break;
+                                case 'Reference': // referenc section is also different from other sections since individual authors can be added with plus button
+
+                                    var h3content = 'Reference';
+                                    var author = 'Ainsworth, S.';
+                                    var year = '(2006)';
+                                    var reference = 'DeFT: A conceptual framework for considering learning with multiple representations. Learning and instruction, 16(3), 183–198.';
+                                    var textalign = 'text-left';
+
+                                    AddReference.init(currentMode,h3content,author, year, reference,textalign,'Reference');
+
+                                    break;
+
+                                    // TODO: if user deletes reference section and add again makesure to clear it and reset ID to 0
+                                default:
+                                    console.log('Custom');
+                            } //end switch
+                        });
+                    }
+
+                    function incrementID() {
+                        id++;
+                    }
+
+                    return {
+                        init: init
+                    }
+                })();
+
+                // called by AddTextArea. Params: mode ('easy'/'difficult'), section('Authors'),h1content, h2content, h3content, h4content, pcontent,hr (if true), textalign
+                //FUNCTION: add html structure of all sections other than authors and reference
+                var AddContent = (function(){
+                    function init(mode,section, h1content, h2content, h3content, h4content, pcontent,hr,textalign){
+                       var html_open = '<div class="row editor '+textalign+' '+mode+'" id="editor' + id + '"><div class="col-md-2"></div><div class="col-md-8 editorcontent" contenteditable>';
+                       var h1_open = '<h1>';
+                       var h1_close = '</h1>';
+                       var h2_open = '<h2>';
+                       var h2_close = '</h2>';
+                       var h3_open = '<h3>';
+                       var h3_close = '</h3>';
+                       var h4_open = '<h4>';
+                       var h4_close = '</h4>';
+                       var p_open = '<p>';
+                       var p_close = '</p>';
+                       var html_close = '</div><div class="col-md-2"></div></div>';
+                       var hr_html = hr!='' ? '<hr class="'+mode+'">': '';
+
+
+                       var finalHTML = html_open+h1_open+h1content+h1_close+h2_open+h2content+h2_close+h3_open+h3content+h3_close+h4_open+h4content+h4_close+p_open+pcontent+p_close+html_close+hr_html;
+
+                      $("#page-content-wrapper").append(finalHTML);
+
+                      //populate sidebar
+
+                      var sidebarHTML = '<li class="active '+mode+'" id="side' + id + '"><a href="#"><span class="fa-stack fa-lg pull-left"></span>'+section+'</a></li>'
+                      $("#menu").append(sidebarHTML);
+
+                      var minusButton = '<div class="minus-button '+mode+'" id="button' + id + '"></div>';
+
+                      $("#editor" + id).append(minusButton);
+
+                      RemoveTextArea.init();
+                      id++;
+                    }
+                    return{
+                      init: init
+                    }
+                })();
+
+                //called by AddTextArea
+                // FUNCTION: add input area for the four sections within the author section, if there are more than one author
+                var AddAuthor = (function() {
+
+                    function init(authorContent, affiliationContent, publishedContent, DOIContent) {
+
+                      var row_open = '<div class="row editor text-center difficult"><div class="col-md-2"></div>';
+                      var authors = '<div class="col-md-2 authorcontenteditable" contenteditable><p>'+authorContent+'</p></div>';
+                      var affiliations = '<div class="col-md-2 authorcontenteditable" contenteditable><p>'+affiliationContent+'</p></div>';
+                      var published = '<div class="col-md-2 authorcontenteditable" contenteditable><p>'+publishedContent+'</p></div>';
+                      var doi = '<div class="col-md-2 authorcontenteditable" contenteditable"><p>'+DOIContent+'</p></div>';
+                      var row_close = '<div class="col-md-2"></div></div><hr class="difficult">';
+
+                      //must find the id of the current author editor on the canvas
+                      var currentEditorID = $("#authors").parent().attr('id');
+
+                      $("#"+currentEditorID).append(row_open+authors+affiliations+published+doi+row_close);
+                    }
+
+                    return {
+                        init: init
+                    }
+                })();
+
+                // FUNCTION: add new reference
+                // called by AddTextArea. Params: mode ('easy' / 'difficult'), h3content, author, year, reference, textalign, section ('Reference')
+                var AddReference = (function() {
+
+                    function init(mode,h3content,author, year, reference,textalign,section) {
+                      var html_open = '<div class="row editor '+textalign+' '+mode+'" id="editor' + id + '"><div class="col-md-2"></div><div class="col-md-8 editorcontent" contenteditable id="references">';
+                      var html_close ='</div><div class="col-md-2"></div></div>';
+
+                      var h3_open= '<h3><b>';
+                      var h3_close = '</b></h3>';
+                      var h4_open ='<h4><span class="darkgray marginBottom40" id="ref'+newSectionID+'">';
+                      var h4Author = author+'</span>';
+                      var h4Year = '<span> '+ year + '</span>';
+                      var h4Reference = '<span id="reference'+id+'"> '+reference+ '</span></h4>';
+
+                      var finalHTML = html_open+h3_open+h3content+h3_close+h4_open+h4Author+h4Year+h4Reference+html_close;
+
+                      $("#page-content-wrapper").append(finalHTML);
+
+                      //populate sidebar
+                      var sidebarHTML = '<li class="active '+mode+'" id="side' + id + '"><a href="#"><span class="fa-stack fa-lg pull-left"></span>'+section+'</a></li>'
+                      $("#menu").append(sidebarHTML);
+
+                      var minusButton = '<div class="minus-button" id="button' + id + '"></div>';
+                      $("#editor" + id).append(minusButton);
+
+                      var plusButton = '<div class="plus-button" id="plusbutton' + newSectionID + '"></div>';
+                      $("#reference" + id).append(plusButton);
+
+                      // FIX: add new row for another reference (not working now)
+                      $("#plusbutton"+newSectionID).on('click',function(){
+                        newSectionID ++;
+                      });
+
+                      RemoveTextArea.init();
+                      id++;
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                //FIX BUG: in easy mode, if I add abstract and intro, if I click on the minus button for abstract it will get rid of both intro and abstract, can't figure out why
+                //FUNCTION: remove a section when user clicks on the minus button
+                var RemoveTextArea = (function() {
+
+                    function init() {
+                        $("#wrapper").on('click', '#button' + id, function(event) {
+                            event.preventDefault();
+                            var buttonid = $(this).attr('id'); //get id of clicked element
+                            var localid = buttonid.split('n')[1]; // get substring of id
+                            $(this).parent().next().remove(); //remove hr
+                            $(this).parent().parent().parent().find("div#sidebar-wrapper > ul > li#side" + localid).remove(); //remove sidebar content
+                            $(this).parent().remove(); //remote text area
+                            $(this).remove(); //remove minus button
+
+                        });
+
+                        $('body').on('focus', '[contenteditable]', function() {
+                            var $this = $(this);
+                            $this.data('before', $this.html());
+                            console.log($this);
+                        }).on('input', '[contenteditable]', function() { //blur keyup paste
+                            var $this = $(this);
+
+                            if ($this.html() == '') {
+                                var buttonid = $this.parent().attr('id');
+                                var localid = buttonid.split('r')[1];
+                                $this.parent().parent().find('hr').remove(); //remove hr
+                                $this.remove();
+                                $("li#side" + localid).remove();
+                                $("#button" + localid).remove();
+                            }
+                        });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                var InitToggleButton = (function(){
+                    function init() {
+                      $(".tw-toggle input").on("click", function () {
+                        var v = $(this).closest("input[name=toggle]").val();
+                        console.log(v);
+
+                        if(v=="-1"){ //write
+                            $(".minus-button").css("opacity",1);
+                            $(".plus-button").css("opacity",1);
+                            $(".dropdown1").css("opacity",1);
+                        }else if(v=="true"){  //read
+                          $(".minus-button").css("opacity",0);
+                          $(".plus-button").css("opacity",0);
+                          $(".dropdown1").css("opacity",0);
+                        }else{  // suggest
+
+                        }
+                     });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+
+                var InitSearchBar = (function(){
+                  function init(){
+                    var searchclicked = false;
+                      $("#search").click(function () {
+                          console.log("search");
+                          $(".search-toggle").animate({
+                              width: 'toggle'
+                          });
+                          $("#doctitle").toggle("displaynone");
+                      });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                // Initialize
+                var InitSideMenu = (function() {
+
+                    function init() {
+                        $('#menu ul').hide();
+                        $('#menu ul').children('.current').parent().show();
+                        //$('#menu ul:first').show();
+                        $('#menu li a').click(
+                            function() {
+                                var checkElement = $(this).next();
+                                if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                                    $('#menu ul:visible').slideUp('normal');
+                                    return false;
+                                }
+                                if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                                    $('#menu ul:visible').slideUp('normal');
+                                    checkElement.slideDown('normal');
+                                    return false;
+                                }
+                            }
+                        );
+
+                        $("#menu-toggle").click(function(e) { //for mobile
+                            e.preventDefault();
+                            $("#wrapper").toggleClass("toggled-2"); //changed this from toggled to toggled-2
+                        });
+                        $("#menu-toggle-2").click(function(e) { // for desktop
+                            e.preventDefault();
+                            $("#wrapper").toggleClass("toggled-2");
+                            $('#menu ul').hide(); // hides the submenus when close
+                        });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                // not used currently... use like this: ScrollToElement.init("#title-side","#title-main");
+                var ScrollToElement = (function() {
+
+                    function init(anchor, elementto) {
+                        $(anchor).click(function() {
+                            $([document.documentElement, document.body]).animate({
+                                scrollTop: $(elementto).offset().top - 100
+                            }, 1000);
+                        });
+                    }
+                    return {
+                        init: init
+                    }
+                })();
+
+                $(document).ready(function() {
+                    InitEditorCommands.init();
+                    InitSideMenu.init();
+                    InitDropdownMenu.init();
+                    InitToggleButton.init();
+                    InitSearchBar.init();
+                    InitADT.init();
+                });
+
+            } //onload
+    </script>
+</body>

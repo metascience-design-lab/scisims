@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="utf-8">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel='stylesheet'>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+   <link rel="stylesheet" href="./css/font-awesome.min.css">
+   <style>
+      body{
+      font-family: 'Lora', serif;
+      }
+      p{
+      font-size: 20px;
+      }
+      .it{
+      font-style: italic;
+      }
+      .bold{
+      font-style: bold;
+      font-weight:700;
+      }
+      .intermediate{
+      display: none;
+      }
+      .difficult{
+      display: block;
+      }
+      #button-container{
+      position: fixed;
+      top:10px;
+      right:10px;
+      }
+      .control .btn{
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 80px;
+      height: 60px;
+      border-top: 1px solid #fff;
+      border-right: 1px solid #CDCCCB;
+      background: rgb(248,247,245);
+      color: #9A928E;
+      text-align: center;
+      font-size: 20px;
+      line-height: 60px;
+      cursor: pointer;
+      transition: box-shadow .3s ease, color .3s ease;
+      }
+      .control .btn:hover{
+      background: rgb(240,238,239);
+      color: #6B6662;
+      }
+      .control .btn.active{
+      border-top: none;
+      background: rgb(249,248,246);
+      box-shadow: inset 0 0 4px 1px #807671;
+      color: #56524F;
+      }
+      .control .btn:first-child{
+      border-radius: 10px 10px 0px 0px;
+      }
+      .control .btn:last-child{
+      border-right: none;
+      border-radius: 0px 0px 10px 10px;
+      }
+   </style>
+</head>
+<body>
+   <div id = "button-container">
+      <div class="control">
+         <div class="btn" title="left">
+            <i class="fa fa-asterisk"></i>
+         </div>
+         <div class="btn" title="center" id="intermediate">
+            <i class="fa fa-cog"></i>
+         </div>
+         <div class="btn active" title="right" id="difficult">
+            <i class="fa fa-cogs"></i>
+         </div>
+      </div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+         <h1 class="bold difficult title">For Teaching Perceptual Fluency, Machines Beat Human Experts</h1>
+         <h1 class="bold intermediate title">Are Machines Better at Designing Practice Problems than Humans ?</h1>
+         <br>
+         <h3 class="difficult authors">Ayon Sen (asen6@wisc.edu), Purav Patel (ppatel47@wisc.edu), Martina A. Rau (marau@wisc.edu),Blake Mason, Robert Nowak, Timothy T. Rogers, Xiaojin Zhu</h3>
+         <h3 class="intermediate authors">Ayon Sen, Purav Patel, Martina Rau, Blake Mason, Rob Nowak, Xiaojin Zhu</h3>
+      </div>
+      <div class="col-md-2"></div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-12">
+         <hr/>
+      </div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold"> Introduction </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <p class="difficult introduction">
+            Visual representations are ubiquitous instructional tools
+            in science, technology, engineering, and math (STEM) domains
+            (Ainsworth, 2008; NRC, 2006). For example, chemistry
+            instruction on bonding typically includes the visuals
+            shown in Figure 1. While we typically assume that such
+            visuals help students learn because they make abstract concepts
+            more accessible, they can also impede students’ learning
+            if students do not know how the visuals show information
+            (Rau, 2017). To successfully learn new domain knowledge
+            from visuals, students need representational competencies —
+            knowledge about how visual representations show information
+            (Ainsworth, 2006). For example, a chemistry student
+            needs to learn that the dots in the Lewis structure (Figure 1a)
+            show electrons and that the spheres in the space-filling model
+            in (Figure 1b) show regions where electrons likely reside.
+         </p>
+         <p class="difficult introduction">
+            Instruction that helps students acquire representational
+            competencies mostly focuses on conceptual representational
+            competencies. These include the ability to map visual features
+            to concepts, support conceptual reasoning with visuals,
+            and choose appropriate visuals to illustrate a given concept
+            (Bodemer, Ploetzner, Feuerlein, & Spada, 2004). Less
+            research has focused on a second type of representational
+            competency — perceptual fluency. It involves the ability to
+            rapidly and effortlessly see meaningful information in visual
+            representations (E. J. Gibson, 2000; Goldstone & Barsalou,
+            1998). For instance, chemists can effortlessly see that both
+            visuals in Figure 1 show water. Perceptual fluency plays an
+            important role in students’ learning as it frees cognitive resources
+            for higher-order complex reasoning, thereby allowing
+            students to use visuals to learn new domain knowledge (Rau,
+            2017).
+         </p>
+         <p class="difficult introduction">
+            Students acquire perceptual fluency via implicit inductive
+            processes (E. J. Gibson, 2000; Goldstone & Barsalou, 1998).
+            Consequently, instructional interventions for perceptual fluency
+            engage students in simple problems to quickly judge
+            what a visual shows (Kellman & Massey, 2013). One kind
+            of perceptual-fluency problem may ask students to quickly
+            and intuitively judge whether two visuals like the ones in
+            Figure 1 show the same molecule by using implicit intuitions.
+            The problem sequence is typically chosen so that (1)
+            students are exposed to a variety of visuals and (2) consecutive
+            visuals vary incidental features while drawing attention
+            to conceptually relevant features (Kellman & Massey,
+            2013; Rau, 2017). However, these general principles leave
+            many possible sequences open. To date, we lack a principled
+            approach capable of identifying sequences of visual representations
+            that yield optimal learning outcomes. Hence, we
+            used an inverse machine-learning technique that selects a sequence
+            of visual representations that was most effective for
+            a learning algorithm. In a human experiment, we then tested
+            whether the machine-generated sequence of visual representations
+            yielded higher learning outcomes compared to (1) a
+            random sequence and (2) a sequence generated by a human
+            expert based on perceptual learning principles.
+         </p>
+         <p class="difficult introduction">
+            In the following, we review literature concerning visual
+            representations, perceptual fluency, and our inverse machinelearning
+            paradigm. Then, we describe the methods we used
+            to identify the machine-generated sequence, followed by the
+            methods for the human experiment. We also discuss how our
+            results may guide educational interventions for representational
+            competencies and machine learning more broadly.
+         </p>
+         <p class="intermediate introduction">
+            Visuals are used in subjects like science, technology, engineering, and math (STEM). For example, chemistry lessons on bonding typically includes the visuals shown in Figure 1. While we usually assume that these visuals help students learn because they make abstract concepts clearer, they can also harm students’ learning if students do not know how the visuals show information. To learn from visuals, students need representational competencies — knowledge about how visual representations show information. For example, a chemistry student needs to learn that the dots in the Lewis structure (Figure 1a) show electrons and that the spheres in the space-filling model (Figure 1b) show areas where electrons may live.
+         </p>
+         <p class="intermediate introduction">
+            Lessons that help students learn representational competencies mostly focuse on conceptual representational competencies. These include the ability to connect visual features to concepts, support conceptual reasoning with visuals, and choose the right visuals to illustrate a given concept. Less research has focused on a second type of representational competency — perceptual fluency. This is the ability to quickly and effortlessly see meaningful information in visuals. For example, chemists can effortlessly see that both visuals in Figure 1 show water. Perceptual fluency plays an important role in students’ learning because it frees mental energy for more complex reasoning. This allows students to learn from visuals.
+         </p>
+         <p class="intermediate introduction">
+            Students get perceptual fluency through learning processes that are implicit and inductive. To understand this, think about the the way you learned your first language. You didn't need to effortfully think about the grammatical rules. Instead, you got a "feel" for the rules (implicit learning) that came from many learning opportunities (inducing process). Because of this, it is thought that perceptual fluency should be taught by giving students many simple tasks in which they must quickly judge what a visual shows. For example, a perceptual fluency task may ask students to quickly and intuitively judge whether two visuals like the ones in Figure 1 show the same molecule. They ask students to rely on implicit intuitions. The problem sequence is typically chosen so that (1) students are exposed to a variety of visuals and (2) consecutive visuals vary irrelevant features while drawing attention to relevant features.
+         </p>
+         <p class="intermediate introduction">
+            However, these general guidelines leave many possible sequences open. So far, we do not have a principle-based way of identifying the best problem sequences. In our study, we used a created a computer model of how undergraduates learn to solve perceptual fluency problems in chemistry. Then, we had a computer algorithm teach the first model. Finally, we took the problem sequence that worked best for the model and gave it to real humans on the Internet. We found that the sequence of chemistry visuals (practice problems) created by the machine was better for learning than a random problem sequence and a sequence generated by a human expert who knew about chemistry and perceptual learning.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold difficult"> Prior Research </h3>
+         <h3 class="bold intermediate"> Perceptual Fluency </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Perceptual Fluency</h3>
+         <p class="difficult priorresearch">
+            Representations used in instructional materials are defined
+            as external representations because they are external to the
+            viewer. By contrast, internal representations are mental objects
+            that students can imagine and mentally manipulate. External
+            representations can be symbolic (text) or visual (Lewis
+            structures). Unlike symbolic representations, visual representations
+            have similarity-based mappings to the referent
+            (Schnotz, 2014).
+         </p>
+         <p class="difficult priorresearch">
+            Perceptual fluency research is based on findings that experts
+            can automatically see meaningful connections among
+            representations, that it takes them little cognitive effort to
+            translate among representations, and that they can quickly
+            and effortlessly integrate information distributed across representations
+            (E. J. Gibson, 2000). Chemistry experts, for example,
+            can see at a glance that the Lewis structure in Figure
+            1a shows the same molecule as the space-filling model
+            in Figure 1b. Such perceptual expertise frees cognitive resources
+            for explanation-based reasoning (Goldstone & Barsalou,
+            1998) and is considered an important goal in STEM education.
+         </p>
+         <p class="difficult priorresearch">
+            According to the cognitive theory of multimedia learning
+            (CTML) and the integrated model of text and picture comprehension
+            (ITCP), perceptual fluency involves efficient formation
+            of accurate internal representations of visual representations
+            (Mayer, 2009; Schnotz, 2014). Doing so requires mapping
+            analog internal representations of multiple visual representations
+            to one another (Mayer, 2009; Schnotz, 2014).
+         </p>
+         <p class="difficult priorresearch">
+            Cognitive science literature (E. J. Gibson, 2000; Goldstone,
+            1997; Koedinger, Corbett, & Perfetti, 2012) suggests
+            that students acquire perceptual fluency via perceptualinduction
+            processes. These processes are inductive because
+            students can infer how visual features map to concepts
+            through experience with many examples (E. J. Gibson, 2000;
+            Goldstone, 1997; Kellman & Massey, 2013). Students gain
+            efficiency in seeing meaning in visuals via perceptual chunking.
+            Rather than mapping specific analog features to concepts,
+            students learn to treat each analog visual as one perceptual
+            chunk that relates to multiple concepts. Perceptualinduction
+            processes are thought to be nonverbal because they
+            do not require explicit reasoning (Koedinger et al., 2012).
+            They are implicit because they happen unintentionally and
+            sometimes unconsciously (Shanks, 2005).
+         </p>
+         <p class="difficult priorresearch">
+            Interventions that target perceptual fluency are relatively
+            novel. Kellman and colleagues (2013) developed interventions
+            that engage students in perceptual-induction processes
+            by exposing them to many short problems wherein they have
+            to rapidly translate between representations. Students might
+            receive numerous problems that ask them to judge whether
+            two visuals like the ones shown in Figure 1 show the same
+            molecule. These interventions have enhanced students’ learning
+            in STEM domains like chemistry (Rau, Michaelis, &
+            Fay, 2015). Critically, these interventions seek to determine
+            whether perceptual fluency practice on a set of training problems generalizes to unfamiliar posttest problems.
+         </p>
+         <p class="difficult priorresearch">
+            Perceptual learning is strongly affected by the sequence in which problems appear (Rau, 2017). To design effective
+            problem sequences, consecutive problems expose students to
+            systematic variation (often via contrasting cases) so that irrelevant
+            features vary while relevant features appear across
+            several problems (Kellman & Massey, 2013). However, visual
+            representations can differ on a large number of features.
+            Thus, many possible problem sequences can systematically
+            vary these visual features. We addressed this issue using
+            Zhu’s machine teaching paradigm (Zhu, 2015; Zhu, Singla,
+            Zilles, & Rafferty, 2018).
+         </p>
+         <p class="intermediate perceptualfluency">
+            Representations used when teaching are defined as external representations because they are external or outside of the viewer. By contrast, internal representations are mental objects that students can imagine and mentally manipulate. External representations can be symbolic like the text in a book or visual like Lewis structures in chemistry.
+         </p>
+         <p class="intermediate perceptualfluency">
+            Perceptual fluency research is based on findings that experts like doctors and pilots can automatically see meaningful connections among representations, that it takes them little cognitive effort to translate among representations, and that they can quickly and effortlessly mix information distributed across representations. For example, chemists can see at a glance that the Lewis structure in Figure 1A shows the same molecule as the space-filling model in Figure 1B. This kind of perceptual expertise frees up cognitive resources for more complex reasoning.
+         </p>
+         <p class="intermediate perceptualfluency">
+            According to two learning theories, perceptual fluency involves building accurate internal representations of visuals and connecting them to each other.
+         </p>
+         <p class="intermediate perceptualfluency">
+            Cognitive science suggests that students get perceptual fluency by perceptual induction processes. Here, inductive means that students can figure out how visual properties relate to concepts through practice. Students become better at seeing meaning in visuals by treating each visual feature property as one perceptual chunk that relates to multiple concepts (perceptual chunking). Perceptual induction processes are thought to be nonverbal happen unconsciously.
+         </p>
+         <p class="intermediate perceptualfluency">
+           Lessons that target perceptual fluency are fairly new. Some researchers have created math and science lessons in which students translate between different visuals quickly. In our chemistry study, students judged whether two visuals like the ones shown in Figure 1 show the same molecule. Students would get dozens of problems like these in a row. These interventions can raise test scores even if the problems are a bit different from the problems used during the lesson.
+         </p>
+         <p class="intermediate perceptualfluency">
+           Perceptual learning depends on the practice sequence. To design good sequences, tasks should give students a variety of problems so that irrelevant features vary but relevant features are constant across several tasks. But we know that visuals differ from each other in many ways. So there are many possible sequences that could vary visual features. To address this problem, we used a new computer science approach called maching teaching.
+         </p>
+
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold intermediate"> Machine Teaching Procedure </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="difficult"><i>Machine Teaching</i></h3>
+         <p class="difficult priorresearch">
+            Machine teaching, the inverse problem of machine learning,
+            has been applied in fields including cognitive psychology and
+            education (Patil, Zhu, Kopec, & Love, 2014). It requires a ´
+            cognitive model that takes the form of a learning algorithm.
+            This algorithm mimics how human students learn a mapping
+            between two visual representations (e.g., the ones shown in
+            Figure 1). Given the cognitive model, machine teaching seeks
+            a sequence of learning problems (optimal training sequence
+            O), such that when given O, the learning algorithm learns the
+            mapping. To evaluate whether a training sequence is effective,
+            we test the cognitive model’s performance at mapping
+            visual representations using a different test set of perceptual
+            fluency problems than were used in training. Typically, a set
+            of training problems (known as training instances in machine
+            learning) is drawn from a perceptual fluency training distribution
+            (Pt). The set of test problems (known as test instances
+            in machine learning) comes from a separate distribution (Pe).
+            The goal is to minimize the test error rate on Pe. The goal of
+            machine teaching then becomes:
+         </p>
+         <p class="difficult priorresearch">
+            Here, Ct
+            is the set of all possible training sequences generated
+            from Pt and A(S) is the learned hypothesis after training
+            on S. To properly construct the optimal training sequence
+            O in this setting, we must understand (1) the nature of the
+            to-be-learned domain knowledge and (2) the learning algorithm
+            A used by the cognitive model. In this paper, the to-belearned
+            domain knowledge is a binary judgment of whether
+            or not two molecules in different visual representations are
+            the same. Further, we identified a cognitive model that mimics
+            how humans learn these mappings. Our goal is to investigate
+            whether, when the mappings and the cognitive model
+            are well understood, machine teaching can identify a training
+            sequence that is more effective than (a) an expert-chosen
+            sequence based on perceptual learning principles and (b) a
+            random sequence.
+         </p>
+         <p class="intermediate machinetesting">
+           Machine teaching is a computer science technique in which a computer algorithm helps improve human learning. We took the following steps:
+         </p>
+         <p class="intermediate machinetesting">
+           1. In a learning experiment, we ran an experiment to figure out how real human students relate different visuals like the two molecules above (Figure 1).
+         </p>
+         <p class="intermediate machinetesting">
+           2. From that data, we created a cognitive model of chemistry visual learning. This model was a step-by-step problem-solving procedure called an algorithm.
+         </p>
+         <p class="intermediate machinetesting">
+           3. We used an algorithm to find an optimal machine-generated problem sequence.
+         </p>
+         <p class="intermediate machinetesting">
+           4. The machine-generated sequence was used to teach the cognitive model and predict learning.
+         </p>
+         <p class="intermediate machinetesting">
+           5. On the Internet, we tested all three sequences (machine, human expert, random) with actual humans.
+         </p>
+         <p class="intermediate machinetesting">
+           Which problem sequence is best for learning? We wondered whether an algorithm run by a machine could improve learning beyond a random problem sequence and a sequence created by a human expert.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it intermediate">Step 1: How do Humans Learn to Map Visuals?</h3>
+         <p class-"intermediate"></p>
+         <p class-"intermediate"></p>
+       </div>
+       <div class="col-md-3"></div>
+    </div>
+
+
+
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold difficult"> Cognitive Model </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <p class="difficult cognitivemodel">
+            We now describe how we constructed the cognitive model
+            that was used to optimize the training sequence. To this
+            end, we describe the perceptual-fluency problems, how we formally represented these problems, the learning algorithm
+            used by the cognitive model, and finally how we used the
+            cognitive model to identify the optimal training sequence.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Perceptual Fluency Problems</h3>
+         <p class="difficult cognitivemodel">
+            Perceptual-fluency problems are single-step problems that
+            ask students to make simple perceptual judgments. In our
+            case, students were asked to judge whether two visual representations
+            show the same molecule, as shown in Figure 2.
+            Students were given two images. One image was of a
+            molecule represented by a Lewis structure and the other image
+            was a molecule represented by a space-filling model.
+            Their task was to judge whether or not the two images show
+            the same molecule
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Visual Representation of Molecules</h3>
+         <p class="difficult cognitivemodel">
+            In our experiment, we used visual representations of chemical
+            molecules common in undergraduate instruction. To identify
+            these molecules, we reviewed textbooks and web-based instructional
+            materials. We counted the frequency of different
+            molecules using their chemical names (e.g., H2O) and common
+            names (e.g., water). We chose the 142 most common
+            molecules. In order to formally describe the visual representations,
+            we quantified visual features such as the number of
+            lines or dots in the Lewis structure or the color of spheres in
+            the space-filling models. To this end, we created feature vectors
+            for each of the molecules (Figure 3) that describe which
+            visual features the representation contains, as described in
+            (Rau, Mason, & Nowak, 2016). Specifically, feature vectors
+            of Lewis structures contained 27 features and feature vectors
+            for space-filling models contained 24 features. These feature
+            vectors were used by the learning algorithm.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Learning Algorithm</h3>
+         <p class="difficult cognitivemodel">
+            Learning was modeled using a feedforward artificial neural
+            network (ANN) (Demuth, Beale, De Jess, & Hagan, 2014)
+            that takes two feature vectors as input (corresponding to the
+            two visual representations in the task) and is trained to output
+            1 when they represent the same molecule and 0 otherwise. To
+            produce accurate predictions, the model must learn to generate
+            internal representations that are proximal when the two feature vectors depict the same molecule and distal when they
+            depict different molecules. In this sense, the model captures
+            the intuition from perceptual fluency theory that internal representations
+            are used to discern the underlying similarity between
+            different visual representations of the same structure.
+            To this end, we included two separate subnetworks in the
+            ANN learning algorithm (one for each input feature vectors),
+            which is atypical for a general ANN structure. The subnetworks
+            generated the internal representations for the two input
+            feature vectors as discussed above. The model architecture is
+            shown in Figure 4.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Pilot Experiment to Train the Learning Algorithm</h3>
+         <p class="difficult cognitivemodel">
+            First, we needed to train the learning algorithm to mimic human
+            perceptual learning. To this end, we conducted a pilot
+            experiment to find a good set of hyperparameters. For cognitive
+            models, good hyperparameters make predictions that
+            match human behavior on the posttest. We matched the algorithm’s
+            predictions to summary statistics of human performance on the posttest. For our pilot experiment, we recruited
+            47 undergraduate chemistry students. The series of problems
+            they were provided was similar to the ones we describe later
+            in the Human Experiment section. Specifically, they were
+            provided with random training sequences generated from the
+            training distribution Pt
+            . We then used standard coordinate
+            descent with random restart to find a good hyperparameter
+            set. The hyperparameters that we tuned include learning rate,
+            number of hidden layers and number of units in each layer.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Finding an Optimal Training Sequence</h3>
+         <p class="difficult cognitivemodel">
+            Next, we used the ANN learning algorithm to generate an optimal
+            training sequence for the perceptual-fluency problems
+            by solving Equation 1. We did so by searching over the space
+            of all possible training sequences. We set the size of the candidate
+            training sequences to 60, thereby aligning with prior
+            perceptual learning research (Rau et al., 2015). We used a
+            modified hill climbing algorithm to find an optimal training
+            sequence. Hill climb search takes a greedy approach. Procedurally,
+            we started with one particular training sequence.
+            Then, we evaluated neighbors of that particular training sequence
+            to determine whether a better one existed. If so, we
+            moved to that one. This process stopped when no such neighbors
+            are found. This search algorithm is defined with its states
+            and neighborhood definition. The states of the search algorithm
+            were any training sequence S ∈ Ct of size 60. Two
+            training sequences were identified as neighbors if they differ
+            by one problem. For computational efficiency, we restrict
+            ourselves to only inspecting 500 neighbors for a given training
+            sequence.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold difficult"> Human Experiment </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <p class="difficult humanexperiment">
+            To evaluate whether the optimal training sequence yields
+            higher learning outcomes, we conducted a randomized experiment
+            with humans.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Participants</h3>
+         <p class="difficult humanexperiment">
+            We recruited 368 participants using Amazon’s Mechanical
+            Turk (MTurk) (Buhrmester, Kwang, & Gosling, 2011).
+            Among them, 216 were male and 131 were female. The rest
+            did not disclose their gender. Most participants were below
+            the age of 45 (86%) and the largest number (192) fell in the
+            age group 24−35.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Test Set</h3>
+         <p class="difficult humanexperiment">
+            To reiterate, our goal was to assess transfer of learning from
+            the training sequence to a novel test set. Thus, we chose the
+            problems from separate distributions. We randomly divided
+            the 142 molecules we selected into two sets of 71 (training
+            molecules, Xt and test molecules, Xe). One set was used to
+            create the test distribution and the other one was used to create
+            the train distribution. The test distribution Pe is particularly
+            important because our goal was to reduce humans’ error
+            rates on this distribution. The test distribution was created
+            by the following procedure. x1 ∼ p1, where p1 is a
+            marginal distribution on Xe. p1 is “importance of molecule x1 to chemistry education” and was constructed by manually
+            searching a corpus of chemistry education articles for
+            molecule text frequency. With probability 1/2, set x2 = x1 so
+            that the true answer y = 1. Otherwise, draw x2 ∼ p2(· | x1).
+            The conditional distribution p2 is based on domain experts’
+            opinion that favors confusable x1, x2 pairs in an education
+            setting. Also note that p2(x1|x1) = 0,∀x1. Taken together,
+            Pe(x1, x2) = 1
+            2
+            p1(x1)I{x1=x2} +
+            1
+            2
+            p1(x1)p2(x2 | x1). Both the
+            pretest and posttest judgment problems were sampled from
+            this distribution across all conditions.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Experiment Design</h3>
+         <p class="difficult humanexperiment">
+            We compared three training conditions. In the machinetraining
+            sequence condition, we used the training sequence O
+            found by the search algorithm. For all (x1, x2) ∈ O the corresponding
+            true answer y was the indicator variable on whether
+            x1 and x2 were the same molecule: y = I{x1=x2}
+            . We presented
+            x1 and x2 in Lewis and space-filling representation to
+            human participants, respectively. Participants gave their binary
+            judgment ˆy ∈ {0,1}. We then provided the true answer
+            y as feedback to the participant. In the human training sequence
+            condition, the training sequence was constructed by
+            domain expert using perceptual learning principles. Specifically,
+            an expert on perceptual learning sequences visuals constructed
+            the sequence based on the contrasting cases principle
+            (Kellman & Massey, 2013; Rau et al., 2015), so that consecutive
+            examples emphasized conceptually meaningful visual
+            features, such as the color of spheres that show atom identity
+            or the number of dots that show electrons. The rest of
+            this condition was the same as the machine training sequence
+            condition. In the random training sequence condition, each
+            training problem (x1, x2) was selected from the training distribution
+            Pt with y = I{x1=x2}
+            . The training distribution Pt for
+            this condition was created in a similar way as the test distribution
+            but on the training molecules. The rest of this condition
+            was the same as the previous ones.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Procedure</h3>
+         <p class="difficult humanexperiment">
+            We hosted the experiment on the Qualtrics survey platform
+            (Qualtrics, 2005) and NEXT (Jamieson, Jain, Fernandez,
+            Glattard, & Nowak, 2015). Participants first received a brief
+            description of the study and then completed a sequence of 126
+            judgment problems (yes or no). Problems were divided into
+            three phases. Phase one was the pretest and it included 20 test
+            problems without feedback. Phase two was for training and it
+            included 60 training problems with correctness feedback. We
+            assumed that participants learned during this phase because
+            they received feedback. Phase three was the posttest with 40
+            test problems displayed without feedback.
+         </p>
+         <p class="difficult humanexperiment">
+            In addition, one guard problem was inserted after every 19
+            problems throughout all three phases. A guard problem either
+            showed two identical molecules depicted by the same
+            representation or two highly dissimilar molecules depicted
+            by Lewis structures. We used these simple guard problems
+            to filter out participants who responded haphazardly. During
+            modeling, we disregarded all guard problems. When the two molecules were shown to participants, the position (left/right)
+            was randomized so that no representation was privileged.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Results</h3>
+         <p class="difficult humanexperiment">
+            Of the 368 participants, we excluded 43 participants who
+            failed any of the guard questions. The final sample size was
+            N = 325. The final number of participants in the conditions
+            random, human, and machine training sequence were 108,
+            117 and 100 respectively. Figure 5 reports accuracy on the
+            pretest, training sequence and posttest by condition.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Effects of condition on training accuracy</h3>
+         <p class="difficult humanexperiment">
+            First, we tested
+            whether training condition affected participants’ training accuracy
+            using ANCOVA. We found a main effect of condition
+            on training accuracy, F(2,321) = 18.8, p < .001,η
+            2 = .082.
+            Tukey post-hoc comparisons revealed that (a) the machine
+            training sequence condition had significantly lower training
+            accuracy than the human training sequence condition (p <
+            .001,d = −0.32), (b) the machine training sequence condition
+            had significantly lower training accuracy than the random
+            training sequence condition (p < .001,d = −0.26), and
+            (c) no significant differences existed between the human and
+            random training sequence conditions (p = .592,d = 0.05).
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="it difficult">Effects of condition on postset accuracy</h3>
+         <p class="difficult humanexperiment">
+            Next, we tested
+            whether training condition affected participants’ posttest accuracy
+            using ANCOVA. We found a main effect of condition
+            on posttest accuracy, F(2,321) = 5.02, p < .01,η
+            2 = .023.
+            Tukey post-hoc comparisons revealed that (a) the machinetraining
+            sequence condition had significantly higher posttest
+            accuracy than the human training sequence condition (p <
+            .05,d = 0.16), (b) the machine-training sequence condition
+            had significantly higher posttest accuracy than the random sequence
+            condition (p < .05,d = 0.14), and (c) no significant
+            differences existed between the human and random training
+            sequence conditions (p = .960,d = −0.02).
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold difficult"> Discussion </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <p class="difficult discussion">
+            Our goal was to investigate whether machine learning can
+            help identify a sequence of visual representations that enhances
+            students’ learning from perceptual-fluency problems. To this end, we used machine teaching to reverse-engineer an
+            optimal training sequence for a machine learning algorithm.
+            Next, we conducted an experiment with humans that compared
+            the machine teaching sequence to a random sequence
+            and to a sequence generated by a human expert on perceptual
+            learning. The machine teaching sequence resulted in lower
+            training accuracy, but higher posttest accuracy.
+         </p>
+         <p class="difficult discussion">
+            These results significantly advance the perceptual learning
+            literature. First, our results can inform the instructional design
+            of perceptual-learning problems. Even though prior research
+            yields principles for effective sequences of visual representations,
+            numerous potential sequences can satisfy these
+            principles. This study revealed how machine teaching can
+            help solve this problem. Given a learning algorithm that constitutes
+            a cognitive model of students learning a task, instructors
+            can identify problem sequences that likely yield higher
+            learning outcomes. Second, our results expand theory on
+            perceptual learning. The fact that the machine learning sequence
+            yielded lower performance during training, but higher
+            posttest scores suggests that this sequence induced desirable
+            difficulties (Soderstrom & Bjork, 2015).
+         </p>
+         <p class="difficult discussion">
+            Desirable difficulties refers to interventions yielding lower
+            performance during training, but higher long-term learning.
+            To explain this phenomenon, Soderstorm and Bjork (2015)
+            proposed that more difficult learning interventions induce
+            more active processing during training. This impedes immediate
+            performance due to the increased difficulty but results
+            in more durable memories and long-term learning. Our
+            results suggest that the machine teaching approach was successful
+            because it identified a training sequence that induced
+            desirable difficulties. To our knowledge, our study is the first
+            in which a machine-generated instructional intervention used
+            desirable difficulties to support perceptual fluency.
+         </p>
+         <p class="difficult discussion">
+            This study also contributes to the machine learning literature.
+            We provide empirical evidence that an ANN learning
+            algorithm constitutes an adequate cognitive model of learning
+            with visual representations. To our knowledge, the machine
+            teaching paradigm has thus far only been applied to learning
+            with artificial visual stimuli that vary on one or two dimensions
+            (e.g. Gabor patches (B. R. Gibson, Rogers, Kalish, &
+            Zhu, 2015)). Our study is the first to demonstrate that machine
+            teaching can model and improve learning with highdimensional
+            visual representations like Lewis structures and
+            space-filling models of chemical molecules.
+         </p>
+         <p class="difficult discussion">
+            Our findings were limited in several ways. First, the population
+            of MTurk workers limits generalization to the target
+            population of undergraduate chemistry students. MTurk
+            workers have highly variable prior knowledge about chemistry.
+            Second, the search algorithm we used to find an optimal
+            training sequence did not test all possible training sequences
+            of size 60. Exhaustively finding a solution is not practically
+            feasible. Thus, we settled for a suboptimal training sequence
+            that still yielded a small risk on the test distribution. Third,
+            our study was constrained in the use of chemistry representations
+            as stimuli. While we used more high-dimensional representations than prior perceptual learning studies (B. R. Gibson
+            et al., 2015), the complexity of our representations does
+            not represent all realistic stimuli. Sparser and richer visuals
+            exist and it is possible that machine teaching will yield greater
+            benefits for these visuals.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <h3 class="bold difficult"> Conclusion </h3>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <div class="row text-left">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+         <p class="difficult conclusion">
+            Visual representations are used in many domains, but it
+            can be cognitively demanding to learn from them. Perceptual
+            fluency can help by freeing up cognitive resources for
+            higher-order reasoning. Here, we tested a machine teaching
+            technique for developing perceptual fluency in chemistry.
+            The machine-generated optimal training sequence improved
+            learning compared to a training sequence generated by a human
+            expert who used perceptual-learning principles and compared
+            to a random sequence. These results are promising, as
+            they suggest that machine teaching can help create more effective
+            sequences of perceptual-fluency problems. Given that
+            visual representations are ubiquitous in STEM domains, we
+            anticipate that our findings will be broadly useful.
+         </p>
+      </div>
+      <div class="col-md-3"></div>
+   </div>
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
+   <script>
+      $('.btn').bind('click', function(){
+      $('.btn').each(function(){
+      $(this).removeClass('active');
+      });
+      $(this).addClass('active');
+      });
+
+      $('#difficult').on('click',function(){
+      $('.intermediate').css('display','none');
+      $('.difficult').css('display','block');
+      });
+
+      $('#intermediate').on('click',function(){
+      $('.difficult').css('display','none');
+      $('.intermediate').css('display','block');
+      });
+
+
+   </script>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel='stylesheet'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Roboto & Asar CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Markazi+Text:400,600,700" rel="stylesheet">
+
+
+	<style>
+
+	body{
+		font-family: 'Markazi Text', serif;
+	}
+	.infolabel{
+			position:absolute;
+			min-width:120px;
+			max-width:300px;
+			max-height:80px;
+			text-align: center;
+			padding:10px;
+			padding-top:4px;
+		}
+
+		.infolabel p{
+			font-size:14px;
+			font-weight:300;
+			text-align:left;
+		}
+
+		.infolabel h4{
+			font-size:20px;
+			font-weight:400;
+			text-align:center;
+			color:white;
+			padding:4px;
+			border-radius:4px;
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="container">
+	<div class="row text-center">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" id="title"><h1> Ocean-wide tracking of pelagic sharks reveals extent of overlap with longline fishing hotspots </h1></div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-1"></div>
+		<div class="col-md-10" id="title"><h3> Nuno Queiroza, Nicolas E. Humphriesa, Gonzalo Mucientes, Neil Hammerschlag, Fernando P. Limab,
+Kylie L. Scales, Peter I. Millere, Lara L. Sousaa, Rui Seabrab, and David W. Simsa</h3></div>
+		<div class="col-md-1"></div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+				<div id="chart"></div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+
+</div>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	<!-- D3.geo -->
+  <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
+
+	<script>
+	window.onload = function() {
+
+	    var width = $('#chart').parent().width(),
+	        height = $('#chart').parent().width() * 2 / 3
+	    barHeight = height / 2 - 40; //the size of the circle, radius
+
+	    var svg = d3.select('#chart').append("svg")
+	        .attr("width", width)
+	        .attr("height", height)
+	        .append("g")
+	        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+	    var color = d3.scale.ordinal()
+	        .domain([0, 1, 2, 3, 4, 5])
+	        .range(["#fef0d9", "#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]);
+
+	    d3.csv("data.csv", function(error, data) {
+
+	        //VERTICAL SCALE
+	        var extent = d3.extent(data, function(d) {
+	            return d.value;
+	        });
+	        var verticalScale = d3.scale.linear()
+	            .domain(extent)
+	            .range([0, barHeight]); //the height of the circle bars
+
+	        //create an array to store all categories
+	        var keys = data.map(function(d, i) {
+	            return d.category;
+	        });
+	        console.log(keys);
+	        // gives an array of 13 elements: ["open access", "open material"...]
+	        //d3.map: Constructs a new map. If object is specified, copies all enumerable properties from the specified object into this map. The specified object may be an array.
+
+	        var numBars = keys.length; //13
+
+	        //HORIZONTAL SCALE
+	        var x = d3.scale.linear()
+	            .domain(extent)
+	            .range([0, -barHeight]); //circle scale, starting from 0 and goes to 5
+	        //-barHeight because then it will start at the 12'oclock position
+
+	        var xAxis = d3.svg.axis()
+	            .scale(x).orient("left")
+	            .ticks(5);
+
+
+	        var arc = d3.svg.arc()
+	            .startAngle(function(d, i) {
+	                return (i * 2 * Math.PI) / numBars + (2 * Math.PI) / (3 * numBars);
+	            })
+	            .endAngle(function(d, i) {
+	                return ((i + 1) * 2 * Math.PI) / numBars - (2 * Math.PI) / (3 * numBars);
+	            })
+	            // .startAngle(function(d,i) { return (i * 2 * Math.PI) / numBars; })
+	            // .endAngle(function(d,i) { return ((i + 1) * 2 * Math.PI) / numBars; })
+	            .innerRadius(0);
+
+					var arc_invisible = d3.svg.arc()
+	            .startAngle(function(d,i) { return (i * 2 * Math.PI) / numBars; })
+	            .endAngle(function(d,i) { return ((i + 1) * 2 * Math.PI) / numBars; })
+	            .innerRadius(0);
+
+	        var graidentScale = d3.scale.linear().domain([-210, 210]).range([0, 100]);
+
+	        var radialGradient = svg.append("defs")
+	            .append("radialGradient")
+	            .attr("id", "radial-gradient");
+
+	        radialGradient.append("stop")
+	            .attr("offset", "0%")
+	            .attr("stop-color", "#ffa474");
+
+	        radialGradient.append("stop")
+	            .attr("offset", "100%")
+	            .attr("stop-color", "#8b0000");
+
+	        var segments = svg.selectAll("path.segments")
+	            .data(data)
+	            .enter().append("path")
+	            .each(function(d) {
+	                d.outerRadius = verticalScale(+d.value);
+	            }) //set d.outerRadius = 0 if want transition
+	            .attr("id", function(d, i) {
+	                return "segment" + i;
+	            })
+	            .attr("fill", "url(#radial-gradient)")
+	            .attr("class", "segments")
+	            .attr("d", arc);
+
+							var segments_invisible = svg.selectAll("path.segmentsI")
+			            .data(data)
+			            .enter().append("path")
+			            .each(function(d) {
+			                d.outerRadius = verticalScale(+d.segment);
+			            }) //set d.outerRadius = 0 if want transition
+									.on("mouseover",function(d,i){
+											d3.select("#segment"+i).style("opacity",0.5);
+											d3.select(this).style("cursor","pointer");
+											drawInfolabel(d,i);
+									})
+									.on("mouseout",function(d,i){
+										  d3.select("#segment"+i).style("opacity",1);
+											removeInfolabel(d,i);
+									})
+			            .attr("fill", "blue")
+									.style("opacity",0)
+			            .attr("d", arc_invisible);
+
+
+							function drawInfolabel(d,i){
+
+								var labelHTML = "<h4 style='background-color:#b30000;' >"+d.category+"</h4><b><p>&nbsp;&nbsp; "+d.summary+"</b></p>";
+
+
+								var infolabel=d3.select("body").append("div")
+									.attr("class","infolabel")
+									.style("box-shadow", "5px 5px 5px #888888")
+									.style("background-color", "white")
+									.style("left", (d3.event.pageX+28) + "px")
+		 							.style("top", (d3.event.pageY - 28) + "px")
+									.attr("id", "infolabel-"+i)
+									.style("color","black")
+									.html(labelHTML);
+						}
+
+						function removeInfolabel(d,i){
+							//d3.select(".infolabel").remove();
+							d3.select("#infolabel-"+i).remove();
+						}
+
+	        //OUTER MOST CIRCLE
+	        svg.append("circle")
+	            .attr("r", barHeight)
+	            .classed("outer", true)
+	            .style("fill", "none")
+	            .style("stroke", "black")
+	            .style("stroke-width", "1.5px"); //outer most circle
+
+	        //INNER CIRCLES, draw after pie slices
+	        var circles = svg.selectAll("circle")
+	            .data(x.ticks(5))
+	            .enter().append("circle")
+	            .attr("r", function(d) {
+	                return verticalScale(d);
+	            })
+	            .style("fill", "none")
+	            .style("stroke", "black")
+	            .style("stroke-dasharray", "2,2")
+	            .style("stroke-width", ".5px");
+
+	        var lines = svg.selectAll("line")
+	            .data(keys)
+	            .enter().append("line")
+	            .attr("y2", -barHeight - 20)
+	            .style("stroke", "black")
+	            .style("stroke-width", ".5px")
+	            .attr("transform", function(d, i) {
+	                return "rotate(" + (i * 360 / numBars) + ")";
+	            });
+	        //divisor lines between the individual pies
+
+	        svg.append("g")
+	            .attr("class", "x axis")
+	            .call(xAxis);
+
+
+	        var circleshapes = svg.selectAll("circle.circleshapes")
+	            .data(data)
+	            .enter().append("circle")
+	            // .attr("x",0)
+	            // .attr("y",0)
+	            .attr("cx", function(d, i) {
+	                return ((-barHeight - 30) * Math.sin(((-i - 0.5) * 2 * Math.PI) / numBars))
+	            })
+	            .attr("cy", function(d, i) {
+	                return ((-barHeight - 30) * Math.cos(((-i - 0.5) * 2 * Math.PI) / numBars))
+	            }) //-i so it's cw, -barheight so it starts at the 12 o'clock position instead of 6 o'clock
+	            .attr("id", function(d, i) {
+	                return i;
+	            })
+	            .attr("r", 10)
+	            .attr("fill", function(d) {
+	                if (d.value == 5) {
+	                    return color(d.value);
+	                } else {
+	                    return "none";
+	                }
+	            })
+	            .attr("stroke", function(d) {
+	                if (d.value == 5) {
+	                    return "none";
+	                } else {
+	                    return color(d.value);
+	                }
+	            })
+	            .attr("stroke-width", function(d) {
+	                if (d.value == 5) {
+	                    return "0px";
+	                } else {
+	                    return "3px";
+	                }
+	            })
+	            .style("opacity", function(d, i) {
+	                if (d.type == 'y') {
+	                    return 1;
+	                } else {
+	                    return 0;
+	                }
+
+	            });
+
+	        var triangles = svg.selectAll("path.trangleshapes")
+	            .data(data)
+	            .enter().append("path")
+	            // .attr("x",0)
+	            // .attr("y",0)
+	            .attr("class", "trangleshapes")
+	            // .attr("transform", function(d,i) {
+	            // 	return "translate(" + ((-barHeight-30)* Math.sin(((-i-0.5) * 2 * Math.PI) / numBars)) + "," + ((-barHeight-30) * Math.cos(((-i-0.5) * 2 * Math.PI) / numBars)) + ")"; })
+	            .attr("transform", function(d, i) {
+	                return "translate(" + (((-barHeight - 30) * Math.sin(((-i - 0.5) * 2 * Math.PI) / numBars)) + "," + ((-barHeight - 30) * Math.cos(((-i - 0.5) * 2 * Math.PI) / numBars))) + ")" + "rotate(" + ((i + 0.5) * 360 / numBars) + ")";
+	            })
+	            //-i so it's cw, -barheight so it starts at the 12 o'clock position instead of 6 o'clock
+	            // .attr("transform", function(d, i) { return "rotate(" + (i * 360 / numBars) + ")"; })
+	            .attr("id", function(d, i) {
+	                return i + 'star';
+	            })
+	            .attr("fill", function(d) {
+	                if (d.value >= 3) {
+	                    return color(d.value);
+	                } else {
+	                    return "none";
+	                }
+	            })
+	            .attr("stroke", function(d) {
+	                if (d.value >= 3) {
+	                    return "none";
+	                } else {
+	                    return color(d.value);
+	                }
+	            })
+	            .attr("stroke-width", function(d) {
+	                if (d.value >= 3) {
+	                    return "0px";
+	                } else {
+	                    return "3px";
+	                }
+	            })
+	            // .attr("transform", function(d, i) { return "rotate(" + (2*i*Math.PI / numBars) + ")"; })
+	            .style("opacity", function(d, i) {
+	                if (d.type == 'v') {
+	                    return 1;
+	                } else {
+	                    return 0;
+	                }
+
+	            })
+	            .attr("d", d3.svg.symbol().type("triangle-up").size(200));
+
+
+	        // Labels
+	        var labelRadius = barHeight * 1.025;
+
+	        var labels = svg.append("g")
+	            .classed("labels", true);
+
+	        labels.append("def")
+	            .append("path")
+	            .attr("id", "label-path")
+	            .attr("d", "m0 " + -labelRadius + " a" + labelRadius + " " + labelRadius + " 0 1,1 -0.01 0");
+
+	        labels.selectAll("text")
+	            .data(keys)
+	            .enter().append("text")
+	            .style("text-anchor", "middle")
+	            .style("font-weight", "bold")
+	            .style("fill", function(d, i) {
+	                return "#3e3e3e";
+	            })
+	            .append("textPath")
+	            .attr("xlink:href", "#label-path")
+	            .attr("startOffset", function(d, i) {
+	                return i * 100 / numBars + 50 / numBars + '%';
+	            })
+	            .text(function(d) {
+	                return d.toUpperCase();
+	            });
+
+	    });
+
+
+	}
+	</script>
+</body>
